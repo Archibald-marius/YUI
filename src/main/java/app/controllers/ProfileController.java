@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,10 +29,14 @@ public class ProfileController {
         return userService.get(email);
     }
 
-    @RequestMapping(value = "/profile")
-    public ModelAndView showProfile(ModelAndView modelAndView){
+    private ModelAndView showProfile(SiteUser user){
 
-        SiteUser user = getUser();
+        ModelAndView modelAndView = new ModelAndView();
+        if(user == null){
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
+        }
+
         Profile profile = profileService.getUserProfile(user);
 
         if(profile == null){
@@ -42,10 +47,36 @@ public class ProfileController {
 
         Profile webProfile = new Profile();
         webProfile.saveCopyFrom(profile);
+
+        modelAndView.getModel().put("userId", user.getId());
         modelAndView.getModel().put("profile", webProfile);
         modelAndView.setViewName("app.profile");
+
+        return modelAndView;
+
+    }
+
+
+    @RequestMapping(value = "/profile")
+    public ModelAndView showProfile(){
+
+        SiteUser user = getUser();
+        ModelAndView modelAndView = showProfile(user);
+
         return modelAndView;
     }
+
+    @RequestMapping(value = "/profile/{id}")
+    public ModelAndView showProfile(@PathVariable("id") Long id){
+
+
+
+        SiteUser user = userService.get(id);
+        ModelAndView modelAndView = showProfile(user);
+
+        return modelAndView;
+    }
+
 
     @RequestMapping(value = "/edit-profile-about", method = RequestMethod.GET)
     public ModelAndView editProfileAbout(ModelAndView modelAndView){
@@ -66,9 +97,11 @@ public class ProfileController {
         Profile profile = profileService.getUserProfile(user);
 
         profile.safeMergeFrom(webProfile);
-        webProfile.saveCopyFrom(profile);
 
-        modelAndView.getModel().put("profile", webProfile);
+        if(!result.hasErrors()){
+            profileService.save(profile);
+            modelAndView.setViewName("redirect:/profile");
+        }
         return modelAndView;
     }
 }
