@@ -46,4 +46,12 @@
         <put-attribute name="content" value="/WEB-INF/tiles/editprofileabout.jsp" />
     </definition>
 
+    <definition name="app.addpatient" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/addpatient.jsp" />
+    </definition>
+
+    <definition name="app.patients" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/patients.jsp" />
+    </definition>
+
 </tiles-definitions>

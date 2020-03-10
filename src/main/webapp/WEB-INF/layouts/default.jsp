@@ -49,6 +49,15 @@
                 <a href="${contextRoot}/profile">Profile</a>
             </li>
 
+            <li>
+                <a class="dropdown-item" href="${contextRoot}/addpatient">Add patient</a>
+
+            </li>
+            <li>
+                <a class="dropdown-item" href="${contextRoot}/patients">Patients</a>
+
+            </li>
+
             <li class="nav-item">
                 <a href="javascript:$('#logoutForm').submit();">Logout</a>
             </li>

@@ -1,17 +1,19 @@
 package app.controllers;
 
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name="users")
 @PasswordMatch(message="{register.repeatpassword.mismatch}")
-public class SiteUser {
+public class SiteUser  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -94,5 +96,21 @@ public class SiteUser {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    public boolean isAccountEnabled() {
+        return true;
     }
 }

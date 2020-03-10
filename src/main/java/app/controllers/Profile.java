@@ -47,4 +47,10 @@ public class Profile {
             this.about = other.about;
         }
     }
+
+    public void safeMergeFrom(Profile webProfile) {
+        if(webProfile.about !=null){
+            this.about=webProfile.about;
+        }
+    }
 }
