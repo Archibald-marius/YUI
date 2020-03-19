@@ -1,13 +1,10 @@
 package app.controllers;
+import app.controllers.Dao.UserDao;
+import app.controllers.Models.SiteUser;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.dao.DataAccessException;
-import javax.management.relation.Role;
-import org.springframework.security.core.GrantedAuthority;
-import java.util.Set;
-import java.util.HashSet;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class CustomUserDetailsService implements UserDetailsService {
 

@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.controllers.Models.SiteUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

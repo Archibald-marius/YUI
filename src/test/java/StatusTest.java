@@ -11,8 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import app.controllers.StatusUpdate;
-import app.controllers.StatusUpdateDao;
+import app.controllers.Models.StatusUpdate;
+import app.controllers.Dao.StatusUpdateDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)

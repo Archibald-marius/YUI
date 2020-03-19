@@ -3,6 +3,8 @@
     <words>
       <w>addpatient</w>
       <w>addstatus</w>
+      <w>pateint</w>
+      <w>patientinfo</w>
       <w>repeatpassword</w>
       <w>viewstatus</w>
     </words>

@@ -34,6 +34,14 @@
                         <form:input type="password" path="plainPassword" placeholder="Password"
                                     class="form-control" />
                     </div>
+                    <div class="input-group">
+                        <form:input type="text" path="firstname" placeholder="Firstname"
+                                    class="form-control" />
+                        <span class="input-group-btn" style="width:20px"></span>
+                        <form:input type="text" path="surname" placeholder="Surname"
+                                    class="form-control" />
+                    </div>
+
 
                     <div class="input-group">
                         <form:input type="password" path="repeatPassword" placeholder="Repeat password"

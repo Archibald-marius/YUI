@@ -12,7 +12,6 @@
             <c:forEach items="${patientList}" var="patientList">
                 <tr>
                     <td>${patientList.name}</td>
-
                 </tr>
             </c:forEach>
 

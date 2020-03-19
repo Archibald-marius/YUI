@@ -13,7 +13,6 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @SpringBootApplication
-
 public class App extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
