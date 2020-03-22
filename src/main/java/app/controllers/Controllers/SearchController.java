@@ -1,5 +1,6 @@
 package app.controllers.Controllers;
 
+import app.controllers.Models.dto.SearchResult;
 import app.controllers.Services.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,17 +9,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class SearchController {
 
     @Autowired
     SearchService searchService;
 
-    @RequestMapping(value="/search", method = RequestMethod.POST)
+    @RequestMapping(value="/search", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView search(ModelAndView modelAndView, @RequestParam("s") String text){
 
 
-        searchService.search(text);
+        List<SearchResult> result =  searchService.search(text);
+        modelAndView.getModel().put("result", result);
         modelAndView.setViewName("app.search");
         return modelAndView;
     }

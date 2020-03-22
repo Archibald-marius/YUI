@@ -2,10 +2,12 @@ package app.controllers.Services;
 
 import app.controllers.Dao.PatientInfoDao;
 import app.controllers.Models.Patients;
+import app.controllers.Models.dto.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SearchService {
@@ -13,11 +15,9 @@ public class SearchService {
     @Autowired
     private PatientInfoDao patientInfoDao;
 
-    public List<Patients> search(String text){
+    public List<SearchResult> search(String text){
 
-        patientInfoDao.findByPatientName(text).stream().forEach(System.out::println);
+        return patientInfoDao.findAllByName(text).stream().map(SearchResult::new).collect(Collectors.toList());
 
-
-        return null;
     }
 }

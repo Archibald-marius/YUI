@@ -7,11 +7,11 @@ import javax.persistence.*;
 public class PatientInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name="patient_id")
     private Long id;
 
     @OneToOne(targetEntity = Patients.class)
-    @JoinColumn(name = "patient_id", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Patients patient;
 
     @Column(name="name", length = 5000)
@@ -33,26 +33,23 @@ public class PatientInfo {
         this.patient = patient;
     }
 
-    public String getAbout() {
-        return about;
+    public String getName() {
+        return name;
     }
 
-    public void setAbout(String about) {
-        this.about = about;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    @Column(name="about", length = 5000)
-    private String about;
 
     public void saveCopyFrom(PatientInfo patient){
         if(patient.name != null){
-            this.about = patient.name;
+            this.name = patient.name;
         }
     }
 
     public void safeMergeFrom(PatientInfo webProfile) {
         if(webProfile.name !=null){
-            this.about=webProfile.name;
+            this.name=webProfile.name;
         }
     }
 }

@@ -11,6 +11,7 @@ public class PateintInfoService {
 
     @Autowired
     PatientInfoDao patientInfoDao;
+
     public void save(PatientInfo patientInfo) {patientInfoDao.save(patientInfo);}
     public PatientInfo getPatientProfile(Patients patient){
         return patientInfoDao.findByPatient(patient);

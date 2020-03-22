@@ -2,48 +2,81 @@
          pageEncoding="UTF-8"%>
 
 
-This is the about page1111.
-<navbar>
-    <div class="navbar nav navbar-fixed-top navbar-inverse">
-        <div class="container-fluid">
-            <div class="v-flex">
-                <div class="navbar-body">
-                    <div class="navbar-start">
-                        <div class="hamburger-menu">
-                            <div class="ic_menu">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <img class="logo" src="https://firebasestorage.googleapis.com/v0/b/personal-1c08e.appspot.com/o/logo.svg?alt=media&token=7a322d4e-6088-4647-975a-0f36107a5547">
+
+
+<div class="form">
+
+
+
+    <div class="tab-content">
+        <div id="signup">
+            <h1>Sign Up for Free</h1>
+
+<form:form method="post" modelAttribute="user" class="login-form">
+
+                <div class="top-row">
+                    <div class="field-wrap">
+                        <label>
+                            First Name<span class="req">*</span>
+                        </label>
+                        <input type="text" required autocomplete="off" />
                     </div>
-                    <div class="search">
-                        <input type="text" class="search-textbox" placeholder="Search">
-                        <a class="ico-btn search-btn"><i class="material-icons ic_search">&#xE8B6;</i></a>
-                        <a class="ico-btn clear-btn"><i class="material-icons ic_clear">&#xE14C;</i></a>
-                    </div>
-                    <div class="navbar-end">
-                        <a style="text-transform: uppercase">Get in</a>
+
+                    <div class="field-wrap">
+                        <label>
+                            Last Name<span class="req">*</span>
+                        </label>
+                        <input type="text"required autocomplete="off"/>
                     </div>
                 </div>
-            </div>
+
+                <div class="field-wrap">
+                    <label>
+                        Email Address<span class="req">*</span>
+                    </label>
+                    <input type="email"required autocomplete="off"/>
+                </div>
+
+                <div class="field-wrap">
+                    <label>
+                        Set A Password<span class="req">*</span>
+                    </label>
+                    <input type="password"required autocomplete="off"/>
+                </div>
+
+                <button type="submit" class="button button-block"/>Get Started</button>
+
+            </form>
+
         </div>
-    </div>
-    <div class="navbar navbar-fixed-top navbar-inverse tabs paper-shadow-bottom-z-2">
-        <div class="container-fluid">
-            <ul class="navbar-body list-inline">
-                <li class="active"><a class="active">Home</a></li>
-                <li><a>Potion Lab</a></li>
-                <li><a>Stats</a></li>
-                <li><a>System Log Feed</a></li>
-            </ul>
-            <div class="tab-highlighter"></div>
+
+        <div id="login">
+            <h1>Welcome Back!</h1>
+
+            <form action="/" method="post">
+
+                <div class="field-wrap">
+                    <label>
+                        Email Address<span class="req">*</span>
+                    </label>
+                    <input type="email"required autocomplete="off"/>
+                </div>
+
+                <div class="field-wrap">
+                    <label>
+                        Password<span class="req">*</span>
+                    </label>
+                    <input type="password"required autocomplete="off"/>
+                </div>
+
+                <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+                <button class="button button-block"/>Log In</button>
+
+            </form>
+
         </div>
-    </div>
-    <!--2 navbar for pushing 1 above after scrolling (Not Implemented yet.)-->
-</navbar>
 
+    </div><!-- tab-content -->
 
-
-
+</div> <!-- /form -->

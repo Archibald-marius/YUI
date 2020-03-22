@@ -62,4 +62,10 @@
         <put-attribute name="content" value="/WEB-INF/tiles/results.jsp" />
     </definition>
 
+    <definition name="app.choose" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/choose.jsp" />
+    </definition>
+    <definition name="app.editPatientCard" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/editPatientCard.jsp" />
+    </definition>
 </tiles-definitions>

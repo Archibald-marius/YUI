@@ -27,17 +27,46 @@
                     </div>
 
                     <div class="input-group">
-                        <form:input name="name" path="name" placeholder="Name"
+                        <form:input name="name" path="name" placeholder="Имя пациента"
                                     class="form-control" />
                     </div>
 
                     <div class="input-group">
-                        <form:input name="weeks" path="weeks" placeholder="Weeks"
+                        <form:input name="pregnancy" path="pregnancy" placeholder="Беременность"
                                     class="form-control" />
                     </div>
 
                     <div class="input-group">
-                        <form:input name="diagnosis" path="diagnosis" placeholder="Diagnosis"
+                        <form:input name="labour" path="labour" placeholder="Роды"
+                                    class="form-control" />
+                    </div>
+
+<%--                    <div class="input-group">--%>
+<%--                        <form:input name="birsd" path="birsd" placeholder="Дата рождения"--%>
+<%--                                    class="form-control" />--%>
+<%--                    </div>--%>
+                    <div class="input-group">
+                        <form:input name="address" path="address" placeholder="Адрес проживания"
+                                    class="form-control" />
+                    </div>
+
+                    <div class="input-group">
+                        <form:input name="work" path="work" placeholder="Место работы"
+                                    class="form-control" />
+                    </div>
+
+
+                    <div class="input-group">
+                        <form:input name="weeks" path="weeks" placeholder="Неделя беременности"
+                                    class="form-control" />
+                    </div>
+
+                    <div class="input-group">
+                        <form:input name="diagnosis" path="diagnosis" placeholder="Основной диагноз"
+                                    class="form-control" />
+                    </div>
+                    <div class="input-group">
+                        <form:input name="concomitant" path="concomitant" placeholder="Супуствующие диагнозы"
                                     class="form-control" />
                     </div>
 

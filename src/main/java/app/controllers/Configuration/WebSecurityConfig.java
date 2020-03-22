@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/register")
+                .antMatchers("/", "/register", "/choose")
                 .permitAll()
                 .antMatchers(
                         "/js/*",
@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/addstatus", "/editstatus", "/deletestatus", "/viewstatus")
                 .hasRole("ADMIN")
-                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/addpatient", "/patients", "/patientcard", "/about", "/search")
+                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/addpatient", "/patients", "/patientcard", "/about", "/search", "/patientcard/*", "/editPatientCard", "/editPatientCard/*")
                 .authenticated()
                 .anyRequest()
                 .denyAll()

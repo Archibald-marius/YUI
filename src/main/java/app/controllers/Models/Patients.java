@@ -1,6 +1,9 @@
 package app.controllers.Models;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "patients")
@@ -19,23 +22,116 @@ public class Patients {
     @Column(name="name")
     private String name;
 
+    @Nullable
     @Column(name="weeks")
-    private Long weeks;
+    private Long weeks = null;
 
+    @Nullable
+    @Column(name="pregnancy")
+    private Long pregnancy = null;
+
+    @Nullable
+    @Column(name="labour")
+    private Long labour = null;
+
+    @Nullable
+    @Column(name="concomitant")
+    private String concomitant = null;
+
+    @Nullable
+    @Column(name = "address")
+    private String address = null;
+
+    @Nullable
+    @Column(name = "birsd")
+    private Date birsd = null;
+
+    @Nullable
+    @Column(name = "work")
+    private String work = null;
+
+    @Nullable
+    @Column(name = "notes")
+    private String notes = null;
+
+    @Nullable
     @Column(name="diagnosis")
-    private String diagnosis;
+    private String diagnosis = null;
 
-    public Patients(String name, Long weeks, String diagnosis) {
+    public Patients(String name, Long weeks, String diagnosis, Long pregnancy, Long labour, Date birsd, String work, String address, String notes, String concomitant) {
         this.name = name;
         this.weeks = weeks;
         this.diagnosis = diagnosis;
+        this.pregnancy = pregnancy;
+        this.labour = labour;
+        this.birsd = birsd;
+        this.work = work;
+        this.address = address;
+        this.notes = notes;
+        this.concomitant = concomitant;
     }
+
 
     public Patients(){
 
     }
 
 
+    public Long getPregnancy() {
+        return pregnancy;
+    }
+
+    public void setPregnancy(Long pregnancy) {
+        this.pregnancy = pregnancy;
+    }
+
+    public Long getLabour() {
+        return labour;
+    }
+
+    public void setLabour(Long labour) {
+        this.labour = labour;
+    }
+
+    public String getConcomitant() {
+        return concomitant;
+    }
+
+    public void setConcomitant(String concomitant) {
+        this.concomitant = concomitant;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getBirsd() {
+        return birsd;
+    }
+
+    public void setBirsd(Date birsd) {
+        this.birsd = birsd;
+    }
+
+    public String getWork() {
+        return work;
+    }
+
+    public void setWork(String work) {
+        this.work = work;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
     public Long getId() {
         return id;
