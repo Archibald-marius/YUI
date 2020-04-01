@@ -2,6 +2,7 @@ package app.controllers.Services;
 
 import app.controllers.Dao.UserDao;
 import app.controllers.Dao.VerificationDao;
+import app.controllers.Models.Profile;
 import app.controllers.Models.SiteUser;
 import app.controllers.Models.TokenType;
 import app.controllers.Models.VerificationToken;
@@ -32,7 +33,7 @@ public class UserService implements UserDetailsService {
 
     public void register(SiteUser user) {
 
-        user.setRole("ROLE_USER");
+//        user.setRole("ROLE_USER");
         userDao.save(user);
 
 
@@ -56,12 +57,12 @@ public class UserService implements UserDetailsService {
 
         String password = user.getPassword();
 
-        Boolean enabled = user.isEnabled();
+        Boolean enabled = user.getEnabled();
 
         return new User(email, password, enabled, true, true, true, auth);
     }
 
-    public String createEmailVerofocationToken(SiteUser user){
+    public String createEmailVerificationToken(SiteUser user){
         VerificationToken token = new VerificationToken(UUID.randomUUID().toString(), user, TokenType.REGISTRATION);
         verificationDao.save(token);
         return token.getToken();
@@ -78,4 +79,18 @@ public class UserService implements UserDetailsService {
     public SiteUser get(Long id) {
         return userDao.findById(id).get();
     }
+
+    public String getUserName(Long chatWithUserId) {
+        SiteUser user = userDao.findById(chatWithUserId).get();
+        return user.getFirstname()+" "+ user.getSurname();
+    }
+
+    public void deleteToken(VerificationToken token) {
+        verificationDao.delete(token);
+    }
+
+    public List<SiteUser> getByRole(String role){
+        return userDao.findAllByRole(role);
+    }
+
 }

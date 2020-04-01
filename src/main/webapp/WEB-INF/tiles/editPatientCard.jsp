@@ -32,8 +32,30 @@
 
 
                     <div class="form-group">
+                        Имя
                         <form:textarea path="name" rows="10" cols="50"></form:textarea>
                     </div>
+                    <div class="form-group">
+                        Неделя беременности
+                        <form:textarea path="weeks" rows="10" cols="50"></form:textarea>
+                    </div>
+                    <div class="form-group">
+                        Адрес
+                        <form:textarea path="address" rows="10" cols="50"></form:textarea>
+                    </div>
+                    <div class="form-group">
+                        Работа
+                        <form:textarea path="work" rows="10" cols="50"></form:textarea>
+                    </div>
+                    <div class="form-group">
+                        Диагноз
+                        <form:textarea path="diagnosis" rows="10" cols="50"></form:textarea>
+                    </div>
+                    <div class="form-group">
+                        Диагноз
+                        <form:textarea path="mail" rows="10" cols="50"></form:textarea>
+                    </div>
+
 
                     <input type="submit" name="submit" value="Add Status" />
                 </form:form>

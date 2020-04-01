@@ -69,6 +69,10 @@
                         <form:input name="concomitant" path="concomitant" placeholder="Супуствующие диагнозы"
                                     class="form-control" />
                     </div>
+                    <div class="input-group">
+                        <form:input name="mail" path="mail" placeholder="Mail"
+                                    class="form-control" />
+                    </div>
 
                     <div class="input-group">
                         <button type="submit" class="btn-primary pull-right">Register</button>

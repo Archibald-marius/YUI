@@ -5,57 +5,46 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:url var="loginUrl" value="/login" />
-<c:url var="registerUrl" value="/register" />
+<c:url var="registerUrl" value="/choose" />
 
 
-<div class="row">
-    <div class="col-md-6-md-offset-3 col-sm-8 col-sm-offset-2">
-        Please log in or <a href="${registerUrl}">create account for free!</a>
-    </div>
-</div>
 
-<div class="row">
 
-    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
 
         <c:if test="${param.error != null}">
             <div class="login-error">Incorrect username or password.</div>
         </c:if>
 
-        <div class="panel panel-default">
+        <div class="login">
 
-            <div class="panel-heading">
-                <div class="panel-title">User Log In</div>
-            </div>
+                    Войдите или <a href="${registerUrl}">создайте акаунт бесплатно!</a>
+            <br>
+            <br>
 
+            <span style="font-size: 34px">Вход</span>
+<br>
+            <br>
 
-            <div class="panel-body">
+        <%--            <div class="panel-body login">--%>
                 <form method="post" action="${loginUrl}" class="login-form">
 
                     <input type="hidden" name="${_csrf.parameterName}"
                            value="${_csrf.token}" />
 
-                    <div class="input-group">
                         <input type="text" name="username" placeholder="Username"
                                class="form-control" />
-                    </div>
-
-                    <div class="input-group">
+                            <br>
                         <input type="password" name="password" placeholder="Password"
                                class="form-control" />
-                    </div>
-
-                    <div class="input-group">
-                        <button type="submit" class="btn-primary pull-right">Sign
+<br>
+                        <button type="submit" class="btn-primary pull-right" style="background-color: #343a40">Sign
                             In</button>
-                    </div>
 
                 </form>
-            </div>
+<%--            </div>--%>
         </div>
 
-    </div>
 
 
 
-</div>

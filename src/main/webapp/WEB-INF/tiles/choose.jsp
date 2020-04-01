@@ -10,8 +10,8 @@
     <div class="btn-on-choose">
        <div class="container">
         <form>
-            <button class="btn-on" formaction="/register">Регистрация<br>для специалистов</button>
-            <button class="btn-on" formaction="/register">Регистрация<br>для пациентов</button>
+            <button class="btn-on" formaction="/register/doctor">Регистрация<br>для специалистов</button>
+            <button class="btn-on" formaction="/register/patient">Регистрация<br>для пациентов</button>
 
         </form>
        </div>

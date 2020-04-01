@@ -25,23 +25,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/register", "/choose")
+                .antMatchers("/", "/register", "/register/*", "/choose", "/verifyemail", "/registrationconfirmed",
+                        "/invaliduser",
+                        "/expiredtoken", "/confirmregister", "/success")
                 .permitAll()
                 .antMatchers(
                         "/js/*",
                         "/css/*",
                         "/img/*")
                 .permitAll()
-                .antMatchers("/addstatus", "/editstatus", "/deletestatus", "/viewstatus")
-                .hasRole("ADMIN")
-                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/addpatient", "/patients", "/patientcard", "/about", "/search", "/patientcard/*", "/editPatientCard", "/editPatientCard/*")
+                .antMatchers("/addstatus", "/editstatus", "/deletestatus", "/viewstatus", "/profile", "/profile/*", "/edit-profile-about", "/addpatient", "/patients", "/patientcard", "/about", "/search", "/patientcard/*", "/editPatientCard", "/editPatientCard/*", "/yavka", "/yavka/*", "/showVisites", "/showVisites/*", "/editvisit", "/editvisit/*", "/webjars/**", "/chat/**", "/chatview", "/chatview/*", "/conversation", "/conversation/*", "conversation/*")
+                .hasRole("USER")
+                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/addpatient", "/patients", "/patientcard", "/about", "/search", "/patientcard/*", "/editPatientCard", "/editPatientCard/*", "/yavka", "/yavka/*", "/showVisites", "/showVisites/*", "/editvisit", "/editvisit/*", "/webjars/**", "/chat/**", "/chatview", "/chatview/*", "/conversation", "/conversation/*", "conversation/*", "/checkmessages", "/speciality", "/publish", "/checkmessages", "/dialogs", "/searchdoctor", "/docs", "/docs/**", "/getcontact/**", "/params", "/ind/*", "/control")
                 .authenticated()
                 .anyRequest()
                 .denyAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/", true)
                 .permitAll()
                 .and()
                 .logout()

@@ -58,7 +58,19 @@ public class Patients {
     @Column(name="diagnosis")
     private String diagnosis = null;
 
-    public Patients(String name, Long weeks, String diagnosis, Long pregnancy, Long labour, Date birsd, String work, String address, String notes, String concomitant) {
+    @Nullable
+    @Column(name="mail")
+    private String mail = null;
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public Patients(String name, Long weeks, String diagnosis, Long pregnancy, Long labour, Date birsd, String work, String address, String notes, String concomitant, String mail) {
         this.name = name;
         this.weeks = weeks;
         this.diagnosis = diagnosis;
@@ -69,6 +81,7 @@ public class Patients {
         this.address = address;
         this.notes = notes;
         this.concomitant = concomitant;
+        this.mail=mail;
     }
 
 
@@ -171,5 +184,25 @@ public class Patients {
 
     public void setDiagnosis(String diagnosis) {
         this.diagnosis = diagnosis;
+    }
+    public void safeMergeFrom(Patients patients) {
+        if (patients.name != null) {
+            this.name = patients.name;
+        }
+        if (patients.weeks != null) {
+            this.weeks = patients.weeks;
+        }if (patients.address != null) {
+            this.address = patients.address;
+        }if (patients.work != null) {
+            this.work = patients.work;
+        }if (patients.diagnosis != null) {
+            this.diagnosis = patients.diagnosis;
+        }if (patients.concomitant != null) {
+            this.concomitant = patients.concomitant;
+        }
+        if (patients.mail != null) {
+            this.mail = patients.mail;
+        }
+
     }
 }

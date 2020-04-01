@@ -19,14 +19,58 @@
 
                 <form:form modelAttribute="profile">
 
+                    <fieldset class="boxBody">
+                        <label>Username</label>
+                        <form:input path="firstname"/>
+
+<%--                        <label>Username</label>--%>
+<%--                        <form:input path="surname"/>--%>
+
+
+                    </fieldset>
+                    <fieldset class="boxBody">
+                        <label>Username</label>
+                        <form:input path="role"/>
+
+                            <%--                        <label>Username</label>--%>
+                            <%--                        <form:input path="surname"/>--%>
+
+
+                    </fieldset>
+                    <footer>
+                            <c:if test="${profile.therapy == false}">
+                                <form:checkbox path="therapy" value="true"/>
+                            </c:if>
+                        <c:if test="${profile.therapy == true}">
+                                <form:checkbox path="therapy" value="true" checked="checked"/>
+                            </c:if>
+                        <label>Терапия?</label>
+
+                        <c:choose>
+                            <c:when test="${profile.surgery == false}">
+                                <form:checkbox path="surgery" value="true"/>
+                            </c:when>
+                            <c:otherwise>
+                                <form:checkbox path="surgery" value="true" checked="checked"/>
+                            </c:otherwise>
+                        </c:choose>
+                        <label>Хирургия?</label>
+
+                        <c:choose>
+                            <c:when test="${profile.gynecology = true}">
+                                <form:checkbox path="gynecology" value="true"/>
+                            </c:when>
+                            <c:otherwise>
+                                <form:checkbox path="gynecology" value="true" checked="checked"/>
+                            </c:otherwise>
+                        </c:choose>
+                        <label>Гинекология?</label>
 
 
 
-                    <div class="form-group">
-                        <form:textarea path="about" rows="10" cols="50"></form:textarea>
-                    </div>
-
-                    <input type="submit" name="submit" value="Add Status" />
+                        <br>
+                        <input type="submit" class="btnLogin" value="Login" tabindex="4">
+                    </footer>
                 </form:form>
 
             </div>
@@ -42,9 +86,3 @@
 
 </div>
 
-<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
-<script>
-    tinymce.init({
-        selector : 'textarea'
-    });
-</script>

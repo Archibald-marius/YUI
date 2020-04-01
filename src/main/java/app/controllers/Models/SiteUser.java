@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 
 @Entity
 @Table(name="users")
@@ -33,7 +34,7 @@ public class SiteUser  {
     private String password;
 
     @Column(name = "enabled")
-    private boolean enabled = false;
+    private Boolean enabled = false;
 
     @NotNull
     @Column(name="firstname")
@@ -42,6 +43,194 @@ public class SiteUser  {
     @NotNull
     @Column(name="surname")
     private String surname;
+
+    @Column(name="therapy")
+    private Boolean therapy = false;
+
+    @Column(name="gynecology")
+    private Boolean gynecology = false;
+
+    @Column(name="surgery")
+    private Boolean surgery=false;
+
+    @Column(name="cardiology")
+    private Boolean cardiology=false;
+
+    @Column(name="gastro")
+    private Boolean gastro=false;
+
+    @Column(name="neurology")
+    private Boolean neurology=false;
+
+    @Column(name="opht")
+    private Boolean opht=false;
+
+    @Column(name="otolor")
+    private Boolean otolor=false;
+
+    @Column(name="ob")
+    private Boolean ob=false;
+
+    @Column(name="reproductology")
+    private Boolean reproductology=false;
+
+    @Column(name="pediatrition")
+    private Boolean pediatrition=false;
+
+    @Column(name="neonat")
+    private Boolean neonat=false;
+
+    @Column(name="vascularsurgery")
+    private Boolean vascularsurgery=false;
+
+    @Column(name="plasticsurgery")
+    private Boolean plasticsurgery=false;
+
+    @Column(name="alergology")
+    private Boolean alergology=false;
+
+    @Column(name="orthopedy")
+    private Boolean orthopedy=false;
+
+    @Column(name="endocrinology")
+    private Boolean endocrinology=false;
+
+    @Column(name="published")
+    private Boolean published = false;
+
+    @Column(name="dependency")
+    private String dependency;
+
+    public String getDependency() {
+        return dependency;
+    }
+
+    public void setDependency(String dependency) {
+        this.dependency = dependency;
+    }
+
+    @Column(name="role", length=20)
+    private String role;
+
+    public Boolean getEndocrinology() {
+        return endocrinology;
+    }
+
+    public void setEndocrinology(Boolean endocrinology) {
+        this.endocrinology = endocrinology;
+    }
+
+    public Boolean getAlergology() {
+        return alergology;
+    }
+
+    public void setAlergology(Boolean alergology) {
+        this.alergology = alergology;
+    }
+
+    public Boolean getOrthopedy() {
+        return orthopedy;
+    }
+
+    public void setOrthopedy(Boolean orthopedy) {
+        this.orthopedy = orthopedy;
+    }
+
+    public Boolean getPlasticsurgery() {
+        return plasticsurgery;
+    }
+
+    public void setPlasticsurgery(Boolean plasticsurgery) {
+        this.plasticsurgery = plasticsurgery;
+    }
+
+    public Boolean getVascularsurgery() {
+        return vascularsurgery;
+    }
+
+    public void setVascularsurgery(Boolean vascularsurgery) {
+        this.vascularsurgery = vascularsurgery;
+    }
+
+    public Boolean getCardiology() {
+        return cardiology;
+    }
+
+    public void setCardiology(Boolean cardiology) {
+        this.cardiology = cardiology;
+    }
+
+    public Boolean getGastro() {
+        return gastro;
+    }
+
+    public void setGastro(Boolean gastro) {
+        this.gastro = gastro;
+    }
+
+    public Boolean getNeurology() {
+        return neurology;
+    }
+
+    public void setNeurology(Boolean neurology) {
+        this.neurology = neurology;
+    }
+
+    public Boolean getOpht() {
+        return opht;
+    }
+
+    public void setOpht(Boolean opht) {
+        this.opht = opht;
+    }
+
+    public Boolean getOtolor() {
+        return otolor;
+    }
+
+    public void setOtolor(Boolean otolor) {
+        this.otolor = otolor;
+    }
+
+    public Boolean getOb() {
+        return ob;
+    }
+
+    public void setOb(Boolean ob) {
+        this.ob = ob;
+    }
+
+    public Boolean getReproductology() {
+        return reproductology;
+    }
+
+    public void setReproductology(Boolean reproductology) {
+        this.reproductology = reproductology;
+    }
+
+    public Boolean getPediatrition() {
+        return pediatrition;
+    }
+
+    public void setPediatrition(Boolean pediatrition) {
+        this.pediatrition = pediatrition;
+    }
+
+    public Boolean getNeonat() {
+        return neonat;
+    }
+
+    public void setNeonat(Boolean neonat) {
+        this.neonat = neonat;
+    }
+
+    public Boolean getPublished() {
+        return published;
+    }
+
+    public void setPublished(Boolean published) {
+        this.published = published;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -62,8 +251,6 @@ public class SiteUser  {
     @Transient
     private String repeatPassword;
 
-    @Column(name="role", length=20)
-    private String role;
 
     public Long getId() {
         return id;
@@ -114,12 +301,28 @@ public class SiteUser  {
         this.repeatPassword = repeatPassword;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public Boolean getTherapy() {
+        return therapy;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setTherapy(Boolean therapy) {
+        this.therapy = therapy;
+    }
+
+    public Boolean getGynecology() {
+        return gynecology;
+    }
+
+    public void setGynecology(Boolean gynecology) {
+        this.gynecology = gynecology;
+    }
+
+    public Boolean getSurgery() {
+        return surgery;
+    }
+
+    public void setSurgery(Boolean surgery) {
+        this.surgery = surgery;
     }
 
     public boolean isAccountNonExpired() {
@@ -136,5 +339,31 @@ public class SiteUser  {
 
     public boolean isAccountEnabled() {
         return true;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+//    public void safeMergeFrom(Profile profile) {
+////        if (siteUser.therapy != null) {
+////            this.therapy = siteUser.therapy;
+////        }
+////        if (siteUser.gynecology != null) {
+////            this.gynecology = siteUser.gynecology;
+////        }
+////        if (siteUser.surgery != null) {
+////            this.surgery = siteUser.surgery;
+////        }
+//        if (profile.getFirstname() != null) {
+//            this.firstname = profile.getFirstname();
+//        }
+//    }
+
+    public SiteUser(){
+
     }
 }

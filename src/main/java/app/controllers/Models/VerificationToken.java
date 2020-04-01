@@ -33,6 +33,7 @@ public class VerificationToken {
     @Enumerated(EnumType.STRING)
     private TokenType type;
 
+
     @PrePersist
     private void setDate(){
         Calendar c = Calendar.getInstance();

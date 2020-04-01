@@ -14,33 +14,56 @@
 
         <div class="profile-about">
             <div class="profile-image">
-                <img src="${img}/1.png"/>
+                <img src="${img}/1.png" width="300" height="300"/>
 
-                <div class="profile-text">
 
-                    <c:choose>
-                        <c:when test="${profile.about==null}">
-                            Click edit to add info
+<%--                    <c:choose>--%>
+<%--                        <c:when test="${profile.about==null}">--%>
+<%--                            Click edit to add info--%>
 
-                        </c:when>
+<%--                        </c:when>--%>
 
-                        <c:otherwise>
-                            <c:out value="${profile.about==null}"/>
-                        </c:otherwise>
-                    </c:choose>
+<%--                        <c:otherwise>--%>
+<%--                            <c:out value="${profile.about==null}"/>--%>
+<%--                        </c:otherwise>--%>
+<%--                    </c:choose>--%>
 
 
                 </div>
+            <div class="profile-text">
+                <br>
+                <c:out value="${profile.firstname}"/>
+                <c:out value="${profile.surname}"/>
+
+                <br>
+                Город<br>
+                Специалитет:
+                <c:choose>
+                    <c:when test="${profile.therapy==false}">
+                        Информация не указана
+                    </c:when>
+                    <c:otherwise>
+                        Информация указана
+                    </c:otherwise>
+                </c:choose>
 
             </div>
 
         </div>
-        <div class="profile-about-edit">
-            <a href="${editProfileAbout}">edit</a>
-        </div>
+
 
 
     </div>
+    <div class="profile-about-edit">
+        <a href="${editProfileAbout}">edit</a>
+        <c:choose>
+            <c:when test="${profile.published==false}">
+        <button class="btn-on" formaction="/publish">Опубликовать профиль</button>    </div>
+            </c:when>
+            <c:otherwise>
+                <button class="btn-on" formaction="/publish">Не публиковать профиль</button>    </div>
+            </c:otherwise>
+        </c:choose>
 
 
 

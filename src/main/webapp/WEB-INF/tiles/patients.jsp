@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url var="img" value="/img" />
+
 
 <div class="row">
 
@@ -11,19 +13,18 @@
 <div class="container">
             <c:forEach items="${patientList}" var="patientList">
                 <c:url var="patientlink" value="/patientcard/${patientList.id}"/>
-                <tr>
                     <div class="pat-list">
-                    <td>
-<%--                        <a href="${patientlink}"><c:out value="${patientList.name}"/></a>--%>
+                        <img src="${img}/3.png" width="150" height="150" style="float: left; margin: 7px 7px 7px 7px;"/>
 
+                    <%--                        <a href="${patientlink}"><c:out value="${patientList.name}"/></a>--%>
+<br>
                     ${patientList.name}
                         <form>
-                            <button class="btn-pat" formaction="${patientlink}">Открыть карточку</button>
-                        </form>
-                    </td>
+                            <button class="btn-patients" formaction="${patientlink}">Открыть карточку</button>
+<%--        <button class="btn-patients" formaction="${patientlink}">Сообщение</button>--%>
+    </form>
                     </div>
 
-                </tr>
             </c:forEach>
 </div>
 

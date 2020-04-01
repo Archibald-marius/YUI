@@ -7,6 +7,7 @@
 <tiles-definitions>
     <definition name="app.default" template="/WEB-INF/layouts/default.jsp">
         <put-attribute name="title" value="Spring Boot Demo" />
+        <put-attribute name="chatnotification" value="/WEB-INF/tiles/chatnotification.jsp" />
     </definition>
 
 
@@ -68,4 +69,63 @@
     <definition name="app.editPatientCard" extends="app.default">
         <put-attribute name="content" value="/WEB-INF/tiles/editPatientCard.jsp" />
     </definition>
+    <definition name="app.yavka" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/yavka.jsp" />
+    </definition>
+    <definition name="app.showVisites" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/showVisites.jsp" />
+    </definition>
+    <definition name="app.editvisit" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/editvisit.jsp" />
+    </definition>
+    <definition name="app.chatview" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/chatview.jsp" />
+        <put-attribute name="chatviewscript" value="/WEB-INF/tiles/chatviewscript.jsp"/>
+    </definition>
+    <definition name="app.checkmessages" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/checkmessages.jsp" />
+    </definition>
+    <definition name="app.message" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/message.jsp" />
+    </definition>
+    <definition name="app.exception" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/exception.jsp" />
+    </definition>
+    <definition name="app.verifyemail" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/verifyemail.jsp" />
+    </definition>
+    <definition name="app.speciality" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/speciality.jsp" />
+    </definition>
+    <definition name="app.publish" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/publish.jsp" />
+    </definition>
+    <definition name="app.dialogs" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/dialogs.jsp" />
+    </definition>
+    <definition name="app.success" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/success.jsp" />
+    </definition>
+    <definition name="app.begin" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/begin.jsp" />
+    </definition>
+    <definition name="app.searchdoctor" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/searchdoctor.jsp" />
+    </definition>
+    <definition name="app.docs" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/docs.jsp" />
+    </definition>
+    <definition name="app.getcontact" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/getcontact.jsp" />
+    </definition>
+    <definition name="app.params" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/params.jsp" />
+    </definition>
+    <definition name="app.ind" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/ind.jsp" />
+    </definition>
+    <definition name="app.control" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/control.jsp" />
+    </definition>
+
 </tiles-definitions>
