@@ -76,6 +76,14 @@ public class PatientInfoController {
         Map<Date,Integer> map = new HashMap<>();
         List<Yavka> yavka = yavkaDao.findAllByPatient(patient.getId());
 
+        Map<Date, Long> mapping = new HashMap<>();
+for (Yavka ares : yavka){
+    if (ares.getSAT() != null && ares.getSAT() != 0) {
+        mapping.put(ares.getAdded(), ares.getSAT().longValue());
+        System.out.println(mapping.entrySet());
+    }
+}
+
         Boolean isShown = false;
         if(patient.getMail() != null)
             isShown = true;
@@ -105,11 +113,15 @@ public class PatientInfoController {
             if (cons.getAb_circ() != null)
                 cir = true;
         }
+
+
         modelAndView.addObject("ap", ap);
         modelAndView.addObject("bb", bb);
         modelAndView.addObject("cir", cir);
 
 
+
+        modelAndView.addObject("ares", mapping);
 
         modelAndView.addObject("data", yavka);
 

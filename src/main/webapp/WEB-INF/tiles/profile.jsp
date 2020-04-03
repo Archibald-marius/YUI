@@ -14,7 +14,7 @@
 
         <div class="profile-about">
             <div class="profile-image">
-                <img src="${img}/1.png" width="300" height="300"/>
+                <img src="${img}/8.png" width="300" height="300"/>
 
 
 <%--                    <c:choose>--%>
@@ -36,35 +36,49 @@
                 <c:out value="${profile.surname}"/>
 
                 <br>
-                Город<br>
+                Город:<c:out value="${profile.city}"/>
+                <br>
+                Медицинское учреждение:<c:out value="${profile.hospital}"/>
+                <br>
                 Специалитет:
-                <c:choose>
-                    <c:when test="${profile.therapy==false}">
-                        Информация не указана
-                    </c:when>
-                    <c:otherwise>
-                        Информация указана
-                    </c:otherwise>
-                </c:choose>
+                <c:if test="${profile.therapy == true}">
+                терапия;
+                </c:if>
+                <c:if test="${profile.surgery == true}">
+                    хирургия;
+                </c:if>
+
+
+
+                <form:form method="post" modelAttribute="profile" class="login-form">
+<br>
+                <c:if test="${profile.published == false}">
+                    <button class="btn-pat" formaction="/publish">Опубликовать профиль</button>
+
+                </c:if>
+                <c:if test="${profile.published == true}">
+                    <button class="btn-pat" formaction="/publish">Снять с публикации профиль</button>
+                </c:if>
+                    <br>
+                    <span style="font-size: 12px;">Публикация в поиске для пациентов
+</span>
+
+                </form:form>
+
 
             </div>
 
         </div>
 
-
-
+<br>
     </div>
-    <div class="profile-about-edit">
-        <a href="${editProfileAbout}">edit</a>
-        <c:choose>
-            <c:when test="${profile.published==false}">
-        <button class="btn-on" formaction="/publish">Опубликовать профиль</button>    </div>
-            </c:when>
-            <c:otherwise>
-                <button class="btn-on" formaction="/publish">Не публиковать профиль</button>    </div>
-            </c:otherwise>
-        </c:choose>
 
-
+<div class="container">
+    <a href="${editProfileAbout}" style="float: left;">Редактировать профиль</a>
 
 </div>
+
+
+
+
+

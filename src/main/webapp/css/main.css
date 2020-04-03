@@ -23,7 +23,7 @@
     width: 300px;
     height: 120px;
     border-radius: 12px;
-    background-color: powderblue;
+    background-color: #b0e6df;
 }
 .btn-on-choose{
     display: inline-block;
@@ -45,7 +45,7 @@
     width: 360px;
     height: 50px;
     border-radius: 12px;
-    background-color: #adb5bd;}
+    background-color: #b0e6df;}
 
 /*.reg{*/
 /*    margin: auto;*/
@@ -86,7 +86,7 @@
 .pat-list{
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #6c757d;
+    /*border-bottom: 1px solid #6c757d;*/
     /*font-size: 24px;*/
 }
 .homepage-status{
@@ -97,7 +97,17 @@
     width: 159px;
     height: 50px;
     border-radius: 12px;
-    background-color: cadetblue;
+    background-color: #b0e6df;
+}
+
+.btn-block{
+    font-size: 15px;
+    width: 159px;
+    height: 30px;
+    border-radius: 12px;
+    background-color: crimson;
+    float: right;
+
 }
 .btn-patients{
     font-size: 15px;
@@ -162,13 +172,14 @@
 
 
 body {
-    background-size: 200% 100% !important;
-    animation: move 10s ease infinite;
-    transform: translate3d(0, 0, 0);
+    /*background-size: 200% 100% !important;*/
+    /*animation: move 10s ease infinite;*/
+    /*transform: translate3d(0, 0, 0);*/
     /*background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);*/
-    background: linear-gradient(45deg, #adb5bd 10%, #b0e6df 90%);
+    /*background: linear-gradient(45deg, #adb5bd 10%, #b0e6df 90%);*/
+    background-color: #ced4da;
 
-    height: 100vh
+    /*height: 100vh*/
 }
 .message{
     font-size: larger;
@@ -188,10 +199,10 @@ body {
     border-spacing: 18px 4px;
 }
 .fir{
-    color: midnightblue;
+    color: #495057;
 }
 .sec{
-    color: #343a40;
+    color: #6c757d;
 }
 .regist{
     border-collapse: separate;
@@ -266,48 +277,48 @@ body {
 /* }*/
 /*}*/
 
-@keyframes NO {
-    from, to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+/*@keyframes NO {*/
+/*    from, to {*/
+/*        -webkit-transform: translate3d(0, 0, 0);*/
+/*        transform: translate3d(0, 0, 0);*/
+/*    }*/
 
-    10%, 30%, 50%, 70%, 90% {
-        -webkit-transform: translate3d(-10px, 0, 0);
-        transform: translate3d(-10px, 0, 0);
-    }
+/*    10%, 30%, 50%, 70%, 90% {*/
+/*        -webkit-transform: translate3d(-10px, 0, 0);*/
+/*        transform: translate3d(-10px, 0, 0);*/
+/*    }*/
 
-    20%, 40%, 60%, 80% {
-        -webkit-transform: translate3d(10px, 0, 0);
-        transform: translate3d(10px, 0, 0);
-    }
-}
+/*    20%, 40%, 60%, 80% {*/
+/*        -webkit-transform: translate3d(10px, 0, 0);*/
+/*        transform: translate3d(10px, 0, 0);*/
+/*    }*/
+/*}*/
 
-@keyframes arrive {
-    0% {
-        opacity: 0;
-        transform: translate3d(0, 50px, 0);
-    }
+/*@keyframes arrive {*/
+/*    0% {*/
+/*        opacity: 0;*/
+/*        transform: translate3d(0, 50px, 0);*/
+/*    }*/
 
-    100% {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
+/*    100% {*/
+/*        opacity: 1;*/
+/*        transform: translate3d(0, 0, 0);*/
+/*    }*/
+/*}*/
 
-@keyframes move {
-    0% {
-        background-position: 0 0
-    }
+/*@keyframes move {*/
+/*    0% {*/
+/*        background-position: 0 0*/
+/*    }*/
 
-    50% {
-        background-position: 100% 0
-    }
+/*    50% {*/
+/*        background-position: 100% 0*/
+/*    }*/
 
-    100% {
-        background-position: 0 0
-    }
-}
+/*    100% {*/
+/*        background-position: 0 0*/
+/*    }*/
+/*}*/
 
 
 

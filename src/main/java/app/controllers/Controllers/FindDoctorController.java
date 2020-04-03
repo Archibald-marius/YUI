@@ -34,6 +34,9 @@ public class FindDoctorController {
     @Autowired
     MessageDao messageDao;
 
+    @Autowired
+    ProfileService profileService;
+
 
     @RequestMapping(value="/searchdoctor", method = RequestMethod.GET)
     ModelAndView findDoctor(ModelAndView modelAndView){
@@ -55,7 +58,7 @@ public class FindDoctorController {
             ArrayList<String> arr = new ArrayList<>();
             switch (id){
                 case "therapy":
-                    if (users.getTherapy() && users.getPublished()){
+                    if (profileService.getUserProfile(users).getTherapy() && profileService.getUserProfile(users).getPublished()){
                         arr.add(users.getFirstname() + " " + users.getSurname());
                         oreo.put(users.getId(), arr);
                     }

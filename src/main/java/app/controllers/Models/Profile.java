@@ -22,6 +22,12 @@ public class Profile {
     @Column(name="surname")
     private String surname;
 
+    @Column(name="city")
+    private String city;
+
+    @Column(name="hospital")
+    private String hospital;
+
     @Column(name="therapy")
     private Boolean therapy = false;
 
@@ -72,6 +78,33 @@ public class Profile {
 
     @Column(name="dependency")
     private String dependency;
+
+    @Column(name="email", unique = true)
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(String hospital) {
+        this.hospital = hospital;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public String getDependency() {
         return dependency;
@@ -276,13 +309,83 @@ public class Profile {
 
 
 
-    public void safeCopyFrom(Profile other){
-        if(other.firstname != null){
-            this.firstname = other.firstname;
+    public void safeCopyFrom(Profile webProfile){
+        if(webProfile.firstname !=null){
+            this.firstname=webProfile.firstname;
         }
-//        if(other.role !=null){
-//            this.role=other.role;
-//        }
+        if(webProfile.surname !=null){
+            this.surname=webProfile.surname;
+        }
+        if(webProfile.therapy !=null) {
+            this.therapy = webProfile.therapy;
+        }
+        if(webProfile.surgery !=null){
+            this.surgery=webProfile.surgery;
+        }
+        if(webProfile.gynecology !=null){
+            this.gynecology=webProfile.gynecology;
+        }
+        if(webProfile.cardiology !=null){
+            this.cardiology=webProfile.cardiology;
+        }
+        if(webProfile.gastro !=null){
+            this.gastro=webProfile.gastro;
+        }
+        if(webProfile.neurology !=null){
+            this.neurology=webProfile.neurology;
+        }
+        if(webProfile.opht !=null){
+            this.opht=webProfile.opht;
+        }
+        if(webProfile.otolor !=null){
+            this.otolor=webProfile.otolor;
+        }
+        if(webProfile.ob !=null){
+            this.ob=webProfile.ob;
+        }
+        if(webProfile.reproductology !=null){
+            this.reproductology=webProfile.reproductology;
+        }
+        if(webProfile.pediatrition !=null){
+            this.pediatrition=webProfile.pediatrition;
+        }
+        if(webProfile.neonat !=null){
+            this.neonat=webProfile.neonat;
+        }
+        if(webProfile.role !=null){
+            this.role=webProfile.role;
+        }
+        if(webProfile.vascularsurgery !=null){
+            this.vascularsurgery=webProfile.vascularsurgery;
+        }
+        if(webProfile.plasticsurgery !=null){
+            this.plasticsurgery=webProfile.plasticsurgery;
+        }
+        if(webProfile.alergology !=null){
+            this.alergology=webProfile.alergology;
+        }
+        if(webProfile.orthopedy !=null){
+            this.orthopedy=webProfile.orthopedy;
+        }
+        if(webProfile.endocrinology !=null){
+            this.endocrinology=webProfile.endocrinology;
+        }
+        if(webProfile.dependency !=null){
+            this.dependency=webProfile.dependency;
+        }
+        if(webProfile.city !=null){
+            this.city=webProfile.city;
+        }
+        if(webProfile.hospital !=null){
+            this.hospital=webProfile.hospital;
+        }
+        if(webProfile.email !=null){
+            this.email=webProfile.email;
+        }
+        if(webProfile.published !=null){
+            this.published=webProfile.published;
+        }
+
     }
 
     public void safeMergeFrom(Profile webProfile) {
@@ -348,6 +451,15 @@ public class Profile {
         }
         if(webProfile.dependency !=null){
             this.dependency=webProfile.dependency;
+        }
+        if(webProfile.city !=null){
+            this.city=webProfile.city;
+        }
+        if(webProfile.hospital !=null){
+            this.hospital=webProfile.hospital;
+        }
+        if(webProfile.email !=null){
+            this.email=webProfile.email;
         }
 
     }

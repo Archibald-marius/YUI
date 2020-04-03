@@ -1,6 +1,8 @@
 package app.controllers.Controllers;
 
+import app.controllers.Dao.BlockDao;
 import app.controllers.Dao.MessageDao;
+import app.controllers.Models.BlackList;
 import app.controllers.Models.SiteUser;
 import app.controllers.Models.dto.SearchResult;
 import app.controllers.Models.entity.Message;
@@ -23,6 +25,9 @@ public class DialogsController {
     @Autowired
     MessageDao messageDao;
 
+    @Autowired
+    BlockDao blockDao;
+
     @RequestMapping(value="/dialogs", method = { RequestMethod.POST, RequestMethod.GET})
     public ModelAndView showDialogs(ModelAndView modelAndView){
 
@@ -34,35 +39,36 @@ public class DialogsController {
         HashMap<Long, ArrayList<String>> mess = new HashMap<>();
 
 
-
+List<BlackList> blackLists = blockDao.findForbidden(siteUser.getId());
         for (Message message: dialogs) {
+            for (BlackList block : blackLists) {
+                if (!message.getFromUser().getId().equals(block.getBlock())) {
 
-            if (message.getFromUser().getId() != siteUser.getId()){
-                ArrayList<String> list = new ArrayList<>();
-                list.add(message.getFromUser().getFirstname() + " " + message.getFromUser().getSurname());
-                list.add(message.getDayMonth());
-                list.add(message.getText());
-                list.add(message.getRead().toString());
-                if (!mess.containsKey(message.getFromUser().getId())) {
-                    mess.put(message.getFromUser().getId(), list);
-                }
-                else mess.replace(message.getFromUser().getId(), list);
+                    if (message.getFromUser().getId() != siteUser.getId()) {
+                        ArrayList<String> list = new ArrayList<>();
+                        list.add(message.getFromUser().getFirstname() + " " + message.getFromUser().getSurname());
+                        list.add(message.getDayMonth());
+                        list.add(message.getText());
+                        list.add(message.getRead().toString());
+                        if (!mess.containsKey(message.getFromUser().getId())) {
+                            mess.put(message.getFromUser().getId(), list);
+                        } else mess.replace(message.getFromUser().getId(), list);
 
-                } else if (message.getToUser().getId() != siteUser.getId()) {
-                ArrayList<String> list = new ArrayList<>();
-                list.add(message.getToUser().getFirstname() + " " + message.getToUser().getSurname());
-                list.add(message.getDayMonth());
-                list.add(message.getText());
-                list.add(message.getRead().toString());
-                if (!mess.containsKey(message.getToUser().getId())) {
+                    } else if (message.getToUser().getId() != siteUser.getId()) {
+                        ArrayList<String> list = new ArrayList<>();
+                        list.add(message.getToUser().getFirstname() + " " + message.getToUser().getSurname());
+                        list.add(message.getDayMonth());
+                        list.add(message.getText());
+                        list.add(message.getRead().toString());
+                        if (!mess.containsKey(message.getToUser().getId())) {
 
-                    mess.put(message.getToUser().getId(), list);
-                }
-                else mess.replace(message.getToUser().getId(), list);
+                            mess.put(message.getToUser().getId(), list);
+                        } else mess.replace(message.getToUser().getId(), list);
 
-            }
+                    }
 //                    mess.put(message.getToUser().getId(), message.getToUser().getFirstname() + " " + message.getToUser().getSurname());
-
+                }
+            }
         }
         mess = mess.entrySet()  	// Set<Entry<String, String>>
                 .stream()   			// Stream<Entry<String, String>>

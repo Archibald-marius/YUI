@@ -3,7 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
 <link rel="stylesheet" href="css/main.css" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+
 
 <c:url var="editPatientCard" value="/editPatientCard/${patient.id}" />
 <c:url var="editLink" value="/yavka/${patient.id}"/>
@@ -28,7 +36,7 @@
 
             <tr>
                 <th class="fir">Имя</th>
-                <th class="sec">         <c:out value="${patient.name}"/>
+                <th class="sec">  <c:out value="${patient.name}"/>
                 </th>
                 <th></th>
                 <th></th>
@@ -47,7 +55,7 @@
                             Сообщение
                         </button>
                         <br>
-                        <span style="font-size: 12px">Пользователь не найден</span>
+                        <span style="font-size: 12px">Пользователь по вказаному<br> email не найден</span>
                     </c:if>
                 </th>
                 </c:if>
@@ -65,18 +73,13 @@
                 <th class="sec"> <c:out value="${patient.work}"/></th>
             </tr>
             <tr>
-                <th class="fir"> Дата Рождения</th>
-                <th class="sec">        <c:out value="${patient.birsd}"/>
+                <th class="fir">Диагноз</th>
+                <th class="sec">        <c:out value="${patient.diagnosis}"/>
                 </th>
             </tr>
 
 <c:if test="${gyn == true}">
 
-<tr>
-                <th class="fir">Неделя беременности</th>
-                <th class="sec">         <c:out value="${patient.weeks}"/>
-                </th>
-            </tr>
             <tr>
                 <th class="fir">Беременность</th>
                 <th class="sec">         <c:out value="${patient.pregnancy}"/>
@@ -96,17 +99,12 @@
                 </th>
             </tr>
             <tr>
-                <th class="fir">Последний визит</th>
-                <th>
-
-                </th>
-            </tr>
-            <tr>
                 <th class="fir">Email</th>
-                <th class="sec"> <c:out value="${patient.mail}"/>
+                <th class="sec"> Скрытая информация<c:out value="${patient.mail}"/>
                 </th>
             </tr>
         </table>
+            <br>
             <div class="container">
                 <button class="btn-pat" formaction="${editLink}">Зарегистровать новую явку</button>
                 <button class="btn-pat" formaction="${editPatientCard}">Изменить данные пациента</button>
@@ -119,120 +117,33 @@
 
         </form>
         <br>
+        <div id="char_div" style="height: 370px; width: 100%;"></div>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div>
 
-<c:if test="${ap == true}">
-<div id="press_chart" style="width: 900px; height: 500px"></div>
-</c:if>
-
-
-<c:if test="${bb == true}">
-    <div id="beat_chart" style="width: 900px; height: 500px"></div>
-</c:if>
-
-
-<c:if test="${cir == true}">
-        <div id="param_chart" style="width: 900px; height: 500px"></div>
-</c:if>
-
-
-
-
-
-
-
-    <%--    </div>--%>
-
-
-
-
-
-
-
-
-
-<%--        <div class="profile-about-edit">--%>
-<%--            <a href="${editProfileAbout}">edit</a>--%>
-<%--        </div>--%>
-
-
-
-
-
-</div>
-
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawPressureChart);
-    google.charts.setOnLoadCallback(drawBeatChart);
-    google.charts.setOnLoadCallback(drawParamChart);
+    $(document).ready(function () {
+        var chart = new CanvasJS.Chart("char_div", {
+            animationEnabled: true,
+            title:{
+                text: "Chart"
+            },
+
+            data:[
+                {
+                    type: "spline",
+                    dataPoints:[
+<%--<c:forEach items="${ares}" var="data1">--%>
+<%--{label: (${ares.key}), y: ${ares.value}}--%>
+                        {label: "jhjh", y: ${ap}},
 
 
-
-    function drawPressureChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales'],
-            <c:forEach items="${data}" var="entry">
-            [ '${entry.normal_date}', ${entry.pulse} ],
-            </c:forEach>
-        ]);
-
-
-        var options = {
-            title: 'Артериальное давление',
-            curveType: 'function',
-            legend: { position: 'bottom' },
-            backgroundColor: '#6dbfb0',
-            vAxis: {
-                gridlines: {
-                    count: 0
+<%--                                                </c:forEach>--%>
+                    ]
                 }
-            }
-        };
+            ]
+        });
+        chart.render();
 
-        var chart = new google.visualization.LineChart(document.getElementById('press_chart'));
-
-        chart.draw(data, options);
-
-    }
-    function drawBeatChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales'],
-            <c:forEach items="${data}" var="entry">
-            [ '${entry.normal_date}', ${entry.baby_beat} ],
-            </c:forEach>
-        ]);
-
-
-        var options = {
-            title: 'КТГ',
-            curveType: 'function',
-            legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('beat_chart'));
-
-        chart.draw(data, options);
-
-    }
-    function drawParamChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales'],
-            <c:forEach items="${data}" var="entry">
-            [ '${entry.normal_date}', ${entry.mass} ],
-            </c:forEach>
-        ]);
-
-
-        var options = {
-            title: 'Вес',
-            curveType: 'function',
-            legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('param_chart'));
-
-        chart.draw(data, options);
-
-    }
+    })
 </script>

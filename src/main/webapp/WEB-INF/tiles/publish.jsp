@@ -12,9 +12,21 @@
 
 <c:choose>
     <c:when test="${publish==false}">
-        Профиль не опубликовано
+        <div class="container">
+        <span style="font-size: 24px; color: #495057">
+            <br>
+            <br>
+            Ваш профиль снят с публикации в поиске!<br>
+        </span>
+        </div>
     </c:when>
     <c:otherwise>
-        Профиль опубликовано
-    </c:otherwise>
+        <div class="container">
+        <span style="font-size: 24px; color: #495057">
+            <br>
+            <br>
+            Ваш профиль опубликовано в поиске!<br>
+            Все сообщения от пациентов будут отображены во вкладке "Почта".
+        </span>
+        </div>    </c:otherwise>
 </c:choose>

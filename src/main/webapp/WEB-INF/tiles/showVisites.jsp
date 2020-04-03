@@ -11,9 +11,9 @@
 <div class="row">
 
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="homepage-status">
+        <div class="homepage-status" style="color: white;">
 
-            Список пациентов:
+            Список посещений врача:
             <div class="container">
                 <c:forEach items="${yavka}" var="yavka">
 <%--                    <c:url var="patientlink" value="/patientcard/${patientList.id}"/>--%>
@@ -23,9 +23,9 @@
                                     <%--                        <a href="${patientlink}"><c:out value="${patientList.name}"/></a>--%>
                                         <c:url var="editvisit" value="/editvisit/${yavka.id}"/>
 
-                                    ${yavka.added}
+                                    ${yavka.normal_date}
                                         <form>
-                                            <button class="btn-pat" formaction="${editvisit}">Открыть карточку</button>
+                                            <button class="btn-pat" formaction="${editvisit}">Смотреть визит</button>
                                         </form>
 
                                     <%--                                <form>--%>

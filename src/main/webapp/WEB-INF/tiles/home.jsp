@@ -11,7 +11,7 @@
         <br>
         <br>
         <br>
-<span style="font-size: 34px">Поиск пациента</span>
+<span style="font-size: 34px; color: #6c757d;">Поиск пациента</span>
         <br>
         <br>
         <form action="${search}" method="POST">
@@ -20,7 +20,7 @@
 
                 <input type="text" class="form-control" name="s" placeholder="Фамилия/Имя пациента">
             <br>
-                    <button id="search-button" class="btn btn-primary" type="submit">
+                    <button id="search-button" class="btn btn-primary" style="width: 150px; background-color: cadetblue; font-size: 20px;" type="submit">
                         Поиск
                     </button>
 

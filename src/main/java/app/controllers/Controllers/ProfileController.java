@@ -139,23 +139,22 @@ public class ProfileController {
         }
 
         Profile profile = profileService.getUserProfile(user);
-        System.out.println(user.getRole());
-        System.out.println(user.getRole());
-        System.out.println(user.getRole());
-        System.out.println(user.getRole());
-        System.out.println(user.getRole());
-        System.out.println(user.getRole());
 
-        profile.setRole(user.getRole());
+
+
 
         if (profile == null) {
             profile = new Profile();
             profile.setUser(user);
             profileService.save(profile);
         }
+        profile.setRole(user.getRole());
+
 
         Profile webProfile = new Profile();
         webProfile.safeCopyFrom(profile);
+
+
 
 
         modelAndView.getModel().put("userId", user.getId());
@@ -170,13 +169,7 @@ public class ProfileController {
 
         SiteUser user = getUser();
         Profile profile = profileService.getUserProfile(user);
-        System.out.println(profile.getFirstname());
-        System.out.println(profile.getFirstname());
-        System.out.println(profile.getFirstname());
-        System.out.println(profile.getFirstname());
-        System.out.println(profile.getFirstname());
-        System.out.println(profile.getFirstname());
-        System.out.println(profile.getFirstname());
+
 
         Profile webProfile = new Profile();
         webProfile.safeCopyFrom(profile);

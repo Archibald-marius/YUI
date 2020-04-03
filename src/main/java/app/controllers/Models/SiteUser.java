@@ -44,6 +44,9 @@ public class SiteUser  {
     @Column(name="surname")
     private String surname;
 
+    @Column(name="city")
+    private String city="";
+
     @Column(name="therapy")
     private Boolean therapy = false;
 
@@ -101,6 +104,17 @@ public class SiteUser  {
     @Column(name="dependency")
     private String dependency;
 
+    @Column(name="hospital")
+    private String hospital;
+
+    public String getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(String hospital) {
+        this.hospital = hospital;
+    }
+
     public String getDependency() {
         return dependency;
     }
@@ -111,6 +125,14 @@ public class SiteUser  {
 
     @Column(name="role", length=20)
     private String role;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public Boolean getEndocrinology() {
         return endocrinology;

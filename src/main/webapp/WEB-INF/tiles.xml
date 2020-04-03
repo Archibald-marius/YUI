@@ -127,5 +127,8 @@
     <definition name="app.control" extends="app.default">
         <put-attribute name="content" value="/WEB-INF/tiles/control.jsp" />
     </definition>
+    <definition name="app.blacklist" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/blacklist.jsp" />
+    </definition>
 
 </tiles-definitions>

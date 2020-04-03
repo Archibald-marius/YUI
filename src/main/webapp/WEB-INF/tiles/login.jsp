@@ -12,17 +12,18 @@
 
 
 
-        <c:if test="${param.error != null}">
-            <div class="login-error">Incorrect username or password.</div>
-        </c:if>
+
 
         <div class="login">
+            <c:if test="${param.error != null}">
+                <div class="login-error" style="color: #dc3545">Неправильный email или пароль!</div>
+            </c:if>
 
                     Войдите или <a href="${registerUrl}">создайте акаунт бесплатно!</a>
             <br>
             <br>
 
-            <span style="font-size: 34px">Вход</span>
+            <span style="font-size: 34px; color: #6c757d">Вход</span>
 <br>
             <br>
 
@@ -32,14 +33,14 @@
                     <input type="hidden" name="${_csrf.parameterName}"
                            value="${_csrf.token}" />
 
-                        <input type="text" name="username" placeholder="Username"
+                        <input type="text" name="username" placeholder="Электронная почта"
                                class="form-control" />
                             <br>
-                        <input type="password" name="password" placeholder="Password"
+                        <input type="password" name="password" placeholder="Пароль"
                                class="form-control" />
 <br>
-                        <button type="submit" class="btn-primary pull-right" style="background-color: #343a40">Sign
-                            In</button>
+                        <button type="submit" style="background-color: #b0e6df; width: 100px">Войти
+                            </button>
 
                 </form>
 <%--            </div>--%>

@@ -9,21 +9,30 @@
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="homepage-status">
 
-            Список пациентов:
-<div class="container">
+            <span style="color: #495057">Список пациентов:</span>
+            <br>
+
+            <div class="container">
             <c:forEach items="${patientList}" var="patientList">
                 <c:url var="patientlink" value="/patientcard/${patientList.id}"/>
-                    <div class="pat-list">
-                        <img src="${img}/3.png" width="150" height="150" style="float: left; margin: 7px 7px 7px 7px;"/>
+                <div class="container">
 
-                    <%--                        <a href="${patientlink}"><c:out value="${patientList.name}"/></a>--%>
-<br>
-                    ${patientList.name}
+                    <div class="pat-list">
+                        <br>
+
+                        <img src="${img}/7.png" width="100" height="100" style="float: left; margin: 7px 7px 7px 7px;"/>
+
+                            <%--                        <a href="${patientlink}"><c:out value="${patientList.name}"/></a>--%>
+                            ${patientList.name}
                         <form>
                             <button class="btn-patients" formaction="${patientlink}">Открыть карточку</button>
-<%--        <button class="btn-patients" formaction="${patientlink}">Сообщение</button>--%>
-    </form>
+                                <%--        <button class="btn-patients" formaction="${patientlink}">Сообщение</button>--%>
+                        </form>
+                        <br>
                     </div>
+
+                </div>
+
 
             </c:forEach>
 </div>

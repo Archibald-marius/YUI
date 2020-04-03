@@ -12,6 +12,8 @@
 
 <c:forEach var="dialogs" items="${dialogs}">
     <c:url var="dialog" value="/chatview/${dialogs.key}"/>
+    <c:url var="blacklist" value="/blacklist/${dialogs.key}"/>
+
 
     <%--    <c:url var="patientlink" value="/patientcard/${result.userId}"/>--%>
     <div class="row">
@@ -27,6 +29,8 @@
     </div>
     <form>
         <button class="btn-dialog" formaction="${dialog}" style="opacity: 0.8"><c:out value="${dialogs.value[2]}"/></button>
+        <button class="btn-block" formaction="${blacklist}" style="opacity: 0.8">Заблокировать</button>
+
     </form>
 
 

@@ -2,9 +2,11 @@ package app.controllers.Controllers;
 
 import app.controllers.Dao.YavkaDao;
 import app.controllers.Models.Patients;
+import app.controllers.Models.Profile;
 import app.controllers.Models.StatusUpdate;
 import app.controllers.Models.Yavka;
 import app.controllers.Services.PatientsService;
+import app.controllers.Services.ProfileService;
 import app.controllers.Services.YavkaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,11 +35,27 @@ public class YavkaController {
     @Autowired
     YavkaDao yavkaDao;
 
+    @Autowired
+    private Util util;
+
+    @Autowired
+    private ProfileService profileService;
+
 
     @RequestMapping(value = "/yavka/{id}", method = RequestMethod.GET)
     ModelAndView registerYavka(ModelAndView modelAndView, @PathVariable("id") Long id) {
 
         Yavka yavka = new Yavka();
+
+        Boolean zax = false;
+
+        Profile profile = profileService.getUserProfile(util.getUser());
+
+        if (profile == null)
+            zax = util.getUser().getOb();
+        else zax = profile.getOb();
+
+        modelAndView.addObject("zax", zax);
         modelAndView.addObject("patient", id);
         modelAndView.addObject("time" , new Date().getTime());
         modelAndView.getModel().put("yavka", yavka);

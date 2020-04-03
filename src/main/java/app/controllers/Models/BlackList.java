@@ -18,6 +18,9 @@ public class BlackList {
     @Column(name="block")
     private Long block;
 
+    public BlackList() {
+    }
+
     public Long getId() {
         return id;
     }

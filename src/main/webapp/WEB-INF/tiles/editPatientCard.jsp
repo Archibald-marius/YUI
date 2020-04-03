@@ -21,43 +21,79 @@
         <div class="panel panel-default">
 
             <div class="panel-heading">
-                <div class="panel-title">Edit</div>
+                <div class="panel-title" style="color: white;">Изменить информацию о пациенте</div>
             </div>
+            <br>
 
             <div class="panel-body">
 
                 <form:form modelAttribute="patients">
 
 
+<table class="regist" style="font-size: 20px; color: white;">
+    <tr>
+        <td>
+            Имя
+
+        </td>
+        <td>
+            <form:textarea path="name" rows="1" cols="34"></form:textarea>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Адрес
+
+        </td>
+        <td>
+            <form:textarea path="address" rows="3" cols="34"></form:textarea>
+
+        </td>
+    </tr> <tr>
+    <td>
+        Работа
+
+    </td>
+    <td>
+        <form:textarea path="work" rows="3" cols="34"></form:textarea>
+    </td>
+</tr> <tr>
+    <td>
+        Диагноз
+
+    </td>
+    <td>
+        <form:textarea path="diagnosis" rows="4" cols="34"></form:textarea>
+
+    </td>
+</tr> <tr>
+    <td>
+        Почта
+
+    </td>
+    <td>
+        <form:textarea path="mail" rows="1" cols="34"></form:textarea>
+
+    </td>
+</tr>
+    </tr> <tr>
+    <td>
 
 
-                    <div class="form-group">
-                        Имя
-                        <form:textarea path="name" rows="10" cols="50"></form:textarea>
-                    </div>
-                    <div class="form-group">
-                        Неделя беременности
-                        <form:textarea path="weeks" rows="10" cols="50"></form:textarea>
-                    </div>
-                    <div class="form-group">
-                        Адрес
-                        <form:textarea path="address" rows="10" cols="50"></form:textarea>
-                    </div>
-                    <div class="form-group">
-                        Работа
-                        <form:textarea path="work" rows="10" cols="50"></form:textarea>
-                    </div>
-                    <div class="form-group">
-                        Диагноз
-                        <form:textarea path="diagnosis" rows="10" cols="50"></form:textarea>
-                    </div>
-                    <div class="form-group">
-                        Диагноз
-                        <form:textarea path="mail" rows="10" cols="50"></form:textarea>
-                    </div>
+    </td>
+    <td>
+        <input class="btn-reg" type="submit" name="submit" value="Изменить" />
+
+    </td>
+</tr>
 
 
-                    <input type="submit" name="submit" value="Add Status" />
+
+
+</table>
+
+
                 </form:form>
 
             </div>

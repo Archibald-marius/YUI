@@ -2,7 +2,9 @@ package app.controllers.Controllers;
 
 import app.controllers.Models.Patients;
 import app.controllers.Dao.PatientsDao;
+import app.controllers.Models.Profile;
 import app.controllers.Services.PatientsService;
+import app.controllers.Services.ProfileService;
 import app.controllers.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,6 +31,12 @@ public class PatientController {
     @Autowired
     PatientsDao patientsDao;
 
+    @Autowired
+    Util util;
+
+    @Autowired
+    ProfileService profileService;
+
     @RequestMapping(value = "/addpatient", method = RequestMethod.GET)
     ModelAndView addUser(ModelAndView modelAndView) {
         Patients patient = new Patients();
@@ -43,6 +51,17 @@ public class PatientController {
         } else {
              doctor = principal.toString();
         }
+
+        Boolean zax = false;
+
+        Profile profile = profileService.getUserProfile(util.getUser());
+
+        if (profile == null)
+            zax = util.getUser().getOb();
+        else zax = profile.getOb();
+
+
+            modelAndView.addObject("zax", zax);
 
         modelAndView.addObject("doctor", doctor);
 

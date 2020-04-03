@@ -21,7 +21,7 @@
                 <div class="login-error">
                     <form:errors path="user.*" />
                 </div>
-                <span style="font-size: 34px">Регистрация</span><br>            <br>
+                <span style="font-size: 34px; color: #6c757d;">Регистрация</span><br>            <br>
 
                 <form:form method="post" modelAttribute="user" class="login-form">
 
@@ -32,7 +32,9 @@
                         <form:input type="text" path="surname" placeholder="Фамилия"
                                     class="form-control" />
                     <br>
-
+                    <form:input type="city" path="city" placeholder="Ваш город"
+                                class="form-control" />
+                    <br>
 
                     <form:input type="text" path="email" placeholder="Електронная почта"
                                     class="form-control" />
@@ -153,6 +155,7 @@
                                     class="form-control" />
 
                 </form:form>
+
             </div>
 <%--        </div>--%>
 

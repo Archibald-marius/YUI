@@ -44,13 +44,16 @@ public class Yavka {
     @Column(name = "mass")
     private Long mass=null;
 
+    @Column(name = "temperaturw")
+    private Double temperature=null;
+
     @Column(name = "ab_circ")
     private Long ab_circ=null;
 
     @Column(name = "ab_hig")
     private Long ab_hig=null;
 
-    public Yavka(Long patient, Date added, Long pulse, Long baby_beat, Long mass, Long ab_circ, Long ab_hig, Long DAT, Long SAT, String complains, Boolean swell, String head_acke, String normal_date) {
+    public Yavka(Long patient, Date added, Long pulse, Long baby_beat, Long mass, Long ab_circ, Long ab_hig, Long DAT, Long SAT, String complains, Boolean swell, String head_acke, String normal_date, Double temperature, String analysis, String prescriptions, String diagnosis, String objective, String instrument) {
         this.patient = patient;
         this.added=added;
         this.pulse=pulse;
@@ -64,16 +67,45 @@ public class Yavka {
         this.swell=swell;
         this.head_acke=head_acke;
         this.normal_date=normal_date;
+        this.temperature=temperature;
+        this.Analysis =Analysis;
+        this.prescriptions=prescriptions;
+        this.diagnosis=diagnosis;
+        this.Objective=Objective;
+        this.instrument=instrument;
 
     }
     public  Yavka(){
     }
 
     @Column(name = "SAT")
-    private Long SAT;
+    private Long SAT = new Long(0);
 
     @Column(name = "DAT")
     private Long DAT;
+
+    @Column(name = "Objective")
+    private String Objective;
+
+    @Column(name = "Analysis")
+    private String Analysis;
+
+    @Column(name = "Prescriptions")
+    private String prescriptions;
+
+    @Column(name = "Instrument")
+    private String instrument;
+
+    @Column(name = "Diagnosis")
+    private String diagnosis;
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
 
     public Long getSAT() {
         return SAT;
@@ -189,6 +221,46 @@ public class Yavka {
         this.head_acke = head_acke;
     }
 
+    public Double getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(Double temperature) {
+        this.temperature = temperature;
+    }
+
+    public String getObjective() {
+        return Objective;
+    }
+
+    public void setObjective(String objective) {
+        Objective = objective;
+    }
+
+    public String getAnalysis() {
+        return Analysis;
+    }
+
+    public void setAnalysis(String analysis) {
+        Analysis = analysis;
+    }
+
+    public String getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(String prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
+    public String getInstrument() {
+        return instrument;
+    }
+
+    public void setInstrument(String instrument) {
+        this.instrument = instrument;
+    }
+
     @Override
     public String toString() {
         return "Yavka{" +
@@ -242,6 +314,9 @@ public class Yavka {
         }
         if (yavka.ab_circ != null) {
             this.ab_circ = yavka.ab_circ;
+        }
+        if (yavka.temperature != null) {
+            this.temperature = yavka.temperature;
         }
     }
 }

@@ -10,10 +10,10 @@
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
 
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="color: white;">
 
             <div class="panel-heading">
-                <div class="panel-title">Add a patient</div>
+                <span style="color: #495057; font-size: 24px;">Добавить пациента</span>
             </div>
 
 
@@ -31,15 +31,6 @@
                                     class="form-control" />
                     </div>
 
-                    <div class="input-group">
-                        <form:input name="pregnancy" path="pregnancy" placeholder="Беременность"
-                                    class="form-control" />
-                    </div>
-
-                    <div class="input-group">
-                        <form:input name="labour" path="labour" placeholder="Роды"
-                                    class="form-control" />
-                    </div>
 
 <%--                    <div class="input-group">--%>
 <%--                        <form:input name="birsd" path="birsd" placeholder="Дата рождения"--%>
@@ -57,26 +48,41 @@
 
 
                     <div class="input-group">
-                        <form:input name="weeks" path="weeks" placeholder="Неделя беременности"
+                        <form:textarea name="diagnosis" path="diagnosis" placeholder="Первичный диагноз"
+                                    class="form-control" />
+                    </div>
+                    <div class="input-group">
+                        <form:textarea name="concomitant" path="concomitant" placeholder="Супуствующие диагнозы"
+                                    class="form-control" />
+                    </div>
+                    <div class="input-group">
+                        <form:input name="mail" path="mail" placeholder="Електронная почта"
                                     class="form-control" />
                     </div>
 
                     <div class="input-group">
-                        <form:input name="diagnosis" path="diagnosis" placeholder="Основной диагноз"
+                        <form:textarea name="notes" path="notes" placeholder="Заметки"
                                     class="form-control" />
                     </div>
+
+                    <c:if test="${zax == true}">
+
                     <div class="input-group">
-                        <form:input name="concomitant" path="concomitant" placeholder="Супуствующие диагнозы"
-                                    class="form-control" />
-                    </div>
-                    <div class="input-group">
-                        <form:input name="mail" path="mail" placeholder="Mail"
+                        <form:input name="pregnancy" path="pregnancy" placeholder="Беременность"
                                     class="form-control" />
                     </div>
 
                     <div class="input-group">
-                        <button type="submit" class="btn-primary pull-right">Register</button>
+                        <form:input name="labour" path="labour" placeholder="Роды"
+                                    class="form-control" />
                     </div>
+
+</c:if>
+                    <div class="input-group">
+                        <button type="submit" class="btn-reg">Зарегистрировать</button>
+                    </div>
+
+
 
                 </form:form>
             </div>
