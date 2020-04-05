@@ -35,7 +35,7 @@ public class Control{
     private Long baby = null;
 
     @Column(name = "normal_date")
-    private String normal_date=new SimpleDateFormat("dd/MM").format(new Date());
+    private String normal_date=new SimpleDateFormat("dd/MM HH:mm").format(new Date());
 
     public Control() {
     }

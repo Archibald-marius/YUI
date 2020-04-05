@@ -11,7 +11,7 @@
 <div class="row">
 
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="homepage-status" style="color: white;">
+        <div class="homepage-status" style="color: #6c757d;">
 
             Список посещений врача:
             <div class="container">

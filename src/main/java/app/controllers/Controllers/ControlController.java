@@ -41,6 +41,7 @@ public class ControlController {
 
 
         modelAndView.setViewName("app.control");
+        control.setPatient(util.getUser().getId());
 
         if(!result.hasErrors()) {
             controlService.register(control);

@@ -51,7 +51,7 @@
                     <table>
 <tr>
     <td>
-        <span style="color: #495057">Температура</span>
+        <span style="color: #495057">Температура<br><span style="font-size: 14px">*в формате 36.6</span></span>
 
     </td>
     <td>
@@ -62,7 +62,7 @@
 
                         <tr>
                             <td>
-                                <form:input name="temperature" path="temperature" placeholder="36.6"
+                                <form:input name="temperature" path="temperature" placeholder=""
                                             class="form-control"/>
                             </td>
                             <td>
@@ -107,7 +107,7 @@
 
                                 </td>
                                 <td>
-                                    <span style="color: #495057">Вес беременной</span>
+                                    <span style="color: #495057">Вес беременной<br><span style="font-size: 14px">*в формате 65.5</span></span>
 
                                 </td>
                             </tr>

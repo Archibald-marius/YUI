@@ -116,34 +116,130 @@
 
 
         </form>
-        <br>
-        <div id="char_div" style="height: 370px; width: 100%;"></div>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    </div>
+        <c:if test="${ap == true}">
 
+        <div style="float: left;">
+            <div id="chart_div"></div>
+
+        </div>
+        </c:if>
+        <c:if test="${gyn == true}">
+
+        <div style="float: left;">
+            <div id="chart_div_bpp"></div>
+
+        </div>
+        </c:if>
+
+    <c:if test="${gyn == true}">
+        <div style="float: left;">
+            <div id="chart_div_mass"></div>
+
+        </div>
+        </c:if>
+
+
+
+        <br>
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        var chart = new CanvasJS.Chart("char_div", {
-            animationEnabled: true,
-            title:{
-                text: "Chart"
+    // Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {
+        'packages' : [ 'corechart' ]
+    });
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(drawChart);
+    google.setOnLoadCallback(drawSecondChart);
+    google.setOnLoadCallback(drawThirdChart);
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+            ['Давление', 'САТ', 'ДАТ'],
+            <c:forEach items="${ares}" var="entry">
+            [ '${entry.key}', ${entry.value[0]}, ${entry.value[1]}],
+            </c:forEach>
+        ]);
+        // Set chart options
+        var options = {
+            'title' : 'Контроль артериального давления',
+            is3D : true,
+            pieSliceText: 'label',
+            tooltip :  {showColorCode: true},
+            'width' : 1000,
+            'height' : 500,
+            backgroundColor: '#ced4da',
+            hAxis:{
+                direction:-1,
+                slantedText:true,
+                slantedAngle:90
             },
 
-            data:[
-                {
-                    type: "spline",
-                    dataPoints:[
-<%--<c:forEach items="${ares}" var="data1">--%>
-<%--{label: (${ares.key}), y: ${ares.value}}--%>
-                        {label: "jhjh", y: ${ap}},
+        };
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
 
+    function drawSecondChart() {
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+            ['ЧСС плода', 'ЧСС плода'],
+            <c:forEach items="${bpp}" var="entry">
+            [ '${entry.key}', ${entry.value}],
+            </c:forEach>
+        ]);
+        // Set chart options
+        var options = {
+            'title' : 'Частота серцебиения плода',
+            is3D : true,
+            pieSliceText: 'label',
+            tooltip :  {showColorCode: true},
+            'width' : 1000,
+            'height' : 500,
+            backgroundColor: '#ced4da',
+            hAxis:{
+                direction:-1,
+                slantedText:true,
+                slantedAngle:90
+            },
 
-<%--                                                </c:forEach>--%>
-                    ]
-                }
-            ]
-        });
-        chart.render();
+        };
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div_bpp'));
+        chart.draw(data, options);
+    }
 
-    })
+    function drawThirdChart() {
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+            ['Вес', 'Вес'],
+            <c:forEach items="${mass}" var="entry">
+            [ '${entry.key}', ${entry.value}],
+            </c:forEach>
+        ]);
+        // Set chart options
+        var options = {
+            'title' : 'Динамика веса',
+            is3D : true,
+            pieSliceText: 'label',
+            tooltip :  {showColorCode: true},
+            'width' : 1000,
+            'height' : 500,
+            backgroundColor: '#ced4da',
+            hAxis:{
+                direction:-1,
+                slantedText:true,
+                slantedAngle:90
+            },
+
+        };
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div_mass'));
+        chart.draw(data, options);
+    }
 </script>

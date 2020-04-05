@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface YavkaDao extends CrudRepository<Yavka, Long> {
 
-    @Query("SELECT e FROM Yavka e WHERE e.patient IN (:patient)")
+    @Query("SELECT e FROM Yavka e WHERE e.patient IN (:patient) order by e.added DESC")
     List<Yavka> findAllByPatient(@Param("patient")Long patient);}
 
 

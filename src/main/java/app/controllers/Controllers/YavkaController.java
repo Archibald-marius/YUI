@@ -71,9 +71,9 @@ public class YavkaController {
 
         if(!result.hasErrors()) {
             yavkaService.register(yavka);
+        Long ir = yavka.getPatient();
 
-
-            modelAndView.setViewName("/");
+            modelAndView.setViewName("/patientcard/"+ir);
         }
 
         return modelAndView;
@@ -110,8 +110,9 @@ Yavka yavka1 = yavkaService.getYavka(id);
 yavka1.safeMergeFrom(yavka);
         if(!result.hasErrors()){
             yavkaService.register(yavka1);
-            modelAndView.setViewName("redirect:/");
-        }
+            Long ir = yavka.getPatient();
+            modelAndView.setViewName("/patientcard/"+ir);        }
+
 
         return modelAndView;
     }

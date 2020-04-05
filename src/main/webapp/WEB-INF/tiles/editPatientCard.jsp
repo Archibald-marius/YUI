@@ -21,7 +21,7 @@
         <div class="panel panel-default">
 
             <div class="panel-heading">
-                <div class="panel-title" style="color: white;">Изменить информацию о пациенте</div>
+                <div class="panel-title" style="color: #6c757d;">Изменить информацию о пациенте</div>
             </div>
             <br>
 
@@ -30,14 +30,14 @@
                 <form:form modelAttribute="patients">
 
 
-<table class="regist" style="font-size: 20px; color: white;">
+<table class="regist" style="font-size: 20px; color: #6c757d;">
     <tr>
         <td>
             Имя
 
         </td>
         <td>
-            <form:textarea path="name" rows="1" cols="34"></form:textarea>
+            <form:input path="name" rows="1" cols="34" cssStyle="width: 450px"></form:input>
 
         </td>
     </tr>
@@ -73,7 +73,7 @@
 
     </td>
     <td>
-        <form:textarea path="mail" rows="1" cols="34"></form:textarea>
+        <form:input path="mail" rows="1" cols="34" cssStyle="width: 450px"></form:input>
 
     </td>
 </tr>

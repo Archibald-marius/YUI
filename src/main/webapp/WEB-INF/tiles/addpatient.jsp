@@ -27,8 +27,8 @@
                     </div>
 
                     <div class="input-group">
-                        <form:input name="name" path="name" placeholder="Имя пациента"
-                                    class="form-control" />
+                        <form:input name="name" path="name" placeholder="Имя пациента" required="required"
+                                    class="form-control"/>
                     </div>
 
 

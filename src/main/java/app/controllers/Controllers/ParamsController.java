@@ -2,6 +2,7 @@ package app.controllers.Controllers;
 
 import app.controllers.Models.Patients;
 import app.controllers.Models.SiteUser;
+import app.controllers.Services.UserService;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class ParamsController {
 
     @Autowired
     private Util util;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value="/params", method = RequestMethod.GET)
     ModelAndView setParams(ModelAndView modelAndView){
@@ -58,6 +62,8 @@ public class ParamsController {
         if (id.equals("glucose"))
             siteUser.setAlergology(true);
 
+
+        userService.save(siteUser);
         modelAndView.setViewName("app.ind");
 
         return modelAndView;

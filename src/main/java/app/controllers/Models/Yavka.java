@@ -25,7 +25,7 @@ public class Yavka {
     private Date added = new Date();
 
     @Column(name = "normal_date")
-    private String normal_date=new SimpleDateFormat("dd/MM").format(new Date());
+    private String normal_date=new SimpleDateFormat("dd/MM hh:mm").format(new Date());
 
     public String getNormal_date() {
         return normal_date;
@@ -42,7 +42,7 @@ public class Yavka {
     private Long baby_beat=null;
 
     @Column(name = "mass")
-    private Long mass=null;
+    private Double mass=null;
 
     @Column(name = "temperaturw")
     private Double temperature=null;
@@ -53,7 +53,7 @@ public class Yavka {
     @Column(name = "ab_hig")
     private Long ab_hig=null;
 
-    public Yavka(Long patient, Date added, Long pulse, Long baby_beat, Long mass, Long ab_circ, Long ab_hig, Long DAT, Long SAT, String complains, Boolean swell, String head_acke, String normal_date, Double temperature, String analysis, String prescriptions, String diagnosis, String objective, String instrument) {
+    public Yavka(Long patient, Date added, Long pulse, Long baby_beat, Double mass, Long ab_circ, Long ab_hig, Long DAT, Long SAT, String complains, Boolean swell, String head_acke, String normal_date, Double temperature, String analysis, String prescriptions, String diagnosis, String objective, String instrument) {
         this.patient = patient;
         this.added=added;
         this.pulse=pulse;
@@ -172,11 +172,11 @@ public class Yavka {
         this.baby_beat = baby_beat;
     }
 
-    public Long getMass() {
+    public Double getMass() {
         return mass;
     }
 
-    public void setMass(Long mass) {
+    public void setMass(Double mass) {
         this.mass = mass;
     }
 
@@ -317,6 +317,9 @@ public class Yavka {
         }
         if (yavka.temperature != null) {
             this.temperature = yavka.temperature;
+        }
+        if (yavka.mass != null) {
+            this.mass = yavka.mass;
         }
     }
 }

@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @Component
@@ -75,14 +76,61 @@ public class PatientInfoController {
 
         Map<Date,Integer> map = new HashMap<>();
         List<Yavka> yavka = yavkaDao.findAllByPatient(patient.getId());
+        List<Yavka> new_list = new ArrayList<>();
+//        if (yavka.size() > 30)
+//           new_list = yavka.subList(yavka.size()-30, yavka.size());
+//        else
+            new_list = yavka;
 
-        Map<Date, Long> mapping = new HashMap<>();
-for (Yavka ares : yavka){
-    if (ares.getSAT() != null && ares.getSAT() != 0) {
-        mapping.put(ares.getAdded(), ares.getSAT().longValue());
-        System.out.println(mapping.entrySet());
+        Boolean ap = false;
+
+        Map<String, ArrayList> mapping = new HashMap<>();
+        int i = 0;
+for (Yavka ares : new_list){
+    if (i<30)
+    if (ares.getSAT() != null && ares.getSAT() != 0 && ares.getDAT() != null && ares.getDAT() !=0) {
+        ArrayList arr = new ArrayList<>();
+        arr.add(ares.getSAT().longValue());
+        arr.add(ares.getDAT().longValue());
+        mapping.put(ares.getNormal_date(), arr);
+        ap = true;
+        i++;
     }
 }
+        Boolean ob = false;
+Map bpp_baby = new HashMap<>();
+int j = 0;
+for (Yavka ares : new_list){
+    if (j<30)
+        if (ares.getBaby_beat() != null && ares.getBaby_beat() != 0) {
+            bpp_baby.put(ares.getNormal_date(), ares.getBaby_beat().longValue());
+            ob = true;
+            j++;
+        }
+}
+        Map mass = new HashMap<>();
+        int k = 0;
+        for (Yavka ares : new_list){
+            if (k<30)
+                if (ares.getMass() != null && ares.getMass() != 0d) {
+                    mass.put(ares.getNormal_date(), ares.getMass());
+                    System.out.println(ares.getMass());
+                    ob = true;
+                    k++;
+                }
+        }
+
+
+
+        mapping = mapping.entrySet()  	// Set<Entry<String, String>>
+                .stream()   			// Stream<Entry<String, String>>
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new
+                ));
 
         Boolean isShown = false;
         if(patient.getMail() != null)
@@ -93,26 +141,22 @@ for (Yavka ares : yavka){
             message = userDao.findByEmail(patient.getMail()).getId();
             modelAndView.addObject("message", message);
         }
-        Boolean ob = false;
-        if (util.getUser().getGynecology() == true)
-            ob = true;
 
 
         modelAndView.addObject("gyn", ob);
 
-        Boolean ap = false;
         Boolean bb = false;
         Boolean cir = false;
-        for (Yavka cons : yavka){
-            if (cons.getSAT() != null) {
-                ap = true;
-
-            }
-            if (cons.getBaby_beat()!=null)
-                bb = true;
-            if (cons.getAb_circ() != null)
-                cir = true;
-        }
+//        for (Yavka cons : yavka){
+//            if (cons.getSAT() != null) {
+//                ap = true;
+//
+//            }
+//            if (cons.getBaby_beat()!=null)
+//                bb = true;
+//            if (cons.getAb_circ() != null)
+//                cir = true;
+//        }
 
 
         modelAndView.addObject("ap", ap);
@@ -122,6 +166,10 @@ for (Yavka ares : yavka){
 
 
         modelAndView.addObject("ares", mapping);
+        modelAndView.addObject("bpp", bpp_baby);
+        modelAndView.addObject("mass", mass);
+
+
 
         modelAndView.addObject("data", yavka);
 

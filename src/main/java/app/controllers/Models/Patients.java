@@ -3,6 +3,7 @@ package app.controllers.Models;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -20,6 +21,7 @@ public class Patients {
     private String doctor;
 
     @Column(name="name")
+    @NotBlank(message = "{register.patient.invalid}")
     private String name;
 
     @Nullable

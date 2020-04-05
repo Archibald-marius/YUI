@@ -59,97 +59,123 @@ public class FindDoctorController {
             switch (id){
                 case "therapy":
                     if (profileService.getUserProfile(users).getTherapy() && profileService.getUserProfile(users).getPublished()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
                 case "gynecology":
                 case "obstetrics":
-                    System.out.println("true");
-                    System.out.println("true");
-                    if (users.getGynecology() || users.getOb()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getGynecology() || profileService.getUserProfile(users).getOb()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                 case "cardioligy":
-                    if (users.getCardiology() && users.getPublished()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getCardiology() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "gastro":
-                    if (users.getGastro()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getGastro() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "neurology":
-                    if (users.getNeurology()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getNeurology() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "ophtalmology":
-                    if (users.getOpht()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getOpht() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "otolaryngology":
-                    if (users.getOtolor()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getOtolor() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "surgery":
-                    if (users.getSurgery()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getSurgery() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "vascularsurgery":
-                    if (users.getVascularsurgery()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getVascularsurgery() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "reprudoctology":
-                    if (users.getReproductology()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getReproductology() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "plasticsurgery":
-                    if (users.getPlasticsurgery()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getPlasticsurgery() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "pediatry":
-                    if (users.getPediatrition()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getPediatrition() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
 
                 case "alergology":
-                    if (users.getAlergology()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getAlergology() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
                 case "orthopedy":
-                    if (users.getOrthopedy()){
-                        arr.add(users.getFirstname() + " " + users.getSurname());
+                    if (profileService.getUserProfile(users).getOrthopedy() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
                     break;
