@@ -173,6 +173,7 @@ for (Yavka ares : new_list){
 
         modelAndView.addObject("data", yavka);
 
+        if (util.getUser().getEmail().equals(patient.getDoctor()))
         modelAndView.getModel().put("patient", patient);
 //        modelAndView.getModel().put("patientName", patient.getName());
 //        modelAndView.getModel().put("patientId", patient.getId());

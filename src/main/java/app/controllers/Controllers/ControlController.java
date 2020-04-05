@@ -29,9 +29,22 @@ public class ControlController {
 
         SiteUser siteUser = util.getUser();
         Control control = new Control();
-        modelAndView.addObject("time" , new Date().getTime());
+        Boolean ap = false;
+        Boolean pls = false;
+        Boolean tmp = false;
+        Boolean glu = false;
+        if (siteUser.getTherapy()) ap = true;
+        if (siteUser.getCardiology()) pls = true;
+        if(siteUser.getSurgery()) tmp = true;
+        if(siteUser.getAlergology()) glu = true;
+        modelAndView.addObject("time" , new Date());
         modelAndView.addObject("id", siteUser.getId());
         modelAndView.getModel().put("control", control);
+        modelAndView.getModel().put("ap", ap);
+        modelAndView.getModel().put("pls", pls);
+        modelAndView.getModel().put("tmp", tmp);
+        modelAndView.getModel().put("glu", glu);
+
         modelAndView.setViewName("app.control");
         return modelAndView;
     }
