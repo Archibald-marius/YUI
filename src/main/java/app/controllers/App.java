@@ -7,6 +7,7 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.aws.context.config.annotation.EnableContextInstanceData;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -57,6 +58,7 @@ public class App extends SpringBootServletInitializer {
     }
 
     @Configuration
+    @EnableContextInstanceData
     public class ServerConfig {
         @Bean
         public ConfigurableServletWebServerFactory webServerFactory() {

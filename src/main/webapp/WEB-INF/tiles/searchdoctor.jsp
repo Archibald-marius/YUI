@@ -37,10 +37,10 @@
 
                         <tr>
                             <td>
-                                <button class="btn-on" formaction="/docs/gynecology">Гинекология</button>
+                                <button class="btn-on" formaction="/docs/gynecology">Акушерство и гинекология</button>
                             </td>
                             <td>
-                                <button class="btn-on" formaction="/docs/obstetrics">Акушерство</button>
+                                <button class="btn-on" formaction="/docs/endocrinology">Эндокринология</button>
                             </td>
                             <td>
                                 <button class="btn-on" formaction="/docs/reproductology">Репродуктология</button>

@@ -14,7 +14,6 @@
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="homepage-status">
 
-            Список пациентов:
             <div class="container">
                 <c:forEach items="${doctors}" var="doctors">
 <%--                    <c:url var="patientlink" value="/patientcard/${patientList.id}"/>--%>
@@ -22,12 +21,14 @@
                         <div class="pat-list">
                             <td style="padding: 20px">
                                     <%--                        <a href="${patientlink}"><c:out value="${patientList.name}"/></a>--%>
-<div class="container">
+<div class="container" style="color: #343a40;">
     <img src="${img}/3.gif" width="150" height="150" style="float: left; margin: 7px 7px 7px 7px;"/>
-    <br>Врач ${doctors.value[0]}
+    Врач: ${doctors.value[0]}
+    <br>Город: ${doctors.value[1]}
+    <br>Мед учреждение: ${doctors.value[2]}
     <br>
     <form>
-        <button class="btn-on-docs" formaction="/getcontact/${doctors.key}">Установить контакт</button>
+        <button class="btn-patients" formaction="/getcontact/${doctors.key}">Установить контакт</button>
 
     </form>
 

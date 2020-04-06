@@ -44,8 +44,8 @@ Boolean showGluc=false;
 Boolean showBaby=false;
         Map<String, ArrayList> pressure = new HashMap<>();
         Map<String, Long> pls = new HashMap<>();
-        Map<String, Long> glu = new HashMap<>();
-        Map<String, Long> tmp = new HashMap<>();
+        Map<String, Double> glu = new HashMap<>();
+        Map<String, Double> tmp = new HashMap<>();
 
 
 //        modelAndView.getModel().put("statusUpdate", statusUpdate);

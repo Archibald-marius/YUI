@@ -67,7 +67,7 @@ public class FindDoctorController {
                     break;
                 case "gynecology":
                 case "obstetrics":
-                    if (profileService.getUserProfile(users).getGynecology() || profileService.getUserProfile(users).getOb()){
+                    if ((profileService.getUserProfile(users).getGynecology() || profileService.getUserProfile(users).getOb()) && profileService.getUserProfile(users).getPublished()){
                         arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
                         arr.add(profileService.getUserProfile(users).getCity());
                         arr.add(profileService.getUserProfile(users).getHospital());
@@ -173,6 +173,13 @@ public class FindDoctorController {
                     break;
                 case "orthopedy":
                     if (profileService.getUserProfile(users).getOrthopedy() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
+                        oreo.put(users.getId(), arr);
+                    }
+                case "endocrinology":
+                    if (profileService.getUserProfile(users).getEndocrinology() && profileService.getUserProfile(users).getPublished()){
                         arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
                         arr.add(profileService.getUserProfile(users).getCity());
                         arr.add(profileService.getUserProfile(users).getHospital());

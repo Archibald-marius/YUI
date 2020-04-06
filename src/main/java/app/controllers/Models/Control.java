@@ -26,10 +26,10 @@ public class Control{
     private Long pulse = null;
 
     @Column(name = "temperature")
-    private Long temperature = null;
+    private Double temperature = null;
 
     @Column(name = "glucose")
-    private Long glucose = null;
+    private Double glucose = null;
 
     @Column(name = "baby")
     private Long baby = null;
@@ -40,7 +40,7 @@ public class Control{
     public Control() {
     }
 
-    public Control(Long patient, Long SAT, Long DAT, Long pulse, Long temperature, Long glucose, Long baby, String normal_date) {
+    public Control(Long patient, Long SAT, Long DAT, Long pulse, Double temperature, Double glucose, Long baby, String normal_date) {
         this.patient=patient;
         this.SAT=SAT;
         this.DAT=DAT;
@@ -100,19 +100,19 @@ public class Control{
         this.pulse = pulse;
     }
 
-    public Long getTemperature() {
+    public Double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Long temperature) {
+    public void setTemperature(Double temperature) {
         this.temperature = temperature;
     }
 
-    public Long getGlucose() {
+    public Double getGlucose() {
         return glucose;
     }
 
-    public void setGlucose(Long glucose) {
+    public void setGlucose(Double glucose) {
         this.glucose = glucose;
     }
 
