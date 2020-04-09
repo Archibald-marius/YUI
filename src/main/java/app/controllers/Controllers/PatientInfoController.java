@@ -234,7 +234,9 @@ for (Yavka ares : new_list){
         patients.safeMergeFrom(patient);
         if(!result.hasErrors()){
             patientsService.save(patients);
-            modelAndView.setViewName("redirect:/patientcard/{id}");
+//            modelAndView.setViewName("redirect:/patientcard/{id}");
+            modelAndView.setViewName("redirect:/patientcard/"+id);
+
         }
 
         return modelAndView;

@@ -1,4 +1,4 @@
-package app.controllers;
+package app.controllers.Models;
 
 import app.controllers.Models.SiteUser;
 import org.springframework.security.core.GrantedAuthority;

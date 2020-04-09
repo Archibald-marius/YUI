@@ -57,27 +57,30 @@ public class YavkaController {
 
         modelAndView.addObject("zax", zax);
         modelAndView.addObject("patient", id);
-        modelAndView.addObject("time" , new Date().getTime());
+        modelAndView.addObject("time", new Date().getTime());
         modelAndView.getModel().put("yavka", yavka);
         modelAndView.setViewName("app.yavka");
         return modelAndView;
     }
 
     @RequestMapping(value = "/yavka/{id}", method = RequestMethod.POST)
-    ModelAndView registerVisit(ModelAndView modelAndView, @Valid Yavka yavka, BindingResult result, @PathVariable("id") Long id){
+    ModelAndView registerVisit(ModelAndView modelAndView, @Valid Yavka yavka, BindingResult result, @PathVariable("id") Long id) {
 
 
         modelAndView.setViewName("app.yavka");
 
-        if(!result.hasErrors()) {
+        if (!result.hasErrors()) {
             yavkaService.register(yavka);
-        Long ir = yavka.getPatient();
+            Long ir = yavka.getPatient();
 
-            modelAndView.setViewName("/patientcard/"+ir);
+//            modelAndView.setViewName("/patientcard/" + ir);
+            modelAndView.setViewName("redirect:/patientcard/"+ir);
+
         }
 
         return modelAndView;
     }
+
     @RequestMapping(value = "/showVisites/{id}", method = RequestMethod.GET)
     ModelAndView showVisites(ModelAndView modelAndView, @PathVariable("id") Long id) {
 
@@ -89,7 +92,7 @@ public class YavkaController {
     }
 
 
-    @RequestMapping(value="/editvisit/{id}", method=RequestMethod.GET)
+    @RequestMapping(value = "/editvisit/{id}", method = RequestMethod.GET)
     ModelAndView editProf(ModelAndView modelAndView, @PathVariable("id") Long id) {
 
         Yavka yavka = yavkaService.getYavka(id);
@@ -100,20 +103,25 @@ public class YavkaController {
 
         return modelAndView;
     }
-    @RequestMapping(value="/editvisit/{id}", method=RequestMethod.POST)
+
+    @RequestMapping(value = "/editvisit/{id}", method = RequestMethod.POST)
     ModelAndView editStatus(ModelAndView modelAndView, @Valid Yavka yavka, BindingResult result, @PathVariable("id") Long id) {
 
 
         modelAndView.setViewName("app.editvist");
 //        PatientInfo patientInfo1 = pateintInfoService.getPatientProfile(patientsService.get(id));
-Yavka yavka1 = yavkaService.getYavka(id);
-yavka1.safeMergeFrom(yavka);
-        if(!result.hasErrors()){
+        Yavka yavka1 = yavkaService.getYavka(id);
+        yavka1.safeMergeFrom(yavka);
+        if (!result.hasErrors()) {
             yavkaService.register(yavka1);
             Long ir = yavka.getPatient();
-            modelAndView.setViewName("/patientcard/"+ir);        }
+//            modelAndView.setViewName("/patientcard/"+ir);
+            modelAndView.setViewName("redirect:/patientcard/"+ir);
+
+            }
 
 
-        return modelAndView;
+            return modelAndView;
+        }
     }
-}
+

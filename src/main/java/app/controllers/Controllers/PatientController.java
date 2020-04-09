@@ -77,8 +77,8 @@ public class PatientController {
         if(!result.hasErrors()) {
             patientsService.register(patient);
 
-
-            modelAndView.setViewName("/");
+            modelAndView.setViewName("redirect:/patients");
+//            modelAndView.setViewName("/");
             patientsService.save(patient);
         }
 

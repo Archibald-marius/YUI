@@ -11,18 +11,18 @@ import java.util.Properties;
 @Configuration
 public class MailConfig {
 
-
-    @Value("${spring.mail.host}")
-    private String host;
-
-    @Value("${spring.mail.port}")
-    private Integer port;
-
-    @Value("${spring.mail.username}")
-    private String user;
-
-    @Value("${spring.mail.password}")
-    private String password;
+//
+//    @Value("${spring.mail.host}")
+//    private String host;
+//
+//    @Value("${spring.mail.port}")
+//    private Integer port;
+//
+//    @Value("${spring.mail.username}")
+//    private String user;
+//
+//    @Value("${spring.mail.password}")
+//    private String password;
 
     @Bean
     public JavaMailSender mailSender(){
@@ -31,8 +31,8 @@ public class MailConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("quinn.lastfield@gmail.com");
-        mailSender.setPassword("qwe1rty2");
+        mailSender.setUsername("inmedical.org@gmail.com");
+        mailSender.setPassword("amfibia1r");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

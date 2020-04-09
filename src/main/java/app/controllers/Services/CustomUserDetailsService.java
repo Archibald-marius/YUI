@@ -1,5 +1,6 @@
-package app.controllers;
+package app.controllers.Services;
 import app.controllers.Dao.UserDao;
+import app.controllers.Models.CustomUserDetail;
 import app.controllers.Models.SiteUser;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
