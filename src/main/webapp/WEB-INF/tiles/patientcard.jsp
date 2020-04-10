@@ -55,7 +55,7 @@
                             Сообщение
                         </button>
                         <br>
-                        <span style="font-size: 12px">Пользователь по вказаному<br> email не найден</span>
+                        <span style="font-size: 12px">Пользователь по Указаному<br> email не найден</span>
                     </c:if>
                 </th>
                 </c:if>

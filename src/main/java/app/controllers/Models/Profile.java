@@ -389,9 +389,9 @@ public class Profile {
     }
 
     public void safeMergeFrom(Profile webProfile) {
-        if(webProfile.firstname !=null){
+//        if(webProfile.firstname !=null){
             this.firstname=webProfile.firstname;
-        }
+//        }
         if(webProfile.surname !=null){
             this.surname=webProfile.surname;
         }
