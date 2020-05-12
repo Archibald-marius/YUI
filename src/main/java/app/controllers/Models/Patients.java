@@ -64,6 +64,32 @@ public class Patients {
     @Column(name="mail")
     private String mail = null;
 
+    @Nullable
+    @Column(name="date_b")
+    private String date_b = null;
+
+    @Nullable
+    @Column(name="phone")
+    private String phone = null;
+
+    @Nullable
+    public String getDate_b() {
+        return date_b;
+    }
+
+    public void setDate_b(String date_b) {
+        this.date_b = date_b;
+    }
+
+    @Nullable
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getMail() {
         return mail;
     }
@@ -72,7 +98,7 @@ public class Patients {
         this.mail = mail;
     }
 
-    public Patients(String name, Long weeks, String diagnosis, Long pregnancy, Long labour, Date birsd, String work, String address, String notes, String concomitant, String mail) {
+    public Patients(String name, Long weeks, String diagnosis, Long pregnancy, Long labour, Date birsd, String work, String address, String notes, String concomitant, String mail, String date_b, String phone) {
         this.name = name;
         this.weeks = weeks;
         this.diagnosis = diagnosis;
@@ -84,6 +110,8 @@ public class Patients {
         this.notes = notes;
         this.concomitant = concomitant;
         this.mail=mail;
+        this.date_b=date_b;
+        this.phone=phone;
     }
 
 

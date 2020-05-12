@@ -31,6 +31,9 @@ public class PublishController {
 
         SiteUser siteUser = util.getUser();
         Profile profile = profileService.getUserProfile(siteUser);
+        System.out.println(profile.getFirstname() != null);
+        System.out.println("here");
+        if (!profile.getFirstname().equals("") && !profile.getSurname().equals("") && !profile.getCity().equals("")){
 
         if (siteUser.getPublished()) {
             siteUser.setPublished(false);
@@ -43,10 +46,13 @@ public class PublishController {
 
         }
         profileService.save(profile);
-userService.save(siteUser);
+//userService.save(siteUser);
 
         modelAndView.getModel().put("publish", siteUser.getPublished());
-        modelAndView.setViewName("app.publish");
+        modelAndView.setViewName("app.publish");}
+        else {
+            modelAndView.setViewName("redirect:/suggest");
+        }
         return modelAndView;
     }
 }

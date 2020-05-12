@@ -4,12 +4,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.TimeZone;
 
 @Entity
 @Table(name = "yavka")
-public class Yavka {
+public class Yavka extends TimeZones {
 
     @Id
     @Column(name = "id")
@@ -20,12 +26,18 @@ public class Yavka {
     private Long patient = null;
 
     @Column(name="added")
-    @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy/MM/dd hh:mm")
-    private Date added = new Date();
+    private ZonedDateTime added = ZonedDateTime.now(ZoneId.of(msk));
+
+//    private Date added = new Date();
+
+
 
     @Column(name = "normal_date")
-    private String normal_date=new SimpleDateFormat("dd/MM hh:mm").format(new Date());
+    private String normal_date=added.format(DateTimeFormatter.ofPattern("dd/MM - HH:mm"));
+
+//    private String normal_date=new SimpleDateFormat("dd.MM.yyyy HH:mm").format(Calendar.getInstance(TimeZone.getTimeZone("Asia/Shanghai")).getTime());
+//    private String normal_date=new SimpleDateFormat("dd/MM hh:mm").format(new Date());
 
     public String getNormal_date() {
         return normal_date;
@@ -53,7 +65,7 @@ public class Yavka {
     @Column(name = "ab_hig")
     private Long ab_hig=null;
 
-    public Yavka(Long patient, Date added, Long pulse, Long baby_beat, Double mass, Long ab_circ, Long ab_hig, Long DAT, Long SAT, String complains, Boolean swell, String head_acke, String normal_date, Double temperature, String analysis, String prescriptions, String diagnosis, String objective, String instrument) {
+    public Yavka(Long patient, ZonedDateTime added, Long pulse, Long baby_beat, Double mass, Long ab_circ, Long ab_hig, Long DAT, Long SAT, String complains, Boolean swell, String head_acke, String normal_date, Double temperature, String analysis, String prescriptions, String diagnosis, String objective, String instrument) {
         this.patient = patient;
         this.added=added;
         this.pulse=pulse;
@@ -79,7 +91,7 @@ public class Yavka {
     }
 
     @Column(name = "SAT")
-    private Long SAT = new Long(0);
+    private Long SAT;
 
     @Column(name = "DAT")
     private Long DAT;
@@ -148,11 +160,11 @@ public class Yavka {
         this.patient = patient;
     }
 
-    public Date getAdded() {
+    public ZonedDateTime getAdded() {
         return added;
     }
 
-    public void setAdded(Date added) {
+    public void setAdded(ZonedDateTime added) {
         this.added = added;
     }
 

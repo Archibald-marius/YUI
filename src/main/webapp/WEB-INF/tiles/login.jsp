@@ -16,10 +16,10 @@
 
         <div class="login">
             <c:if test="${param.error != null}">
-                <div class="login-error" style="color: #dc3545">Неправильный email или пароль!</div>
+                <div class="login-error" style="color: #dc3545; font-size: 14px;">Неправильный email или пароль!</div>
             </c:if>
 
-                    Войдите или <a href="${registerUrl}">создайте акаунт бесплатно!</a>
+                    <span style="font-size: 14px">Войдите или <a href="${registerUrl}">создайте аккаунт бесплатно!</a></span>
             <br>
             <br>
 
@@ -39,7 +39,7 @@
                         <input type="password" name="password" placeholder="Пароль"
                                class="form-control" />
 <br>
-                        <button type="submit" style="background-color: #b0e6df; width: 100px">Войти
+                        <button type="submit" style="background-color: #b0e6df; width: 110px; font-size: 18px">Войти
                             </button>
 
                 </form>

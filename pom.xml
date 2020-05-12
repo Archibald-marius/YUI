@@ -30,7 +30,7 @@
 <!--    !!________WAR_______!!-->
     <groupId>org.inmedical</groupId>
     <artifactId>inmedical</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <description>Demo project</description>

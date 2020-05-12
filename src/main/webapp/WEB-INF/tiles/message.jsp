@@ -14,7 +14,11 @@
             class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
 
         <div class="message">
-            <c:out value="${message}" />
+                <span style="font-size: 24px;">
+                    Регистрация подтверждена!<br>
+                    Теперь Вы можете войти в систему.
+<%--                                <c:out value="${message}" />--%>
+                </span>
         </div>
 
     </div>

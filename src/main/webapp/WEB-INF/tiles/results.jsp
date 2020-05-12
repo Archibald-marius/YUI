@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12 results-none">
         <c:if test="${empty result}">
-            No results
+            <span style="font-size: 20px;">Никого не найдено</span>
         </c:if>
     </div>
 </div>

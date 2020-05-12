@@ -68,7 +68,7 @@ public class YavkaController {
 
 
         modelAndView.setViewName("app.yavka");
-
+        if (patientsService.get(id).getDoctor().equals(util.getUser().getEmail()))
         if (!result.hasErrors()) {
             yavkaService.register(yavka);
             Long ir = yavka.getPatient();
@@ -84,7 +84,9 @@ public class YavkaController {
     @RequestMapping(value = "/showVisites/{id}", method = RequestMethod.GET)
     ModelAndView showVisites(ModelAndView modelAndView, @PathVariable("id") Long id) {
 
-        List<Yavka> yavka = yavkaDao.findAllByPatient(id);
+        List<Yavka> yavka = new ArrayList<>();
+        if (patientsService.get(id).getDoctor().equals(util.getUser().getEmail()))
+        yavka = yavkaDao.findAllByPatient(id);
 
         modelAndView.getModel().put("yavka", yavka);
         modelAndView.setViewName("app.showVisites");

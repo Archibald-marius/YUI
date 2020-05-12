@@ -17,6 +17,7 @@
 <c:url var="editLink" value="/yavka/${patient.id}"/>
 <c:url var="visits" value="/showVisites/${patient.id}"/>
 <c:url var="dialog" value="/chatview/${message}"/>
+<c:url var="homemes" value="/homemes/${patient.id}"/>
 <c:url var="img" value="/img" />
 
 
@@ -32,36 +33,40 @@
 <%--                        <c:out value="${patientId}"/>--%>
     <div class="container">
         <form>
+            <c:if test="${patient.mail != null}">
+                <c:if test="${message != null}">
+                    <button class="btn-message" formaction="${dialog}">
+                        <img src="${img}/2.png" width="30" height="30"/>
+<%--                        <span style="font-size: 14px;">--%>
+<%--                            Сообщение--%>
+<%--                        </span>--%>
+                    </button>
+                </c:if>
+
+                <c:if test="${message == null}">
+                    <button class="btn-message" disabled formaction="${dialog}">
+                        <img src="${img}/2.png" width="30" height="30"/>
+                        Сообщение
+                    </button>
+                    <br>
+                    <span style="font-size: 12px">Пользователь по указаному<br> email не найден</span>
+                </c:if>
+            </c:if>
+            <c:if test="${patient.mail = null}">
+                <button disabled class="btn-message" formaction="${dialog}">Написать</button></th>
+            </c:if>
+            <br>
+            <br>
         <table class="patients">
 
             <tr>
                 <th class="fir">Имя</th>
                 <th class="sec">  <c:out value="${patient.name}"/>
                 </th>
-                <th></th>
-                <th></th>
 
-                <th style="padding-left: 100px"> <c:if test="${patient.mail != null}">
-                <c:if test="${message != null}">
-                    <button  formaction="${dialog}">
-                        <img src="${img}/2.png" width="30" height="30"/>
-                        Сообщение
-                    </button>
-                </c:if>
 
-                    <c:if test="${message == null}">
-                        <button disabled formaction="${dialog}">
-                            <img src="${img}/2.png" width="30" height="30"/>
-                            Сообщение
-                        </button>
-                        <br>
-                        <span style="font-size: 12px">Пользователь по Указаному<br> email не найден</span>
-                    </c:if>
+                <th style="padding-left: 1px; font-size: 12px;">
                 </th>
-                </c:if>
-                <c:if test="${patient.mail = null}">
-                    <button disabled class="btn-pat" formaction="${dialog}">Написать</button></th>
-                </c:if>
             </tr>
             <tr>
                 <th class="fir">Адрес</th>
@@ -71,6 +76,14 @@
             <tr>
                 <th class="fir">Место работы</th>
                 <th class="sec"> <c:out value="${patient.work}"/></th>
+            </tr>
+            <tr>
+                <th class="fir">Телефон</th>
+                <th class="sec"> <c:out value="${patient.phone}"/></th>
+            </tr>
+            <tr>
+                <th class="fir">Дата рождения</th>
+                <th class="sec"> <c:out value="${patient.date_b}"/></th>
             </tr>
             <tr>
                 <th class="fir">Диагноз</th>
@@ -98,22 +111,37 @@
                 <th class="sec">  <c:out value="${patient.notes}"/>
                 </th>
             </tr>
-            <tr>
-                <th class="fir">Email</th>
-                <th class="sec"> Скрытая информация<c:out value="${patient.mail}"/>
-                </th>
-            </tr>
+<%--            <tr>--%>
+<%--                <th class="fir">Email</th>--%>
+<%--                <th class="sec"> Скрытая информация<c:out value="${patient.mail}"/>--%>
+<%--                </th>--%>
+<%--            </tr>--%>
         </table>
             <br>
+            <br>
             <div class="container">
-                <button class="btn-pat" formaction="${editLink}">Зарегистровать новую явку</button>
-                <button class="btn-pat" formaction="${editPatientCard}">Изменить данные пациента</button>
-                <button class="btn-pat" formaction="${visits}">Смотреть консультации</button>
+                <button class="btn-pat" formaction="${editLink}">Записать новую явку</button>
+                <button class="btn-pat" formaction="${editPatientCard}">Изменить данные</button>
+                <button class="btn-pat" formaction="${visits}">Список консультаций</button>
+                <c:if test="${patient.mail != null}">
+                    <c:if test="${pos != null}">
+                        <button class="btn-pat" formaction="${homemes}">Домашние показатели</button>
 
+                    </c:if>
+
+                    <c:if test="${pos == null}">
+                        <button disabled class="btn-pat" formaction="${homemes}">Домашние показатели</button>
+                        <span style="color: steelblue">*контроль домашних показателей у пользователя по указаному емейлу не найден</span>
+                    </c:if>
+                </c:if>
+                <c:if test="${patient.mail = null}">
+                    <button disabled class="btn-pat" formaction="${homemes}">Домашние показатели</button></th>
+                </c:if>
 
             </div>
 
-
+<br>
+            <br>
 
         </form>
         <c:if test="${ap == true}">
@@ -123,6 +151,15 @@
 
         </div>
         </c:if>
+
+        <c:if test="${pls == true}">
+
+        <div style="float: left;">
+            <div id="chart_div_pls"></div>
+
+        </div>
+        </c:if>
+
         <c:if test="${gyn == true}">
 
         <div style="float: left;">
@@ -153,6 +190,8 @@
     google.setOnLoadCallback(drawChart);
     google.setOnLoadCallback(drawSecondChart);
     google.setOnLoadCallback(drawThirdChart);
+    google.setOnLoadCallback(drawForthChart);
+
     // Callback that creates and populates a data table,
     // instantiates the pie chart, passes in the data and
     // draws it.
@@ -161,7 +200,7 @@
         var data = google.visualization.arrayToDataTable([
             ['Давление', 'САТ', 'ДАТ'],
             <c:forEach items="${ares}" var="entry">
-            [ '${entry.key}', ${entry.value[0]}, ${entry.value[1]}],
+            [ '${entry.value[2]}', ${entry.value[0]}, ${entry.value[1]}],
             </c:forEach>
         ]);
         // Set chart options
@@ -172,7 +211,7 @@
             tooltip :  {showColorCode: true},
             'width' : 1000,
             'height' : 500,
-            backgroundColor: '#ced4da',
+            backgroundColor: 'mintcream',
             hAxis:{
                 direction:-1,
                 slantedText:true,
@@ -201,7 +240,7 @@
             tooltip :  {showColorCode: true},
             'width' : 1000,
             'height' : 500,
-            backgroundColor: '#ced4da',
+            backgroundColor: 'mintcream',
             hAxis:{
                 direction:-1,
                 slantedText:true,
@@ -230,7 +269,7 @@
             tooltip :  {showColorCode: true},
             'width' : 1000,
             'height' : 500,
-            backgroundColor: '#ced4da',
+            backgroundColor: 'mintcream',
             hAxis:{
                 direction:-1,
                 slantedText:true,
@@ -242,4 +281,34 @@
         var chart = new google.visualization.LineChart(document.getElementById('chart_div_mass'));
         chart.draw(data, options);
     }
+
+    function drawForthChart() {
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+            ['Пульс', 'Пульс'],
+            <c:forEach items="${pulse}" var="entry">
+            [ '${entry.key}', ${entry.value}],
+            </c:forEach>
+        ]);
+        // Set chart options
+        var options = {
+            'title' : 'Пульс',
+            is3D : true,
+            pieSliceText: 'label',
+            tooltip :  {showColorCode: true},
+            'width' : 1000,
+            'height' : 500,
+            backgroundColor: 'mintcream',
+            hAxis:{
+                direction:-1,
+                slantedText:true,
+                slantedAngle:90
+            },
+
+        };
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div_pls'));
+        chart.draw(data, options);
+    }
+
 </script>

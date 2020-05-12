@@ -7,6 +7,7 @@ import app.controllers.Models.dto.ChatRequest;
 import app.controllers.Models.dto.SimpleMessage;
 import app.controllers.Models.entity.Message;
 import app.controllers.Services.MessageService;
+import app.controllers.Services.ProfileService;
 import app.controllers.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -41,6 +42,9 @@ public class ChatController {
 
     @Autowired
     private BlockDao blockDao;
+
+    @Autowired
+    ProfileService profileService;
 
     @RequestMapping("/markread")
     String markRead(@RequestParam("f") long userId, @RequestParam("m") long messageId) {
@@ -83,7 +87,9 @@ public class ChatController {
     ModelAndView chatView(ModelAndView modelAndView, @PathVariable Long id) {
 
         SiteUser thisUser = util.getUser();
-        String chatWithUserName = userService.getUserName(id);
+        String chatWithUserName = profileService.getUserProfile(userService.get(id)).getFirstname() +
+                " " +
+                profileService.getUserProfile(userService.get(id)).getSurname();
 
         modelAndView.setViewName("app.chatview");
         modelAndView.getModel().put("thisUserID", thisUser.getId());

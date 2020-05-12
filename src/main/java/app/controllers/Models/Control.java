@@ -1,12 +1,17 @@
 package app.controllers.Models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Entity
 @Table(name = "control")
-public class Control{
+public class Control extends TimeZones{
 
     @Id
     @Column(name = "id")
@@ -34,13 +39,19 @@ public class Control{
     @Column(name = "baby")
     private Long baby = null;
 
+    @Column(name="added")
+    @DateTimeFormat(pattern = "yyyy/MM/dd hh:mm")
+    private ZonedDateTime added = ZonedDateTime.now(ZoneId.of(msk));
+
     @Column(name = "normal_date")
-    private String normal_date=new SimpleDateFormat("dd/MM HH:mm").format(new Date());
+    private String normal_date=added.format(DateTimeFormatter.ofPattern("dd/MM - HH:mm"));
+//    @Column(name = "normal_date")
+//    private String normal_date=new SimpleDateFormat("dd/MM HH:mm").format(new Date());
 
     public Control() {
     }
 
-    public Control(Long patient, Long SAT, Long DAT, Long pulse, Double temperature, Double glucose, Long baby, String normal_date) {
+    public Control(Long patient, Long SAT, Long DAT, Long pulse, Double temperature, Double glucose, Long baby, String normal_date, ZonedDateTime added) {
         this.patient=patient;
         this.SAT=SAT;
         this.DAT=DAT;
@@ -49,6 +60,8 @@ public class Control{
         this.glucose=glucose;
         this.baby=baby;
         this.normal_date=normal_date;
+        this.added=added;
+
     }
 
     public Long getId() {
@@ -122,6 +135,14 @@ public class Control{
 
     public void setBaby(Long baby) {
         this.baby = baby;
+    }
+
+    public ZonedDateTime getAdded() {
+        return added;
+    }
+
+    public void setAdded(ZonedDateTime added) {
+        this.added = added;
     }
 }
 

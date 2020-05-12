@@ -75,6 +75,7 @@ public class PatientController {
         modelAndView.setViewName("app.addpatient");
 
         if(!result.hasErrors()) {
+            patient.setDoctor(util.getUser().getEmail());
             patientsService.register(patient);
 
             modelAndView.setViewName("redirect:/patients");

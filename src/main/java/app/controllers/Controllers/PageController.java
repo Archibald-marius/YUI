@@ -2,7 +2,9 @@ package app.controllers.Controllers;
 
 import app.controllers.Dao.ControlDao;
 import app.controllers.Models.Control;
+import app.controllers.Models.Profile;
 import app.controllers.Models.StatusUpdate;
+import app.controllers.Services.ProfileService;
 import app.controllers.Services.StatusUpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.naming.ldap.HasControls;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 
@@ -32,6 +32,9 @@ public class PageController {
     @Autowired
     private ControlDao controlDao;
 
+    @Autowired
+    ProfileService profileService;
+
     @RequestMapping("/")
     ModelAndView home(ModelAndView modelAndView) {
 
@@ -48,17 +51,40 @@ Boolean showBaby=false;
         Map<String, Double> tmp = new HashMap<>();
 
 
+        Profile profile = profileService.getUserProfile(util.getUser());
+
+
+
+
+        if (profile == null) {
+            profile = new Profile();
+            profile.setUser(util.getUser());
+            if (util.getUser() != null)
+            if (util.getUser().getRole().equals("ROLE_PATIENT")) {
+                profile.setTherapy(true);
+                profile.setCardiology(true);
+                profile.setSurgery(true);
+            }
+            if (util.getUser() != null)
+            profileService.save(profile);
+        }
+
 //        modelAndView.getModel().put("statusUpdate", statusUpdate);
         if (util.getUser() != null) {
             if (util.getUser().getRole().equals("ROLE_DOCTOR"))
                 ticket = 1;
             if (util.getUser().getRole().equals("ROLE_PATIENT")) {
                 ticket = 2;
-                List<Control> control = controlDao.findByPatient(util.getUser().getId());
-                if (util.getUser().getTherapy()){
+                List<Control> control_old = controlDao.findByPatient(util.getUser().getId());
+                List<Control> control = new ArrayList<>();
+//                if (control_old.size() > 30)
+//                    control = control_old.subList(control_old.size()-30, control_old.size()-1);
+//                else
+                    control = control_old;
+                if (profileService.getUserProfile(util.getUser()).getTherapy()){
                     int i = 0;
                     for (Control data : control){
-                        if(i<25)
+                        if(i<30)
                         if (data.getSAT() != null && data.getSAT() != 0 && data.getDAT() != null && data.getDAT() != 0){
                             ArrayList list = new ArrayList();
                             list.add(data.getSAT());
@@ -70,7 +96,7 @@ Boolean showBaby=false;
                     }
                 }
 
-                if (util.getUser().getCardiology()){
+                if (profileService.getUserProfile(util.getUser()).getCardiology()){
                     int j = 0;
                     for (Control data : control){
                         if(j<25)
@@ -82,10 +108,10 @@ Boolean showBaby=false;
                     }
                 }
 
-                if (util.getUser().getAlergology()){
+                if (profileService.getUserProfile(util.getUser()).getAlergology()){
                     int k = 0;
                     for (Control data : control){
-                        if(k<25)
+                        if(k<30)
                             if (data.getGlucose() != null && data.getGlucose() != 0){
                                 glu.put(data.getNormal_date(), data.getGlucose());
                                 k++;
@@ -94,10 +120,10 @@ Boolean showBaby=false;
                     }
                 }
 
-                if (util.getUser().getSurgery()){
+                if (profileService.getUserProfile(util.getUser()).getSurgery()){
                     int n = 0;
                     for (Control data : control){
-                        if(n<25)
+                        if(n<30)
                             if (data.getTemperature() != null && data.getTemperature() != 0){
                                 tmp.put(data.getNormal_date(), data.getTemperature());
                                 n++;
@@ -108,7 +134,45 @@ Boolean showBaby=false;
 
             }
         }
+pressure = pressure.entrySet()  	// Set<Entry<String, String>>
+        .stream()   			// Stream<Entry<String, String>>
+        .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+        .collect(Collectors.toMap(
+                Map.Entry::getKey,
+                Map.Entry::getValue,
+                (oldValue, newValue) -> oldValue,
+                LinkedHashMap::new
+        ));
 
+        pls = pls.entrySet()  	// Set<Entry<String, String>>
+                .stream()   			// Stream<Entry<String, String>>
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new
+                ));
+
+        tmp = tmp.entrySet()  	// Set<Entry<String, String>>
+                .stream()   			// Stream<Entry<String, String>>
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new
+                ));
+
+        glu = glu.entrySet()  	// Set<Entry<String, String>>
+                .stream()   			// Stream<Entry<String, String>>
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new
+                ));
         modelAndView.setViewName("app.homepage");
         modelAndView.getModel().put("ticket", ticket);
         modelAndView.getModel().put("ares", pressure);
@@ -116,12 +180,22 @@ Boolean showBaby=false;
         modelAndView.getModel().put("glu", glu);
         modelAndView.getModel().put("tmp", tmp);
 
+        Boolean ask_param = false;
+        if (pressure.isEmpty() && pls.isEmpty() && glu.isEmpty() && tmp.isEmpty())
+        ask_param = true;
+        System.out.println(pls.isEmpty());
+        System.out.println(pls.toString());
+        System.out.println(pressure.size());
+        System.out.println(ask_param);
+
 
 
         modelAndView.getModel().put("showPress", showPress);
         modelAndView.getModel().put("showPls", showPls);
         modelAndView.getModel().put("showGluc", showGluc);
         modelAndView.getModel().put("showTemper", showTemper);
+        modelAndView.getModel().put("ask_param", ask_param);
+
 
 
 

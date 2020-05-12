@@ -12,6 +12,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
@@ -60,14 +61,21 @@ public class EmailService {
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
             @Override
             public void prepare(MimeMessage mimeMessage) throws Exception {
-                MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+                MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
                 message.setTo(emailAddress);
                 message.setFrom(new InternetAddress("no-reply@gmail.com"));
-                message.setSubject("Verify yourself");
+                message.setSubject("Верификация InMedical");
                 message.setSentDate(new Date());
 
                 message.setText(emailContents, true);
+
+//                mimeMessage.setFrom("no-reply@gmail.com");
+//                mimeMessage.setRecipients(Message.RecipientType.TO, emailAddress);
+//                mimeMessage.setSubject("Верификация", "UTF-8");
+//                mimeMessage.setContent("<p>Спасибо за регистрацию!</p>\n" +
+//                        "Пройдите по <a th:href=\"@{${url} + '/confirmregister?t=' + ${token}}\">ссылке</a> для подтверждения Вашей электронной почты. </p>\n", "text/html; charset=UTF-8");
+
             }
         };
 

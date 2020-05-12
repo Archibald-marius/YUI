@@ -17,16 +17,16 @@ public class Profile {
     private SiteUser user;
 
     @Column(name="firstname", length = 5000)
-    private String firstname;
+    private String firstname = "";
 
     @Column(name="surname")
-    private String surname;
+    private String surname = "";
 
     @Column(name="city")
-    private String city;
+    private String city = "";
 
     @Column(name="hospital")
-    private String hospital;
+    private String hospital = "";
 
     @Column(name="therapy")
     private Boolean therapy = false;
@@ -76,11 +76,22 @@ public class Profile {
     @Column(name="endocrinology")
     private Boolean endocrinology=false;
 
+    @Column(name="urology")
+    private Boolean urology=false;
+
     @Column(name="dependency")
     private String dependency;
 
     @Column(name="email", unique = true)
     private String email;
+
+    public Boolean getUrology() {
+        return urology;
+    }
+
+    public void setUrology(Boolean urology) {
+        this.urology = urology;
+    }
 
     public String getEmail() {
         return email;
@@ -385,13 +396,16 @@ public class Profile {
         if(webProfile.published !=null){
             this.published=webProfile.published;
         }
+        if(webProfile.urology !=null){
+            this.urology=webProfile.urology;
+        }
 
     }
 
     public void safeMergeFrom(Profile webProfile) {
-//        if(webProfile.firstname !=null){
+        if(webProfile.firstname !=null){
             this.firstname=webProfile.firstname;
-//        }
+        }
         if(webProfile.surname !=null){
             this.surname=webProfile.surname;
         }
@@ -460,6 +474,9 @@ public class Profile {
         }
         if(webProfile.email !=null){
             this.email=webProfile.email;
+        }
+        if(webProfile.urology !=null){
+            this.urology=webProfile.urology;
         }
 
     }

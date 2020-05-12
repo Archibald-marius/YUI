@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div class="container" style="font-size: 24px; color: white;">
+<div class="container" style="font-size: 24px; color: #6c757d;">
     <br>
-    Спасибо за регистрацию!<br>
-    Пройдите по ссылке в письме, которое было отправлено Вам на почту для завершения регистрации.
+    Спасибо!<br>
+    На Вашу почту отправлено письмо с ссылкой для подверждения регистрации.
 </div>

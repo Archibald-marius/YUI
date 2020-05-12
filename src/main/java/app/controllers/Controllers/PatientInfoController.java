@@ -1,5 +1,6 @@
 package app.controllers.Controllers;
 
+import app.controllers.Dao.ProfileDao;
 import app.controllers.Dao.UserDao;
 import app.controllers.Dao.YavkaDao;
 import app.controllers.Models.*;
@@ -20,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -39,6 +42,7 @@ public class PatientInfoController {
 
     @Autowired
     Util util;
+
 
 //    @Autowired
 //    PateintInfoService pateintInfoService;
@@ -77,26 +81,51 @@ public class PatientInfoController {
         Map<Date,Integer> map = new HashMap<>();
         List<Yavka> yavka = yavkaDao.findAllByPatient(patient.getId());
         List<Yavka> new_list = new ArrayList<>();
-//        if (yavka.size() > 30)
-//           new_list = yavka.subList(yavka.size()-30, yavka.size());
+//        if (yavka.size() > 3) {
+//            new_list = yavka.subList(yavka.size() - 3, yavka.size() - 1);
+//        }
 //        else
             new_list = yavka;
+//            Collections.reverse(new_list);
 
         Boolean ap = false;
+        Boolean pls = false;
+        Boolean tmp = false;
+        Boolean glu = false;
 
         Map<String, ArrayList> mapping = new HashMap<>();
+        Map<String, Long> pulse = new HashMap<>();
+        Map<String, ArrayList> temperature = new HashMap<>();
+        Map<String, ArrayList> glucose = new HashMap<>();
+
         int i = 0;
-for (Yavka ares : new_list){
-    if (i<30)
-    if (ares.getSAT() != null && ares.getSAT() != 0 && ares.getDAT() != null && ares.getDAT() !=0) {
-        ArrayList arr = new ArrayList<>();
-        arr.add(ares.getSAT().longValue());
-        arr.add(ares.getDAT().longValue());
-        mapping.put(ares.getNormal_date(), arr);
-        ap = true;
-        i++;
-    }
+        int n = 0;
+
+for (Yavka ares : new_list) {
+    if (i < 30)
+        if (ares.getSAT() != null && ares.getSAT() != 0 && ares.getDAT() != null && ares.getDAT() != 0) {
+            ArrayList arr = new ArrayList<>();
+            arr.add(ares.getSAT().longValue());
+            arr.add(ares.getDAT().longValue());
+            mapping.put(ares.getNormal_date(), arr);
+            ap = true;
+            i++;
+        }
 }
+        for (Yavka ares : new_list){
+    if (n<30)
+        if (ares.getPulse() != null && ares.getPulse() != 0) {
+//            ArrayList arr = new ArrayList<>();
+//            arr.add(ares.getPulse().longValue());
+//            arr.add(ares.getNormal_date());
+            pulse.put(ares.getNormal_date(), ares.getPulse());
+            pls = true;
+            n++;
+        }
+
+
+}
+
         Boolean ob = false;
 Map bpp_baby = new HashMap<>();
 int j = 0;
@@ -114,7 +143,6 @@ for (Yavka ares : new_list){
             if (k<30)
                 if (ares.getMass() != null && ares.getMass() != 0d) {
                     mass.put(ares.getNormal_date(), ares.getMass());
-                    System.out.println(ares.getMass());
                     ob = true;
                     k++;
                 }
@@ -132,15 +160,33 @@ for (Yavka ares : new_list){
                         LinkedHashMap::new
                 ));
 
+        pulse = pulse.entrySet()  	// Set<Entry<String, String>>
+                .stream()   			// Stream<Entry<String, String>>
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue,
+                        LinkedHashMap::new
+                ));
+
         Boolean isShown = false;
         if(patient.getMail() != null)
             isShown = true;
         Long message = null;
+        Long pos = null;
 
         if (userDao.findByEmail(patient.getMail()) != null) {
             message = userDao.findByEmail(patient.getMail()).getId();
-            modelAndView.addObject("message", message);
         }
+        modelAndView.addObject("message", message);
+
+        if (userDao.findByEmail(patient.getMail()) != null && userDao.findByEmail(patient.getMail()).getRole().equals("ROLE_PATIENT")) {
+            pos = userDao.findByEmail(patient.getMail()).getId();
+        }
+        System.out.println(pos);
+        modelAndView.addObject("pos", pos);
+
 
 
         modelAndView.addObject("gyn", ob);
@@ -162,12 +208,15 @@ for (Yavka ares : new_list){
         modelAndView.addObject("ap", ap);
         modelAndView.addObject("bb", bb);
         modelAndView.addObject("cir", cir);
+        modelAndView.addObject("pls", pls);
 
 
 
         modelAndView.addObject("ares", mapping);
         modelAndView.addObject("bpp", bpp_baby);
         modelAndView.addObject("mass", mass);
+        modelAndView.addObject("pulse", pulse);
+
 
 
 
@@ -193,8 +242,10 @@ for (Yavka ares : new_list){
     @RequestMapping(value = "/patientcard/{id}")
     public ModelAndView showPatientProfile(@PathVariable("id") Long id){
         Patients patient = patientsService.get(id);
+        ModelAndView modelAndView = new ModelAndView();
+if (patient.getDoctor().equals(util.getUser().getEmail()))
+        modelAndView = showPatient(patient);
 
-        ModelAndView modelAndView = showPatient(patient);
 
         return modelAndView;
     }
@@ -216,9 +267,13 @@ for (Yavka ares : new_list){
     @RequestMapping(value="/editPatientCard/{id}", method=RequestMethod.GET)
     ModelAndView editProf(ModelAndView modelAndView, @PathVariable("id") Long id) {
 
+
         Patients patients = patientsService.get(id);
 
+        if (patients.getDoctor().equals(util.getUser().getEmail()))
         modelAndView.getModel().put("patients", patients);
+        else modelAndView.getModel().put("patients", new Patients());
+
 
         modelAndView.setViewName("app.editPatientCard");
 

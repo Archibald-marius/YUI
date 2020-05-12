@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import sun.awt.UNIXToolkit;
+
 import javax.validation.Valid;
 
 @Controller
@@ -24,6 +26,9 @@ public class ProfileController {
 
     @Autowired
     ProfileService profileService;
+
+    @Autowired
+    Util util;
 
     private SiteUser getUser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -155,8 +160,18 @@ public class ProfileController {
         webProfile.safeCopyFrom(profile);
 
 
+int bach = 0;
+Boolean ex = true;
+if (profile.getRole().equals("ROLE_DOCTOR")) {
+    bach = 1;
+//if (profile.getFirstname().trim().equals("") && profile.getSurname() != null && profile.getCity() != null)
+//    ex = true;
+}
+if (profile.getRole().equals("ROLE_PATIENT"))
+    bach = 2;
 
-
+        modelAndView.getModel().put("bach", bach);
+        modelAndView.getModel().put("ex", ex);
         modelAndView.getModel().put("userId", user.getId());
         modelAndView.getModel().put("profile", webProfile);
 
@@ -173,8 +188,21 @@ public class ProfileController {
 
         Profile webProfile = new Profile();
         webProfile.safeCopyFrom(profile);
+        Boolean allowed = false;
+        Boolean zenex = false;
+        System.out.println(profile.getRole());
+        System.out.println(profile.getRole());
+        System.out.println(profile.getRole());
+        System.out.println(profile.getRole());
+        if (util.getUser().getRole().equals("ROLE_DOCTOR"))
+            allowed = true;
+
+        if (util.getUser().getRole().equals("ROLE_PATIENT"))
+            zenex = true;
 
         modelAndView.getModel().put("profile", webProfile);
+        modelAndView.getModel().put("allowed", allowed);
+        modelAndView.getModel().put("zenex", zenex);
         modelAndView.setViewName("app.editProfileAbout");
 
         return modelAndView;
@@ -205,6 +233,14 @@ public class ProfileController {
         ModelAndView modelAndView = showProfile(user);
 
         modelAndView.getModel().put("ownProfile", true);
+
+        return modelAndView;
+    }
+    @RequestMapping(value = "/suggest")
+    public ModelAndView suggest() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("app.suggest");
 
         return modelAndView;
     }

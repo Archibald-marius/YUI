@@ -1,9 +1,11 @@
 package app.controllers.Controllers;
 
 import app.controllers.Models.Control;
+import app.controllers.Models.Profile;
 import app.controllers.Models.SiteUser;
 import app.controllers.Models.Yavka;
 import app.controllers.Services.ControlService;
+import app.controllers.Services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,19 +26,50 @@ public class ControlController {
     @Autowired
     Util util;
 
+    @Autowired
+    ProfileService profileService;
+
     @RequestMapping(value = "/control", method = RequestMethod.GET)
     ModelAndView registerControl(ModelAndView modelAndView) {
 
         SiteUser siteUser = util.getUser();
+        Profile profile = profileService.getUserProfile(siteUser);
+
+        if (profile == null) {
+            profile = new Profile();
+            profile.setUser(siteUser);
+            profile.setTherapy(true);
+            profile.setCardiology(true);
+            profile.setSurgery(true);
+            profile.setAlergology(true);
+            profileService.save(profile);
+
+        }
+//        profile.setRole(siteUser.getRole());
+//
+//
+//        Profile webProfile = new Profile();
+//        webProfile.safeCopyFrom(profile);
+
         Control control = new Control();
         Boolean ap = false;
         Boolean pls = false;
         Boolean tmp = false;
         Boolean glu = false;
-        if (siteUser.getTherapy()) ap = true;
-        if (siteUser.getCardiology()) pls = true;
-        if(siteUser.getSurgery()) tmp = true;
-        if(siteUser.getAlergology()) glu = true;
+//        if (siteUser.getTherapy()) ap = true;
+        if (profile.getTherapy()) ap = true;
+
+//        if (siteUser.getCardiology()) pls = true;
+        if (profile.getCardiology()) pls = true;
+
+
+//        if(siteUser.getSurgery()) tmp = true;
+        if(profile.getSurgery()) tmp = true;
+
+
+//        if(siteUser.getAlergology()) glu = true;
+        if(profile.getAlergology()) glu = true;
+
         modelAndView.addObject("time" , new Date());
         modelAndView.addObject("id", siteUser.getId());
         modelAndView.getModel().put("control", control);
@@ -59,8 +92,9 @@ public class ControlController {
         if(!result.hasErrors()) {
             controlService.register(control);
 
+            modelAndView.setViewName("redirect:/");
 
-            modelAndView.setViewName("/");
+//            modelAndView.setViewName("/");
         }
 
         return modelAndView;

@@ -37,11 +37,9 @@ public class SiteUser  {
     @Column(name = "enabled")
     private Boolean enabled = false;
 
-    @NotNull
     @Column(name="firstname")
     private String firstname;
 
-    @NotNull
     @Column(name="surname")
     private String surname;
 
@@ -99,6 +97,9 @@ public class SiteUser  {
     @Column(name="endocrinology")
     private Boolean endocrinology=false;
 
+    @Column(name="urology")
+    private Boolean urology=false;
+
     @Column(name="published")
     private Boolean published = false;
 
@@ -107,6 +108,25 @@ public class SiteUser  {
 
     @Column(name="hospital")
     private String hospital;
+
+    @Column(name="subscription")
+    private Long subscription;
+
+    public Long getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(Long subscription) {
+        this.subscription = subscription;
+    }
+
+    public Boolean getUrology() {
+        return urology;
+    }
+
+    public void setUrology(Boolean urology) {
+        this.urology = urology;
+    }
 
     public String getHospital() {
         return hospital;

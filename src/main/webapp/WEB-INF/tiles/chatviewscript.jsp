@@ -122,3 +122,4 @@
     connectionManager.fetchMessages("${conversationAjaxUrl}", refreshMessages, 0);
 
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tag-it/2.0/js/tag-it.js" crossorigin="anonymous"></script>

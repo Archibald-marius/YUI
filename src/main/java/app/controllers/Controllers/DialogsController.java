@@ -6,6 +6,7 @@ import app.controllers.Models.BlackList;
 import app.controllers.Models.SiteUser;
 import app.controllers.Models.dto.SearchResult;
 import app.controllers.Models.entity.Message;
+import app.controllers.Services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +24,13 @@ public class DialogsController {
     private Util util;
 
     @Autowired
-    MessageDao messageDao;
+    private MessageDao messageDao;
 
     @Autowired
-    BlockDao blockDao;
+    private BlockDao blockDao;
+
+    @Autowired
+    private ProfileService profileService;
 
     @RequestMapping(value="/dialogs", method = { RequestMethod.POST, RequestMethod.GET})
     public ModelAndView showDialogs(ModelAndView modelAndView){
@@ -40,33 +44,77 @@ public class DialogsController {
 
 
 List<BlackList> blackLists = blockDao.findForbidden(siteUser.getId());
+
+
         for (Message message: dialogs) {
-            for (BlackList block : blackLists) {
-                if (!message.getFromUser().getId().equals(block.getBlock())) {
+            if (!blackLists.isEmpty()) {
+                for (BlackList block : blackLists) {
+                    System.out.println(block.getBlock());
+                    if (!message.getFromUser().getId().equals(block.getBlock())) {
 
-                    if (message.getFromUser().getId() != siteUser.getId()) {
-                        ArrayList<String> list = new ArrayList<>();
-                        list.add(message.getFromUser().getFirstname() + " " + message.getFromUser().getSurname());
-                        list.add(message.getDayMonth());
-                        list.add(message.getText());
-                        list.add(message.getRead().toString());
-                        if (!mess.containsKey(message.getFromUser().getId())) {
-                            mess.put(message.getFromUser().getId(), list);
-                        } else mess.replace(message.getFromUser().getId(), list);
+                        if (message.getFromUser().getId() != siteUser.getId()) {
+                            ArrayList<String> list = new ArrayList<>();
+                            if (!message.getFromUser().getId().equals(util.getUser().getId()))
+                                list.add(profileService.getUserProfile(message.getFromUser()).getFirstname() + " " + profileService.getUserProfile(message.getFromUser()).getSurname());
+                            else
+                                list.add(profileService.getUserProfile(message.getToUser()).getFirstname() + " " + profileService.getUserProfile(message.getToUser()).getSurname());
+                            list.add(message.getDayMonth());
+                            list.add(message.getText());
+                            list.add(message.getRead().toString());
+                            if (!mess.containsKey(message.getFromUser().getId())) {
+                                mess.put(message.getFromUser().getId(), list);
+                            } else mess.replace(message.getFromUser().getId(), list);
 
-                    } else if (message.getToUser().getId() != siteUser.getId()) {
-                        ArrayList<String> list = new ArrayList<>();
-                        list.add(message.getToUser().getFirstname() + " " + message.getToUser().getSurname());
-                        list.add(message.getDayMonth());
-                        list.add(message.getText());
-                        list.add(message.getRead().toString());
-                        if (!mess.containsKey(message.getToUser().getId())) {
+                        } else if (message.getToUser().getId() != siteUser.getId()) {
+                            ArrayList<String> list = new ArrayList<>();
+                            if (!message.getFromUser().getId().equals(util.getUser().getId()))
+                                list.add(profileService.getUserProfile(message.getFromUser()).getFirstname() + " " + profileService.getUserProfile(message.getFromUser()).getSurname());
+                            else
+                                list.add(profileService.getUserProfile(message.getToUser()).getFirstname() + " " + profileService.getUserProfile(message.getToUser()).getSurname());
+                            list.add(message.getDayMonth());
+                            list.add(message.getText());
+                            list.add(message.getRead().toString());
+                            if (!mess.containsKey(message.getToUser().getId())) {
 
-                            mess.put(message.getToUser().getId(), list);
-                        } else mess.replace(message.getToUser().getId(), list);
+                                mess.put(message.getToUser().getId(), list);
+                            } else mess.replace(message.getToUser().getId(), list);
 
-                    }
+                        }
 //                    mess.put(message.getToUser().getId(), message.getToUser().getFirstname() + " " + message.getToUser().getSurname());
+                    }
+                }
+            }
+            else {
+                System.out.println(message.getFromUser().getId());
+                System.out.println(siteUser.getId());
+                if (message.getFromUser().getId() != siteUser.getId()) {
+                    ArrayList<String> list = new ArrayList<>();
+                    if (!message.getFromUser().getId().equals(util.getUser().getId()))
+                        list.add(profileService.getUserProfile(message.getFromUser()).getFirstname() + " " + profileService.getUserProfile(message.getFromUser()).getSurname());
+                    else
+                        list.add(profileService.getUserProfile(message.getToUser()).getFirstname() + " " + profileService.getUserProfile(message.getToUser()).getSurname());
+                    list.add(message.getDayMonth());
+                    list.add(message.getText());
+                    list.add(message.getRead().toString());
+                    if (!mess.containsKey(message.getFromUser().getId())) {
+                        mess.put(message.getFromUser().getId(), list);
+                    } else mess.replace(message.getFromUser().getId(), list);
+
+                } else if (message.getToUser().getId() != siteUser.getId()) {
+                    ArrayList<String> list = new ArrayList<>();
+                    if (!message.getFromUser().getId().equals(util.getUser().getId()))
+                        list.add(profileService.getUserProfile(message.getFromUser()).getFirstname() + " " + profileService.getUserProfile(message.getFromUser()).getSurname());
+                        else
+                        list.add(profileService.getUserProfile(message.getToUser()).getFirstname() + " " + profileService.getUserProfile(message.getToUser()).getSurname());
+
+                    list.add(message.getDayMonth());
+                    list.add(message.getText());
+                    list.add(message.getRead().toString());
+                    if (!mess.containsKey(message.getToUser().getId())) {
+
+                        mess.put(message.getToUser().getId(), list);
+                    } else mess.replace(message.getToUser().getId(), list);
+
                 }
             }
         }

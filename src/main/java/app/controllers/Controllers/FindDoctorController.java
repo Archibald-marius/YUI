@@ -54,7 +54,12 @@ public class FindDoctorController {
 
         Map<Long, List<String>> oreo = new HashMap<>();
 
+        System.out.println(doctors.size()>0);
+        if (doctors.size()>0)
         for (SiteUser users : doctors){
+            System.out.println(profileService.getUserProfile(users).getId());
+            System.out.println(profileService.getUserProfile(users).getCardiology());
+            System.out.println(profileService.getUserProfile(users).getPublished());
             ArrayList<String> arr = new ArrayList<>();
             switch (id){
                 case "therapy":
@@ -73,7 +78,7 @@ public class FindDoctorController {
                         arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
-                case "cardioligy":
+                case "cardiology":
                     if (profileService.getUserProfile(users).getCardiology() && profileService.getUserProfile(users).getPublished()){
                         arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
                         arr.add(profileService.getUserProfile(users).getCity());
@@ -185,6 +190,14 @@ public class FindDoctorController {
                         arr.add(profileService.getUserProfile(users).getHospital());
                         oreo.put(users.getId(), arr);
                     }
+                case "urology":
+                    if (profileService.getUserProfile(users).getUrology() != null)
+                    if (profileService.getUserProfile(users).getUrology() && profileService.getUserProfile(users).getPublished()){
+                        arr.add(profileService.getUserProfile(users).getFirstname() + " " + profileService.getUserProfile(users).getSurname());
+                        arr.add(profileService.getUserProfile(users).getCity());
+                        arr.add(profileService.getUserProfile(users).getHospital());
+                        oreo.put(users.getId(), arr);
+                    }
                     break;
                 default:break;
             }
@@ -217,7 +230,7 @@ public class FindDoctorController {
     ModelAndView editProf(ModelAndView modelAndView, @PathVariable("id") Long id) {
 
         SiteUser user = util.getUser();
-        String mes = "Добрый день! Хотелось бы с Вами связатся по вопросу Вашего профиля. Оставляю мои контакты тут. Спасибо!";
+        String mes = "Добрый день! Хочу связатся по вопросу Вашего профиля. Спасибо!";
 
         Boolean ag = true;
         List<Message> messages = new ArrayList<>();
@@ -227,9 +240,23 @@ public class FindDoctorController {
             if (list.getToUser().getId().equals(id) && list.getText().equals(mes))
                 ag = false;
         }
+        Profile profile = profileService.getUserProfile(user);
+        if (!profile.getFirstname().equals("") && !profile.getSurname().equals("") && !profile.getCity().equals("")) {
+            if (ag && messages.size() != 1) messageService.save(user, userService.get(id), mes);
+            modelAndView.setViewName("app.getcontact");
+        }
+        else {
+            modelAndView.setViewName("redirect:/info");
+        }
 
-        if (ag && messages.size() != 1) messageService.save(user, userService.get(id), mes);
-        modelAndView.setViewName("app.getcontact");
+
+        return modelAndView;
+    }
+    @RequestMapping(value = "/info")
+    public ModelAndView info() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("app.info");
 
         return modelAndView;
     }

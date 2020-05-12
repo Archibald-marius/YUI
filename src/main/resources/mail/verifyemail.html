@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
 <html lang="en">
-<p>Thank you for registing</p>
-<p>please click <a th:href="@{${url} + '/confirmregister?t=' + ${token}}">here</a> to verify your email address </p>
+<span style="font-size: 22px;">
+<p>Спасибо за регистрацию!</p>
+<p>Пройдите по <a th:href="@{${url} + '/confirmregister?t=' + ${token}}">ссылке</a> для подтверждения Вашей электронной почты. </p>
+<p>По всем вопросам можете обращаться по указаному адресу inmedical.org@gmail.com.</p>
+<p>C уважением, команда <span style="color: darkslategray">InMedical</span>.</p>
+</span>
 </html>

@@ -6,72 +6,103 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class=container">
-    <div class="btn-on-choose">
-        <div class="container">
             <form>
-                    <table>
-                        <tr>
-                            <td>
-                                <button class="btn-on" formaction="/docs/therapy">Терапия</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/cardiology">Кардиология</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/gastro">Гастроентерология</button>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>
-                                <button class="btn-on" formaction="/docs/neurology">Неврология</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/ophtalmology">Офтальмология</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/otolaryngology">Отоларингология</button>
-                            </td>
-                        </tr>
+                                                <button class="btn-on" formaction="/docs/therapy">Терапия</button>
 
-                        <tr>
-                            <td>
-                                <button class="btn-on" formaction="/docs/gynecology">Акушерство и гинекология</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/endocrinology">Эндокринология</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/reproductology">Репродуктология</button>
-                            </td>
-                        </tr>
+                                                <button class="btn-on" formaction="/docs/cardiology">Кардиология</button>
 
-                        <tr>
-                            <td>
-                                <button class="btn-on" formaction="/docs/surgery">Хирургия</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/vascularsurgery">Сосудистая хирургия</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/plasticsurgery">Пластическая хирургия</button>
-                            </td>
-                        </tr>
+                                                <button class="btn-on" formaction="/docs/gastro">Гастроэнтерология</button>
 
-                        <tr>
-                            <td>
-                                <button class="btn-on" formaction="/docs/pediatry">Педиатрия</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/alergology">Алергология</button>
-                            </td>
-                            <td>
-                                <button class="btn-on" formaction="/docs/orthopedy">Ортопедия</button>
-                            </td>
-                        </tr>
+                                                <button class="btn-on" formaction="/docs/neurology">Неврология</button>
 
-                    </table>
+                                                <button class="btn-on" formaction="/docs/ophtalmology">Офтальмология</button>
+
+                                                <button class="btn-on" formaction="/docs/otolaryngology">Отоларингология</button>
+
+
+                                                <button class="btn-on" formaction="/docs/endocrinology">Эндокринология</button>
+
+                                                <button class="btn-on" formaction="/docs/reproductology">Репродуктология</button>
+
+                                                <button class="btn-on" formaction="/docs/surgery">Хирургия</button>
+
+
+                                                <button class="btn-on" formaction="/docs/pediatry">Педиатрия</button>
+
+                                                <button class="btn-on" formaction="/docs/alergology">Аллергология</button>
+                <button class="btn-on" formaction="/docs/urology">Урология</button>
+
+                                                <button class="btn-on" formaction="/docs/orthopedy">Травматология и ортопедия</button>
+                <button class="btn-on" formaction="/docs/gynecology">Акушерство и гинекология</button>
+                <button class="btn-on" formaction="/docs/vascularsurgery">Сосудистая хирургия</button>
+
+                <button class="btn-on" formaction="/docs/plasticsurgery">Пластическая хирургия</button>
+
+
+
+            <%--                    <table>--%>
+<%--                        <tr>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/therapy">Терапия</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/cardiology">Кардиология</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/gastro">Гастроентерология</button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+
+<%--                        <tr>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/neurology">Неврология</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/ophtalmology">Офтальмология</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/otolaryngology">Отоларингология</button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+
+<%--                        <tr>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/gynecology">Акушерство и гинекология</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/endocrinology">Эндокринология</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/reproductology">Репродуктология</button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+
+<%--                        <tr>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/surgery">Хирургия</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/vascularsurgery">Сосудистая хирургия</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/plasticsurgery">Пластическая хирургия</button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+
+<%--                        <tr>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/pediatry">Педиатрия</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/alergology">Алергология</button>--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button class="btn-on" formaction="/docs/orthopedy">Ортопедия</button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+
+<%--                    </table>--%>
 
 
             </form>

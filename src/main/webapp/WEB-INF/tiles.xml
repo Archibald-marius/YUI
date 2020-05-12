@@ -6,7 +6,7 @@
 
 <tiles-definitions>
     <definition name="app.default" template="/WEB-INF/layouts/default.jsp">
-        <put-attribute name="title" value="Spring Boot Demo" />
+        <put-attribute name="title" value="InMedical" />
         <put-attribute name="chatnotification" value="/WEB-INF/tiles/chatnotification.jsp" />
     </definition>
 
@@ -130,5 +130,19 @@
     <definition name="app.blacklist" extends="app.default">
         <put-attribute name="content" value="/WEB-INF/tiles/blacklist.jsp" />
     </definition>
-
+    <definition name="app.suggest" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/suggest.jsp" />
+    </definition>
+    <definition name="app.homemes" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/homemes.jsp" />
+    </definition>
+    <definition name="app.mail" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/mail.jsp" />
+    </definition>
+    <definition name="app.info" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/info.jsp" />
+    </definition>
+    <definition name="app.option" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/option.jsp" />
+    </definition>
 </tiles-definitions>

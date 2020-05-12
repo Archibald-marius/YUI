@@ -7,10 +7,17 @@
 <div class="row">
 
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <c:if test="${empty patientList}">
+            <span style="font-size: 22px; color: #495057;">Список пациентов пока пуст</span>
+        </c:if>
+<c:if test="${!empty patientList}">
+
+
         <div class="homepage-status">
 
             <span style="color: #495057">Список пациентов:</span>
             <br>
+
 
             <div class="container">
             <c:forEach items="${patientList}" var="patientList">
@@ -47,3 +54,4 @@
     </div>
 
 </div>
+</c:if>
