@@ -26,6 +26,9 @@ public class PatientsService {
     public List<Patients> getProp(String name){
         return patientsDao.findAllByDoctor(name);
     }
+    public List<Patients> getAll(){
+        return patientsDao.findAll();
+    }
     public Patients get(Long id) {
         return patientsDao.findById(id).get();
     }

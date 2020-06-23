@@ -6,6 +6,8 @@
 
 <c:url var="loginUrl" value="/login" />
 <c:url var="registerUrl" value="/choose" />
+<c:url var="forgotpassword" value="/forgotpassword" />
+
 
 
 
@@ -43,6 +45,11 @@
                             </button>
 
                 </form>
+            <br>
+
+            <span style="font-size: 14px"><a href="${forgotpassword}">Восстановить пароль</a>
+</span>
+
 <%--            </div>--%>
         </div>
 

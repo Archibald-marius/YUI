@@ -176,4 +176,42 @@ public class AuthController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/changepassword", method = {RequestMethod.GET, RequestMethod.POST})
+    ModelAndView changePassword(ModelAndView modelAndView, @RequestParam("t") String tokenString) {
+
+        VerificationToken token = userService.getVerificationToken(tokenString);
+
+        if(token == null) {
+            modelAndView.setViewName("redirect:/invaliduser");
+            userService.deleteToken(token);
+            return modelAndView;
+        }
+
+        Date expiryDate = token.getExpiry();
+
+        if(expiryDate.before(new Date())) {
+            modelAndView.setViewName("redirect:/expiredtoken");
+            userService.deleteToken(token);
+            return modelAndView;
+        }
+
+        SiteUser user = token.getUser();
+
+        if(user == null) {
+            modelAndView.setViewName("redirect:/invaliduser");
+            userService.deleteToken(token);
+            return modelAndView;
+        }
+//        String password = "";
+//        user.setPassword(password);
+//        userService.save(user);
+
+
+//        modelAndView.getModel().put("message", registrationConfirmedMessage);
+        modelAndView.addObject("str", user.getEmail());
+        modelAndView.addObject("bigdata", tokenString);
+        modelAndView.setViewName("app.changepassword");
+        return modelAndView;
+    }
+
 }

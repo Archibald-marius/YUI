@@ -27,7 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/register", "/register/*", "/choose", "/verifyemail", "/registrationconfirmed",
                         "/invaliduser",
-                        "/expiredtoken", "/confirmregister", "/success")
+                        "/expiredtoken", "/confirmregister", "/success", "/forgotpassword", "/reset",
+                        "/newpass", "/changepassword")
                 .permitAll()
                 .antMatchers(
                         "/js/*",
@@ -36,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/addstatus", "/editstatus", "/deletestatus", "/viewstatus", "/profile", "/profile/*", "/edit-profile-about", "/addpatient", "/patients", "/patientcard", "/about", "/search", "/patientcard/*", "/editPatientCard", "/editPatientCard/*", "/yavka", "/yavka/*", "/showVisites", "/showVisites/*", "/editvisit", "/editvisit/*", "/webjars/**", "/chat/**", "/chatview", "/chatview/*", "/conversation", "/conversation/*", "conversation/*")
                 .hasRole("USER")
-                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/addpatient", "/patients", "/patientcard", "/about", "/search", "/patientcard/*", "/editPatientCard", "/editPatientCard/*", "/yavka", "/yavka/*", "/showVisites", "/showVisites/*", "/editvisit", "/editvisit/*", "/webjars/**", "/chat/**", "/chatview", "/chatview/*", "/conversation", "/conversation/*", "conversation/*", "/checkmessages", "/speciality", "/publish", "/checkmessages", "/dialogs", "/searchdoctor", "/docs", "/docs/**", "/getcontact/**", "/params", "/ind/*", "/control", "/blacklist/*", "/homemes/*", "/suggest", "/mail/*", "/info", "/option")
+                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/addpatient", "/patients", "/patientcard", "/about", "/search", "/patientcard/*", "/editPatientCard", "/editPatientCard/*", "/yavka", "/yavka/*", "/showVisites", "/showVisites/*", "/editvisit", "/editvisit/*", "/webjars/**", "/chat/**", "/chatview", "/chatview/*", "/conversation", "/conversation/*", "conversation/*", "/checkmessages", "/speciality", "/publish", "/checkmessages", "/dialogs", "/searchdoctor", "/docs", "/docs/**", "/getcontact/**", "/params", "/ind/*", "/control", "/blacklist/*", "/homemes/*", "/suggest", "/mail/*", "/info", "/option", "/adminspace")
                 .authenticated()
                 .anyRequest()
                 .denyAll()

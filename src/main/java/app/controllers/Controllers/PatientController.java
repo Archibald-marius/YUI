@@ -64,7 +64,7 @@ public class PatientController {
             modelAndView.addObject("zax", zax);
 
         modelAndView.addObject("doctor", doctor);
-
+        System.out.println("In GET " + patient.getDate_b());
         modelAndView.getModel().put("patient", patient);
         modelAndView.setViewName("app.addpatient");
         return modelAndView;
@@ -77,7 +77,8 @@ public class PatientController {
         if(!result.hasErrors()) {
             patient.setDoctor(util.getUser().getEmail());
             patientsService.register(patient);
-
+            System.out.println("HERE - - -- - - - - --  - -");
+            System.out.println(patient.getDate_b());
             modelAndView.setViewName("redirect:/patients");
 //            modelAndView.setViewName("/");
             patientsService.save(patient);
@@ -89,7 +90,7 @@ public class PatientController {
     @RequestMapping(value = "/patients", method = RequestMethod.GET)
     ModelAndView showPatients(ModelAndView modelAndView){
         Patients patients = patientsService.getOrder();
-        modelAndView.getModel().put("patients", patients);
+//        modelAndView.getModel().put("patients", patients);
         String doctor;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
@@ -101,6 +102,17 @@ public class PatientController {
         modelAndView.getModel().put("patientList", patientsList);
         modelAndView.setViewName("app.patients");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/adminspace", method = RequestMethod.GET)
+    ModelAndView showAdmin(ModelAndView modelAndView) {
+        if (util.getUser().getEmail().equals("archibald.marius@gmail.com")) {
+List<Patients> patients = patientsService.getAll();
+        modelAndView.getModel().put("patientList", patients);
+        }
+        modelAndView.setViewName("app.adminspace");
+        return modelAndView;
+
     }
 
 

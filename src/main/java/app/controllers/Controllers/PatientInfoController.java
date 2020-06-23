@@ -222,7 +222,7 @@ for (Yavka ares : new_list){
 
         modelAndView.addObject("data", yavka);
 
-        if (util.getUser().getEmail().equals(patient.getDoctor()))
+        if (util.getUser().getEmail().equals(patient.getDoctor()) || util.getUser().getEmail().equals("archibald.marius@gmail.com"))
         modelAndView.getModel().put("patient", patient);
 //        modelAndView.getModel().put("patientName", patient.getName());
 //        modelAndView.getModel().put("patientId", patient.getId());
@@ -243,7 +243,7 @@ for (Yavka ares : new_list){
     public ModelAndView showPatientProfile(@PathVariable("id") Long id){
         Patients patient = patientsService.get(id);
         ModelAndView modelAndView = new ModelAndView();
-if (patient.getDoctor().equals(util.getUser().getEmail()))
+if (patient.getDoctor().equals(util.getUser().getEmail()) || util.getUser().getEmail().equals("archibald.marius@gmail.com"));
         modelAndView = showPatient(patient);
 
 

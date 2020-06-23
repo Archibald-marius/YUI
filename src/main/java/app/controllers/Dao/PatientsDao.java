@@ -16,7 +16,8 @@ public interface PatientsDao extends CrudRepository<Patients, Long> {
     @Query("SELECT e FROM Patients e WHERE e.doctor IN (:doctor)")
     List<Patients> findAllByDoctor(@Param("doctor")String doctor);
 
-
+    @Query("SELECT e FROM Patients e")
+    List<Patients> findAll();
 
 
 }
