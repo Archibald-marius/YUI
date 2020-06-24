@@ -3,7 +3,7 @@ inmedical.org - complex program for doctors and patients, with embeded message s
 immediadely. Program is under development now, next tasts are to set up javascript for analysis hints, search for doctors etc. 
 Technologies:
 - Java 8;
-- Spring;
+- Spring-boot;
 - a little bit of js;
 - mySQL, hibernate;
 - maven.
