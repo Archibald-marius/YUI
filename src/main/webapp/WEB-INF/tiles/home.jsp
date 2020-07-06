@@ -6,95 +6,111 @@
 <c:url var="search" value="/search"/>
 <c:url var="img" value="/img" />
 
+
 <c:if test="${ticket == 0}">
-    <span style="font-size: 30px; color: darkslategray">
-            Добро пожаловать в систему медицинского контроля <span style="color: cadetblue">InMedical!</span><br>
+
+
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            background: linear-gradient(-45deg, #ffe2d3, #a6dee2, #cfc2fc);
+            min-height: 100vh;
+        }
+        /*.text-center{*/
+        /*    alignment: center;*/
+        /*}*/
+    </style>
+        <span class="inme" style="font-size: 30px; color: darkslategray;">
+            Welcome to<span style="color: cadetblue; alignment: center;"><br>InMedical.</span><br>
     </span>
-    <br>
-    <br>
-    <br>
-
-    <div class="row">
-
-        <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2">
-
-                        <div class="profile-about">
-                            <br>
-            <div class="profile-image">
-                    <%--                <img src="${img}/8.png" width="300" height="300"/>--%>
-                <img src="${img}/15.png" width="290" height="140" style="float: left; margin: 0px 0px 0px 0px;"/>
-
-
-            </div>
-            <div class="profile-text" style="font-size: 20px; font-family: 'Iowan Old Style';">
-                <span style="font-size: 20px;">
-                        --> Динамичекий мониторинг показателей здоровья пользователей.<br>
-                </span>
-                <br>
-                <br>
-                <br>
+    <div class="heart" style="z-index: -1;"></div>
 
 
 
-            </div>
 
-        </div>
-            <br>
-            <br>
-        <div class="profile-image">
-                <%--                <img src="${img}/8.png" width="300" height="300"/>--%>
-            <img src="${img}/12.png" width="180" height="140" style="float: left; margin: 0px 0px 0px 0px;"/>
+    <%--    <div class="row">--%>
 
+<%--        <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2">--%>
 
-        </div>
-        <div class="profile-text" style="font-size: 20px; font-family: 'Iowan Old Style'">
-                <span style="font-size: 20px;">
-                         --> Интуитивно понятная систeма ведения учёта пациентов для медицинских работников.<br>
-                </span>
-            <br>
-<br>
-            <br>
+<%--                        <div class="profile-about">--%>
+<%--                            <br>--%>
+<%--            <div class="profile-image">--%>
+<%--                    &lt;%&ndash;                <img src="${img}/8.png" width="300" height="300"/>&ndash;%&gt;--%>
+<%--                <img src="${img}/15.png" width="290" height="140" style="float: left; margin: 0px 0px 0px 0px;"/>--%>
 
 
-        </div>
-<br>
-<br>
-            <div class="profile-image">
-                    <%--                <img src="${img}/8.png" width="300" height="300"/>--%>
-                <img src="${img}/13.png" width="160" height="140" style="float: left; margin: 0px 0px 0px 0px;"/>
-
-
-            </div>
-            <div class="profile-text" style="font-size: 20px; font-family: 'Iowan Old Style'">
-                <span style="font-size: 20px;">
-                        --> Постоянная связь доктора и пациента.<br>
-                </span>
-                <br>
+<%--            </div>--%>
+<%--            <div class="profile-text" style="font-size: 20px; font-family: 'Iowan Old Style';">--%>
+<%--                <span style="font-size: 20px;">--%>
+<%--                        --> Динамичекий мониторинг показателей здоровья пользователей.<br>--%>
+<%--                </span>--%>
+<%--                <br>--%>
+<%--                <br>--%>
+<%--                <br>--%>
 
 
 
-            </div>
+<%--            </div>--%>
 
-    </div>
+<%--        </div>--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--        <div class="profile-image">--%>
+<%--                &lt;%&ndash;                <img src="${img}/8.png" width="300" height="300"/>&ndash;%&gt;--%>
+<%--            <img src="${img}/12.png" width="180" height="140" style="float: left; margin: 0px 0px 0px 0px;"/>--%>
 
-    </div>
-    <footer class="page-footer font-small blue">
 
-                    <!-- Copyright -->
-                    <div class="footer-copyright text-center py-3"><br>
-                        <br>
-    <%--&lt;%&ndash;                    © 2020 Copyright:&ndash;%&gt;--%>
-    <%--                    <br>--%>
-                        Канал для связи:
-                        <br>
-                        <a href="">inmedical.org@gmail.com</a>
+<%--        </div>--%>
+<%--        <div class="profile-text" style="font-size: 20px; font-family: 'Iowan Old Style'">--%>
+<%--                <span style="font-size: 20px;">--%>
+<%--                         --> Интуитивно понятная систeма ведения учёта пациентов для медицинских работников.<br>--%>
+<%--                </span>--%>
+<%--            <br>--%>
+<%--<br>--%>
+<%--            <br>--%>
+
+
+<%--        </div>--%>
+<%--<br>--%>
+<%--<br>--%>
+<%--            <div class="profile-image">--%>
+<%--                    &lt;%&ndash;                <img src="${img}/8.png" width="300" height="300"/>&ndash;%&gt;--%>
+<%--                <img src="${img}/13.png" width="160" height="140" style="float: left; margin: 0px 0px 0px 0px;"/>--%>
+
+
+<%--            </div>--%>
+<%--            <div class="profile-text" style="font-size: 20px; font-family: 'Iowan Old Style'">--%>
+<%--                <span style="font-size: 20px;">--%>
+<%--                        --> Постоянная связь доктора и пациента.<br>--%>
+<%--                </span>--%>
+<%--                <br>--%>
+
+
+
+<%--            </div>--%>
+
+<%--    </div>--%>
+
+<%--    </div>--%>
+<%--    <footer class="page-footer font-small blue">--%>
+
+<%--                    <!-- Copyright -->--%>
+<%--                    <div class="footer-copyright text-center py-3"><br>--%>
 <%--                        <br>--%>
-<%--                        © 2020--%>
+<%--    &lt;%&ndash;&lt;%&ndash;                    © 2020 Copyright:&ndash;%&gt;&ndash;%&gt;--%>
+<%--    &lt;%&ndash;                    <br>&ndash;%&gt;--%>
+<%--                        Канал для связи:--%>
+<%--                        <br>--%>
+<%--                        <a href="">inmedical.org@gmail.com</a>--%>
+<%--&lt;%&ndash;                        <br>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        © 2020&ndash;%&gt;--%>
 
-                    <%--                </div>--%>
-    <%--                <!-- Copyright -->--%>
+<%--                    &lt;%&ndash;                </div>&ndash;%&gt;--%>
+<%--    &lt;%&ndash;                <!-- Copyright -->&ndash;%&gt;--%>
 
-                </footer>
+<%--                </footer>--%>
 
     </c:if>
 

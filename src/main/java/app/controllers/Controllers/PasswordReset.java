@@ -41,7 +41,7 @@ public class PasswordReset extends HttpServlet {
     public ModelAndView reset(ModelAndView modelAndView, @RequestParam("email") String text){
         String token = userService.createEmailVerificationToken(userService.get(text));
 
-        emailService.changePassword(userService.get(text).getEmail(), token);
+        emailService.sendVerificationEmail(userService.get(text).getEmail(), token, 2);
         modelAndView.setViewName("app.reset");
         return modelAndView;
     }

@@ -160,4 +160,13 @@
     <definition name="app.newpass" extends="app.default">
         <put-attribute name="content" value="/WEB-INF/tiles/newpass.jsp" />
     </definition>
+    <definition name="app.analysis" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/analysis.jsp" />
+    </definition>
+    <definition name="app.check" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/check.jsp" />
+    </definition>
+    <definition name="app.conclusion" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/conclusion.jsp" />
+    </definition>
 </tiles-definitions>

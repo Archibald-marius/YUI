@@ -11,5 +11,5 @@ import java.util.List;
 public interface PatientInfoDao extends CrudRepository<PatientInfo, Long> {
     PatientInfo findByPatient(Patients patient);
 
-    @Query("SELECT e FROM Patients e WHERE e.name IN (:name)")
-    List<Patients> findAllByName(@Param("name")String name);}
+    @Query("SELECT e FROM Patients e WHERE e.name like %:name% AND e.doctor IN :doctor")
+    List<Patients> findAllByName(@Param("name")String name, @Param("doctor")String doctor);}

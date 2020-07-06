@@ -127,7 +127,9 @@ List<BlackList> blackLists = blockDao.findForbidden(siteUser.getId());
                         (oldValue, newValue) -> oldValue,
                         LinkedHashMap::new
                 ));
-
+        Boolean bmw = mess.isEmpty();
+        System.out.println(bmw);
+        modelAndView.getModel().put("bmw", bmw);
         modelAndView.getModel().put("dialogs", mess);
         modelAndView.setViewName("app.dialogs");
         return modelAndView;

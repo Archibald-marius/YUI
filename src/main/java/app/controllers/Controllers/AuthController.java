@@ -69,7 +69,7 @@ public class AuthController {
 
             String token = userService.createEmailVerificationToken(user);
 
-            emailService.sendVerificationEmail(user.getEmail(), token);
+            emailService.sendVerificationEmail(user.getEmail(), token, 1);
             modelAndView.setViewName("redirect:/success");
 
 //            userService.save(user);
@@ -108,7 +108,7 @@ public class AuthController {
 
             String token = userService.createEmailVerificationToken(user);
 
-            emailService.sendVerificationEmail(user.getEmail(), token);
+            emailService.sendVerificationEmail(user.getEmail(), token, 1);
             modelAndView.setViewName("redirect:/success");
 
 //            userService.save(user);

@@ -51,12 +51,18 @@ public class EmailService {
     }
 
     @Async
-    public void sendVerificationEmail(String emailAddress, String token){
+    public void sendVerificationEmail(String emailAddress, String token, int param){
 
         Context context = new Context();
         context.setVariable("token", token);
         context.setVariable("url", url);
-        String emailContents = templateEngine.process("verifyemail", context);
+        String emailContents;
+
+        if (param == 1)
+         emailContents = templateEngine.process("verifyemail", context);
+       else
+            emailContents = templateEngine.process("restorepassword", context);
+
 
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
             @Override
@@ -68,38 +74,6 @@ public class EmailService {
                 message.setSubject("Верификация InMedical");
                 message.setSentDate(new Date());
 
-                message.setText(emailContents, true);
-
-//                mimeMessage.setFrom("no-reply@gmail.com");
-//                mimeMessage.setRecipients(Message.RecipientType.TO, emailAddress);
-//                mimeMessage.setSubject("Верификация", "UTF-8");
-//                mimeMessage.setContent("<p>Спасибо за регистрацию!</p>\n" +
-//                        "Пройдите по <a th:href=\"@{${url} + '/confirmregister?t=' + ${token}}\">ссылке</a> для подтверждения Вашей электронной почты. </p>\n", "text/html; charset=UTF-8");
-
-            }
-        };
-
-        send(preparator);
-    }
-
-
-    @Async
-    public void changePassword(String emailAddress, String token){
-
-        Context context = new Context();
-        context.setVariable("token", token);
-        context.setVariable("url", url);
-        String emailContents = templateEngine.process("restorepassword", context);
-
-        MimeMessagePreparator preparator = new MimeMessagePreparator() {
-            @Override
-            public void prepare(MimeMessage mimeMessage) throws Exception {
-                MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-
-                message.setTo(emailAddress);
-                message.setFrom(new InternetAddress("no-reply@gmail.com"));
-                message.setSubject("Восстановление пароля");
-                message.setSentDate(new Date());
 
                 message.setText(emailContents, true);
 
@@ -114,4 +88,31 @@ public class EmailService {
 
         send(preparator);
     }
+
+
+//    @Async
+//    public void changePassword(String emailAddress, String token){
+//
+//        Context context = new Context();
+//        context.setVariable("token", token);
+//        context.setVariable("url", url);
+//        String emailContents = templateEngine.process("restorepassword", context);
+//
+//        MimeMessagePreparator preparator = new MimeMessagePreparator() {
+//            @Override
+//            public void prepare(MimeMessage mimeMessage) throws Exception {
+//                MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+//
+//                message.setTo(emailAddress);
+//                message.setFrom(new InternetAddress("no-reply@gmail.com"));
+//                message.setSubject("Восстановление пароля");
+//                message.setSentDate(new Date());
+//
+//                message.setText(emailContents, true);
+//
+//            }
+//        };
+//
+//        send(preparator);
+//    }
 }

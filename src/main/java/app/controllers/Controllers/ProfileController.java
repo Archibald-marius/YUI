@@ -37,101 +37,6 @@ public class ProfileController {
         return userService.get(email);
     }
 
-//    private ModelAndView showProfile(SiteUser user){
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        if(user == null){
-//            modelAndView.setViewName("redirect:/");
-//            return modelAndView;
-//        }
-//
-//        Profile profile = profileService.getUserProfile(user);
-//
-//        if(profile == null){
-//            profile = new Profile();
-//            profile.setUser(user);
-//            profileService.save(profile);
-//        }
-//
-//        Profile webProfile = new Profile();
-//        webProfile.saveCopyFrom(profile);
-//
-//        modelAndView.getModel().put("userId", user.getId());
-//        modelAndView.getModel().put("profile", webProfile);
-//        modelAndView.setViewName("app.profile");
-//
-//        return modelAndView;
-//
-//    }
-
-
-//    @RequestMapping(value = "/profile")
-//    public ModelAndView showProfile(){
-//
-//        SiteUser user = getUser();
-//        ModelAndView modelAndView = new ModelAndView();
-////        ModelAndView modelAndView = showProfile(user);
-//        modelAndView.getModel().put("profile", user);
-//        modelAndView.setViewName("app.profile");
-//
-//        return modelAndView;
-//    }
-
-//    @RequestMapping(value = "/profile/{id}")
-//    public ModelAndView showProfile(@PathVariable("id") Long id){
-//
-//
-//
-//        SiteUser user = userService.get(id);
-//        ModelAndView modelAndView = showProfile(user);
-//
-//        return modelAndView;
-//    }
-
-
-//    @RequestMapping(value = "/edit-profile-about", method = RequestMethod.GET)
-//    public ModelAndView editProfileAbout(ModelAndView modelAndView){
-//        SiteUser user = getUser();
-////        Profile profile = profileService.getUserProfile(user);
-////        Profile webProfile = new Profile();
-//
-////        webProfile.saveCopyFrom(profile);
-//
-//
-//
-//        modelAndView.getModel().put("profile", user);
-//        modelAndView.setViewName("app.editProfileAbout");
-//        return modelAndView;
-//    }
-//    @RequestMapping(value = "/edit-profile-about", method = RequestMethod.POST)
-//    public ModelAndView editProfileAbout(ModelAndView modelAndView, @Valid SiteUser siteUser , BindingResult result){
-//        System.out.println(siteUser.getId());
-//        System.out.println(siteUser.getId());
-//        System.out.println(siteUser.getId());
-//        System.out.println(siteUser.getId());
-//        System.out.println(siteUser.getId());
-//        System.out.println(siteUser.getId());
-//
-//        modelAndView.setViewName("app.editProfileAbout");
-//
-//Long id = Long.valueOf(122);
-//        SiteUser user1 = getUser();
-////        Profile profile = profileService.getUserProfile(user);
-//        SiteUser profile = userService.get(id);
-//
-//        profile.safeMergeFrom(user1);
-//
-//
-//
-//        if(!result.hasErrors()){
-//            userService.save(profile);
-//            modelAndView.setViewName("redirect:/");
-//        }
-//        return modelAndView;
-//    }
-
-
-
 
     //----------------------------
     private ModelAndView showProfile(SiteUser user) {
@@ -174,7 +79,6 @@ if (profile.getRole().equals("ROLE_PATIENT"))
         modelAndView.getModel().put("ex", ex);
         modelAndView.getModel().put("userId", user.getId());
         modelAndView.getModel().put("profile", webProfile);
-
         modelAndView.setViewName("app.profile");
 
         return modelAndView;
@@ -190,10 +94,7 @@ if (profile.getRole().equals("ROLE_PATIENT"))
         webProfile.safeCopyFrom(profile);
         Boolean allowed = false;
         Boolean zenex = false;
-        System.out.println(profile.getRole());
-        System.out.println(profile.getRole());
-        System.out.println(profile.getRole());
-        System.out.println(profile.getRole());
+
         if (util.getUser().getRole().equals("ROLE_DOCTOR"))
             allowed = true;
 

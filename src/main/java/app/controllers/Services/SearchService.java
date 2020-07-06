@@ -15,9 +15,9 @@ public class SearchService {
     @Autowired
     private PatientInfoDao patientInfoDao;
 
-    public List<SearchResult> search(String text){
+    public List<SearchResult> search(String text, String doctor){
 
-        return patientInfoDao.findAllByName(text).stream().map(SearchResult::new).collect(Collectors.toList());
+        return patientInfoDao.findAllByName(text, doctor).stream().map(SearchResult::new).collect(Collectors.toList());
 
     }
 }

@@ -20,7 +20,7 @@
 
     <input type="text" class="form-control" name="email" placeholder="Email">
     <br>
-    <button id="search-button" class="btn btn-primary" style="width: 270px; background-color: cadetblue; font-size: 14px;" type="submit">
+    <button id="search-button" class="btn btn-primary" style="width: 300px; background-color: cadetblue; font-size: 14px;" type="submit">
         Восстановить пароль
     </button>
 

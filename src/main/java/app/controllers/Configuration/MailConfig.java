@@ -31,8 +31,8 @@ public class MailConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("inmedical.org@gmail.com");
-        mailSender.setPassword("-");
+        mailSender.setUsername("inmedicalt@gmail.com");
+        mailSender.setPassword("amfibia1r");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
@@ -42,6 +42,7 @@ public class MailConfig {
 
         return mailSender;
     }
+
 
 
 }

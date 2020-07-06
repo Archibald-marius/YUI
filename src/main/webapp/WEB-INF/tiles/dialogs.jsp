@@ -9,7 +9,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:if test="${bmw == true}">
+    <span style="font-size: 18px; color: #343a40;">
+            Новых сообщений нет.
 
+    </span>
+</c:if>
 <c:forEach var="dialogs" items="${dialogs}">
     <c:url var="dialog" value="/chatview/${dialogs.key}"/>
     <c:url var="blacklist" value="/blacklist/${dialogs.key}"/>

@@ -101,7 +101,7 @@
                 <a class="dropdown-item" href="${contextRoot}/login">Войти</a>
             </li>
             <li class="nav-item">
-                <a class="dropdown-item" href="${contextRoot}/choose" style="">Зарегистрироваться</a>
+                <a class="dropdown-item" href="${contextRoot}/choose" style="">Регистрация</a>
             </li>
 
 
@@ -180,6 +180,10 @@
             <a class="dropdown-item" href="${contextRoot}/dialogs">Почта</a>
 
         </li>
+<%--        <li class="nav-inline">--%>
+<%--            <a class="dropdown-item" href="${contextRoot}/analysis">Розшифрока анализов</a>--%>
+
+<%--        </li>--%>
 <%--        <li class="nav-inline">--%>
 <%--            <a class="dropdown-item" href="${contextRoot}/searchdoctor">Найти врача</a>--%>
 

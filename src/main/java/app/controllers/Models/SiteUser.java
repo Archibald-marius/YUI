@@ -112,6 +112,17 @@ public class SiteUser  {
     @Column(name="subscription")
     private Long subscription;
 
+    @Column(name = "gender")
+    private Long gender;
+
+    public Long getGender() {
+        return gender;
+    }
+
+    public void setGender(Long gender) {
+        this.gender = gender;
+    }
+
     public Long getSubscription() {
         return subscription;
     }

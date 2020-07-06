@@ -43,14 +43,24 @@
                 <span style="color: lightslategray">
                     Город:
                 </span>
-                <c:out value="${profile.city}"/>
+<c:if test="${profile.city != ''}">
+    <c:out value="${profile.city}"/>
+</c:if>
+                <c:if test="${profile.city == ''}">
+                    не указано
+                </c:if>
                 <br>
 
                 <c:if test="${bach == 1}">
 
 <span style="color: lightslategray">
  Медицинское учреждение:                </span>
-               <c:out value="${profile.hospital}"/>
+                    <c:if test="${profile.hospital != ''}">
+                        <c:out value="${profile.hospital}"/>
+                    </c:if>
+                    <c:if test="${profile.hospital == ''}">
+                        не указано
+                    </c:if>
                 <br>
 
                     <span style="color: lightslategray">
@@ -125,11 +135,10 @@
                     </c:if>
                 </c:if>
 
-
+<br>
 
 
                 <form:form method="post" modelAttribute="profile" class="login-form">
-<br>
                     <c:if test="${bach == 1}">
 
                     <c:if test="${profile.published == false}">
@@ -149,14 +158,14 @@
                         <button class="btn-pub" formaction="/suggest">Снять с публикации</button>
                     </c:if>                </c:if>
                     <br>
-                    <span style="font-size: 12px; color: #343a40;">Публикация в поиске для пациентов
+                    <span style="font-size: 12px; color: #343a40;">*Публикация в поиске для пациентов
 </span>
                     </c:if>
 
                 </form:form>
                 <br>
                 <form style="">
-                    <button class="btn-pat" style="width: 250px;" formaction="${editProfileAbout}">Изменить личные данные</button>
+                    <button class="btn-pat" style="width: 250px; height: 40px" formaction="${editProfileAbout}">Изменить личные данные</button>
 <br>
                 </form>
 <br>

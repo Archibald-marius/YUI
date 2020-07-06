@@ -6,12 +6,14 @@ public class SearchResult {
     private Long userId;
     private String name;
     private Long weeks;
+    private String doctor;
 
 
     public SearchResult(Patients patient) {
        userId = patient.getId();
        name = patient.getName();
        weeks = patient.getWeeks();
+       doctor = patient.getDoctor();
     }
 
     public Long getUserId() {
@@ -36,6 +38,14 @@ public class SearchResult {
 
     public void setWeeks(Long weeks) {
         this.weeks = weeks;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
     }
 
     @Override
