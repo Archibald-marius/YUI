@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <c:url var="loginUrl" value="/login" />
 <c:url var="registerUrl" value="/choose" />
@@ -10,7 +12,10 @@
 
 
 
-
+<%--<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">--%>
+<%--    <a href="${pageContext.request.contextPath}/login?lang=en">Login (English)</a>--%>
+<%--    <a href="${pageContext.request.contextPath}/login?lang=ru">Login (Russian)</a>--%>
+<%--</div>--%>
 
 
 
@@ -41,7 +46,9 @@
                         <input type="password" name="password" placeholder="Пароль"
                                class="form-control" />
 <br>
-                        <button type="submit" style="background-color: #b0e6df; width: 110px; font-size: 18px">Войти
+                        <button type="submit" style="background-color: #b0e6df; width: 110px; font-size: 18px">
+                            <spring:message code="label.submit" var="labelSubmit"></spring:message>
+                           ${labelSubmit}
                             </button>
 
                 </form>

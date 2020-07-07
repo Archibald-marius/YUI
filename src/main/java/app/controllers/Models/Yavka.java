@@ -1,6 +1,7 @@
 package app.controllers.Models;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -64,6 +65,9 @@ public class Yavka extends TimeZones {
 
     @Column(name = "ab_hig")
     private Long ab_hig=null;
+
+    @Column(name="next")
+    private String next = null;
 
     public Yavka(Long patient, ZonedDateTime added, Long pulse, Long baby_beat, Double mass, Long ab_circ, Long ab_hig, Long DAT, Long SAT, String complains, Boolean swell, String head_acke, String normal_date, Double temperature, String analysis, String prescriptions, String diagnosis, String objective, String instrument) {
         this.patient = patient;
@@ -271,6 +275,14 @@ public class Yavka extends TimeZones {
 
     public void setInstrument(String instrument) {
         this.instrument = instrument;
+    }
+
+    public String getNext() {
+        return next;
+    }
+
+    public void setNext(String next) {
+        this.next = next;
     }
 
     @Override

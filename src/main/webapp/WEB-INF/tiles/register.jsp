@@ -47,11 +47,23 @@
 
 
 
+
                     <form:input type="password" path="repeatPassword" placeholder="Повторите пароль"
                                class="form-control" />
-<%--                    <br>--%>
+                    <br>
+                    <span style="font-size: 16px; color: #343a40; float: left;">
+                        Ваша страна
 
-<%--                    <c:if test="${allowed == true}">--%>
+                    </span>
+                    <select name="country" id="country" style="font-size: 15px;">
+                        <c:forEach items="${mapCountries}" var="country">
+                            <option value="${country.key}">${country.value}</option>
+                        </c:forEach>
+                    </select>
+                    <br>
+
+
+                    <%--                    <c:if test="${allowed == true}">--%>
 <%--                        Выберете Вашу профессиональную сферу (одну или несколько)--%>
 <%--                    <table class="regist">--%>
 

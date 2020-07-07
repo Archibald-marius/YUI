@@ -64,7 +64,6 @@ public class PatientController {
             modelAndView.addObject("zax", zax);
 
         modelAndView.addObject("doctor", doctor);
-        System.out.println("In GET " + patient.getDate_b());
         modelAndView.getModel().put("patient", patient);
         modelAndView.setViewName("app.addpatient");
         return modelAndView;
@@ -77,8 +76,6 @@ public class PatientController {
         if(!result.hasErrors()) {
             patient.setDoctor(util.getUser().getEmail());
             patientsService.register(patient);
-            System.out.println("HERE - - -- - - - - --  - -");
-            System.out.println(patient.getDate_b());
             modelAndView.setViewName("redirect:/patients");
 //            modelAndView.setViewName("/");
             patientsService.save(patient);

@@ -10,7 +10,21 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
+<script>
+    $(document).ready(function(){
+        var date_input= $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" }); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            dateFormat: "YY-MM-DD",
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
 <%--<div class="row">--%>
 
 <%--    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">--%>
@@ -281,10 +295,36 @@
         </div>
 
         <c:if test="${zax == true}">
-
-            <span style="color: #6c757d; float: left; font-size: 24px">Акушерская панель</span>
+<br>
             <br>
-            <div class="input-group" style="display: flex; flex-direction: row; width: 350px">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br><br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br><br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br><br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <span style="color: navy; float: right; font-size: 14px">*акушерская панель</span>
+            <br>
+            <div class="input-group" style="display: flex; flex-direction: row; width: 300px">
 
                 <table>
                     <tr>
@@ -312,12 +352,12 @@
             </div>
 
 
-            <div class="input-group" style="display: flex; flex-direction: row; width: 420px">
+            <div class="input-group" style="display: flex; flex-direction: row; width: 300px">
 
                 <table>
                     <tr>
                         <td>
-                            <span style="color: #495057">Окружность живота</span>
+                            <span style="color: #495057">Окружность<br> живота</span>
 
                         </td>
                         <td>
@@ -337,11 +377,21 @@
                         </td>
                     </tr>
 
+
                 </table>
             </div>
         </c:if>
 
         <br>
+
+
+        <span style="color: darkslategrey; float: right; font-size: 12px;">*dd/mm/yyyy</span>
+        <br>
+        <form:input path="next" cssStyle="float: right; width: 210px" class="form-control" type="text" id="datepicker" placeholder="Следующая явка" data-date-format="dd/mm/yyyy"/>
+        <br>
+
+        <br>
+
 
 
         <div class="input-group"><br>
@@ -353,6 +403,37 @@
     border-radius: 12px;
     background-color: #b0e6df;">Записать</button>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+
 
     </form:form>
 

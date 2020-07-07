@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +20,13 @@ public class SearchController {
     private SearchService searchService;
 
     @Autowired
+    private ServletRequest servletRequest;
+
+    @Autowired
     private Util util;
 
     @RequestMapping(value="/search", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView search(ModelAndView modelAndView, @RequestParam("s") String text){
-
 
         List<SearchResult> result =  searchService.search(text, util.getUser().getEmail());
         modelAndView.getModel().put("result", result);

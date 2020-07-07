@@ -37,131 +37,6 @@
     })
 </script>
 
-
-
-
-<%--<div class="row">--%>
-
-<%--    <div class="col-md-8 col-md-offset-2">--%>
-
-
-<%--        <div class="panel panel-default">--%>
-
-<%--            <div class="panel-heading">--%>
-<%--                <div class="panel-title" style="color: #6c757d;">Добавить пациента</div>--%>
-<%--            </div>--%>
-<%--            <br>--%>
-
-
-<%--            <div class="panel-body">--%>
-<%--                <form:form modelAttribute="patient">--%>
-
-
-<%--                    <div class="input-group">--%>
-<%--                        <form:input type="hidden" name="doctor" path="doctor" value="${doctor}"--%>
-<%--                                    class="form-control" />--%>
-<%--                    </div>--%>
-<%--                    <table class="regist" style="font-size: 20px; color: #6c757d;">--%>
-<%--                        <tr>--%>
-<%--                            <td>--%>
-<%--                                Имя--%>
-
-<%--                            </td>--%>
-
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td>--%>
-<%--                                <form:input path="name" cssStyle="width: 300px"></form:input>--%>
-
-<%--                            </td>--%>
-
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td>--%>
-<%--                                Адрес--%>
-
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td>--%>
-<%--                                <form:textarea path="address" cssStyle="width: 300px;"></form:textarea>--%>
-
-<%--                            </td>--%>
-<%--                        </tr> <tr>--%>
-<%--                        <td>--%>
-<%--                            Работа--%>
-
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                        <tr>--%>
-<%--                        <td>--%>
-<%--                            <form:textarea path="work" cssStyle="width: 300px;"></form:textarea>--%>
-<%--                        </td>--%>
-<%--                    </tr> <tr>--%>
-<%--                        <td>--%>
-<%--                            Диагноз--%>
-
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                        <tr>--%>
-<%--                        <td>--%>
-<%--                            <form:textarea path="diagnosis" cssStyle="width: 300px;"></form:textarea>--%>
-
-<%--                        </td>--%>
-<%--                    </tr> <tr>--%>
-<%--                        <td>--%>
-<%--                            Почта--%>
-
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                        <tr>--%>
-<%--                        <td>--%>
-<%--                            <form:input path="mail" cssStyle="width: 300px"></form:input>--%>
-
-<%--                        </td>--%>
-<%--                    </tr>--%>
-<%--                        </tr> <tr>--%>
-
-<%--                        <td>--%>
-<%--                            <input class="btn-reg" type="submit" name="submit" style="width: 300px;" value="Зарегистрировать" />--%>
-
-<%--                        </td>--%>
-<%--                    </tr>--%>
-
-
-
-
-<%--                    </table>--%>
-
-<%--                    <c:if test="${zax == true}">--%>
-
-<%--                    <div class="input-group">--%>
-<%--                        <form:input name="pregnancy" path="pregnancy" placeholder="Беременность"--%>
-<%--                                    class="form-control" />--%>
-<%--                    </div>--%>
-
-
-<%--                        <div class="input-group">--%>
-<%--                            <br>--%>
-<%--                            <br>--%>
-<%--                        <form:input name="labour" path="labour" placeholder="Роды"--%>
-<%--                                    class="form-control" />--%>
-<%--                    </div>--%>
-
-<%--</c:if>--%>
-
-
-
-
-<%--                </form:form>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-<%--    </div>--%>
-
-
-
-<%--</div>--%>
 <div class="reg">
 
     <span style="font-size: 28px; color: #6c757d;">Регистрация пациента</span><br>            <br>
@@ -181,41 +56,11 @@
         <form:input type="phone" path="phone" placeholder="Телефон"
                     class="form-control" />
         <br>
-<%--        <form:input path="date_b" cssClass="date-picker" />--%>
 
-
-        <%--        <form:input type="date_b" path="date_b" placeholder="Дата рождения"--%>
-<%--                    class="form-control" />--%>
-<%--        <br>--%>
-<%--        <div class="bootstrap-iso">--%>
-<%--            <div class="container-fluid">--%>
-<%--                <div class="row">--%>
-<%--                    <div class="col-md-6 col-sm-6 col-xs-12">--%>
-
-                        <!-- Form code begins -->
-<%--                        <form method="post">--%>
-<%--                            <div class="form-group"> <!-- Date input -->--%>
-<%--&lt;%&ndash;                                <label class="control-label" for="date">Date</label>&ndash;%&gt;--%>
-<%--                                <form:input path="date_b" class="form-control" id="date"--%>
-<%--                                            name="date" placeholder="MM/DD/YYY" type="text"/>--%>
-<%--                            </div>--%>
-<%--                            </form>--%>
-<%--                        <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />--%>
-<%--                        <label for="dateofbirth">Date Of Birth</label>--%>
-<%--                        <div class="form-group"> <!-- Submit button -->--%>
-<%--                        <form:input path="date_b" class="form-control" type="date" name="dateofbirth"--%>
-<%--                                    id="dateofbirth" cssStyle="width : 200px;"/>--%>
-<%--                                <button class="btn btn-primary " name="submit" type="submit">Submit</button>--%>
-<%--                            </div>--%>
-                        <!-- Form code ends -->
         <span style="color: darkslategrey; float: right; font-size: 12px;">*dd/mm/yyyy</span>
                         <form:input path="date_b" class="form-control" type="text" id="datepicker" placeholder="Дата рождения" data-date-format="dd/mm/yyyy"/>
 <br>
 
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
 
         <form:textarea type="text" path="diagnosis" placeholder="Диагноз"
                     class="form-control" />
@@ -246,13 +91,3 @@
 
 
 
-
-
-
-<!-- Инициализация виджета "Bootstrap datetimepicker" -->
-<%--<script>--%>
-<%--    $(function () {--%>
-<%--        // идентификатор элемента (например: #datetimepicker1), для которого необходимо инициализировать виджет Bootstrap DateTimePicker--%>
-<%--        $('#datetimepicker1').datetimepicker();--%>
-<%--    });--%>
-<%--</script>--%>

@@ -169,4 +169,25 @@
     <definition name="app.conclusion" extends="app.default">
         <put-attribute name="content" value="/WEB-INF/tiles/conclusion.jsp" />
     </definition>
+    <definition name="app.calendar" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/calendar.jsp" />
+    </definition>
+    <definition name="app.city" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/city.jsp" />
+    </definition>
+    <definition name="app.admingeo" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/admingeo.jsp" />
+    </definition>
+    <definition name="app.addcountry" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/addcountry.jsp" />
+    </definition>
+    <definition name="app.editcountry" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/editcountry.jsp" />
+    </definition>
+    <definition name="app.addcity" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/addcity.jsp" />
+    </definition>
+    <definition name="app.editcity" extends="app.default">
+        <put-attribute name="content" value="/WEB-INF/tiles/editcity.jsp" />
+    </definition>
 </tiles-definitions>

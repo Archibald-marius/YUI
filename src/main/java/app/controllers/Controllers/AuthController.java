@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Controller
 public class AuthController {
@@ -33,7 +36,8 @@ public class AuthController {
     private String expiredTokenMessage;
 
     @RequestMapping("/login")
-    String admin(){
+    String admin(Locale locale){
+        System.out.println(locale.getDisplayLanguage());
         return "app.login";
     }
 
@@ -50,6 +54,17 @@ public class AuthController {
         Boolean allowed = true;
 //        if (id == 1) role = "ROLE_DOCTOR";
 //        else role = "ROLE_USER";
+        String[] countryCodes = Locale.getISOCountries();
+
+        Map<String, String> mapCountries = new TreeMap<>();
+
+        for (String countryCode : countryCodes) {
+            Locale locale = new Locale("", countryCode);
+            String code = locale.getCountry();
+            String name = locale.getDisplayCountry();
+            mapCountries.put(code, name);
+        }
+        modelAndView.addObject("mapCountries", mapCountries);
         modelAndView.addObject("role", role);
         modelAndView.addObject("allowed", allowed);
         modelAndView.getModel().put("user", user);
@@ -211,6 +226,36 @@ public class AuthController {
         modelAndView.addObject("str", user.getEmail());
         modelAndView.addObject("bigdata", tokenString);
         modelAndView.setViewName("app.changepassword");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/city", method = RequestMethod.GET)
+    ModelAndView getCity(ModelAndView modelAndView){
+
+        modelAndView.setViewName("app.city");
+        return modelAndView;
+    }
+
+    //вопросик!!!!
+    @RequestMapping(value="/city", method = RequestMethod.POST)
+    ModelAndView setCity(ModelAndView modelAndView, @ModelAttribute(value = "user") @Valid SiteUser user, BindingResult result){
+
+        modelAndView.setViewName("app.city");
+
+
+        if(!result.hasErrors()){
+            userService.register(user);
+
+            String token = userService.createEmailVerificationToken(user);
+
+            emailService.sendVerificationEmail(user.getEmail(), token, 1);
+            modelAndView.setViewName("redirect:/success");
+
+//            userService.save(user);
+
+        }
+
+
         return modelAndView;
     }
 
