@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <c:url var="img" value="/img" />
 <c:url var="editProfileAbout" value="/edit-profile-about" />
@@ -12,22 +14,9 @@
 
     <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2">
 
-<%--        <div class="profile-about">--%>
             <div class="profile-image">
-<%--                <img src="${img}/8.png" width="300" height="300"/>--%>
                 <img src="${img}/8.png" width="300" height="300" style="float: left; margin: 0px 0px 0px 0px;"/>
 
-
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${profile.about==null}">--%>
-<%--                            Click edit to add info--%>
-
-<%--                        </c:when>--%>
-
-<%--                        <c:otherwise>--%>
-<%--                            <c:out value="${profile.about==null}"/>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
 
 
                 </div>
@@ -41,98 +30,119 @@
 
                 <br>
                 <span style="color: lightslategray">
-                    Город:
-                </span>
+<spring:message code="label.profileCity" var="profileCity"></spring:message>
+                ${profileCity}:                </span>
 <c:if test="${profile.city != ''}">
     <c:out value="${profile.city}"/>
 </c:if>
                 <c:if test="${profile.city == ''}">
-                    не указано
+                    <spring:message code="label.noData" var="noData"></spring:message>
+                    ${noData}
                 </c:if>
                 <br>
 
                 <c:if test="${bach == 1}">
 
 <span style="color: lightslategray">
- Медицинское учреждение:                </span>
+ <spring:message code="label.profileHospital" var="profileHospital"></spring:message>
+                ${profileHospital}:              </span>
                     <c:if test="${profile.hospital != ''}">
                         <c:out value="${profile.hospital}"/>
                     </c:if>
                     <c:if test="${profile.hospital == ''}">
-                        не указано
+                        <spring:message code="label.noData" var="noData"></spring:message>
+                        ${noData}
                     </c:if>
                 <br>
 
                     <span style="color: lightslategray">
-                 Специалитет:
-               </span>
+                        <spring:message code="label.profileSpeciality" var="profileSpeciality"></spring:message>
+                ${profileSpeciality}:
+           </span>
                 <c:if test="${profile.therapy == true}">
-                терапия;
+                    <spring:message code="label.therapy" var="therapy"></spring:message>
+                    ${therapy};
                 </c:if>
                 <c:if test="${profile.surgery == true}">
-                    хирургия;
+                    <spring:message code="label.surgery" var="surgery"></spring:message>
+                    ${surgery};
                 </c:if>
                 <c:if test="${profile.gynecology == true}">
-                    гинекология;
+                    <spring:message code="label.gynecology" var="gynecology"></spring:message>
+                    ${gynecology};
                 </c:if>
                 <c:if test="${profile.cardiology == true}">
-                    кардиология;
+                    <spring:message code="label.cardio" var="cardio"></spring:message>
+                    ${cardio};
                 </c:if>
                 <c:if test="${profile.gastro == true}">
-                    гастроэнтерология;
+                    <spring:message code="label.gastro" var="gastro"></spring:message>
+                    ${gastro};
                 </c:if>
                 <c:if test="${profile.neurology == true}">
-                    неврология;
+                    <spring:message code="label.neuro" var="neuro"></spring:message>
+                    ${neuro};
                 </c:if>
                 <c:if test="${profile.opht == true}">
-                    офтальмология;
+                    <spring:message code="label.ophtalm" var="ophtalm"></spring:message>
+                    ${ophtalm};
                 </c:if>
                 <c:if test="${profile.otolor == true}">
-                    отоларингология;
+                    <spring:message code="label.oto" var="oto"></spring:message>
+                    ${oto};
                 </c:if>
                 <c:if test="${profile.ob == true}">
-                    акушерство;
+                    <spring:message code="label.ob" var="ob"></spring:message>
+                    ${ob};
                 </c:if>
                 <c:if test="${profile.reproductology == true}">
-                    репродуктология;
+                    <spring:message code="label.repro" var="repro"></spring:message>
+                    ${repro};
                 </c:if>
                 <c:if test="${profile.pediatrition == true}">
-                    педиатрия;
+                    <spring:message code="label.ped" var="ped"></spring:message>
+                    ${ped};
                 </c:if>
                 <c:if test="${profile.vascularsurgery == true}">
-                    сосудистая хирургия;
+                    <spring:message code="label.vas" var="vas"></spring:message>
+                    ${vas};
                 </c:if>
                 <c:if test="${profile.plasticsurgery == true}">
-                    пластическая хирургия;
+                    <spring:message code="label.plast" var="plast"></spring:message>
+                    ${plast};
                 </c:if>
                 <c:if test="${profile.alergology == true}">
-                    аллергология;
+                    <spring:message code="label.aler" var="aler"></spring:message>
+                    ${aler};
                 </c:if>
                 <c:if test="${profile.endocrinology == true}">
-                    эндокринология;
+                    <spring:message code="label.endocrin" var="endocrin"></spring:message>
+                    ${endocrin};
                 </c:if>
                     <c:if test="${profile.urology == true}">
-                        урология;
+                        <spring:message code="label.uro" var="uro"></spring:message>
+                        ${uro};
                     </c:if>
 
                 </c:if>
                 <c:if test="${bach == 2}">
 
                     <span style="color: lightslategray">
- Выбраные параметры контроля:               </span>
+<spring:message code="label.controlParameters" var="controlParameters"></spring:message>
+                ${controlParameters}             </span>
 
                     <c:if test="${profile.therapy == true}">
-                        артериальное давление;
-                    </c:if>
+                        <spring:message code="label.press" var="press"></spring:message>
+                        ${press};                    </c:if>
                     <c:if test="${profile.surgery == true}">
-                        температура;
-                    </c:if>
+                        <spring:message code="label.temperat" var="temperat"></spring:message>
+                        ${temperat};                    </c:if>
                     <c:if test="${profile.alergology == true}">
-                        уровень глюкозы;
-                    </c:if>
+                        <spring:message code="label.gluc" var="gluc"></spring:message>
+                        ${gluc};                   </c:if>
                     <c:if test="${profile.cardiology == true}">
-                        пульс;
-                    </c:if>
+                        <spring:message code="label.pls" var="pls"></spring:message>
+                        ${pls};                    </c:if>
                 </c:if>
 
 <br>
@@ -155,17 +165,20 @@
                         <button class="btn-pub" formaction="/publish">Снять с публикации</button>
                     </c:if>
                     <c:if test="${ex == false}">
-                        <button class="btn-pub" formaction="/suggest">Снять с публикации</button>
+                        <button class="btn-pub" formaction="/suggest"><spring:message code="label.profileButtonNoPublic" var="profileButtonNoPublic"></spring:message>
+                                ${profileButtonNoPublic}</button>
                     </c:if>                </c:if>
                     <br>
-                    <span style="font-size: 12px; color: #343a40;">*Публикация в поиске для пациентов
+                    <span style="font-size: 12px; color: #343a40;">*<spring:message code="label.profilePublicationHint" var="profilePublicationHint"></spring:message>
+                ${profilePublicationHint}
 </span>
                     </c:if>
 
                 </form:form>
                 <br>
                 <form style="">
-                    <button class="btn-pat" style="width: 250px; height: 40px" formaction="${editProfileAbout}">Изменить личные данные</button>
+                    <button class="btn-pat" style="width: 250px; height: 40px" formaction="${editProfileAbout}"><spring:message code="label.profileEdit" var="profileEdit"></spring:message>
+                        ${profileEdit}</button>
 <br>
                 </form>
 <br>
@@ -175,14 +188,6 @@
         </div>
 <br>
           </div>
-
-
-
-
-<%--<div class="container">--%>
-<%--    <a href="${editProfileAbout}" style="float: left; font-size: 20px;">Редактировать профиль</a>--%>
-
-<%--</div>--%>
 
 
 

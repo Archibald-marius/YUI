@@ -35,7 +35,8 @@
     <form>
         <button class="btn-dialog" formaction="${dialog}" style="opacity: 0.8; width: 320px;"><c:out value="${dialogs.value[2]}"/></button>
         <br>
-        <button class="btn-block" formaction="${blacklist}" style="opacity: 0.6">Заблокировать</button>
+        <button class="btn-block" formaction="${blacklist}" style="opacity: 0.6"><spring:message code="label.mailBlock" var="mailBlock"></spring:message>
+                ${mailBlock}</button>
 
     </form>
 

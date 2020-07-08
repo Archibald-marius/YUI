@@ -23,6 +23,7 @@ public class UrlLocaleResolver implements LocaleResolver {
 
         String prefixEn = request.getServletContext().getContextPath() + "/en/";
         String prefixRu = request.getServletContext().getContextPath() + "/ru/";
+        String prefixUk = request.getServletContext().getContextPath() + "/uk/";
 
         Locale locale = null;
 
@@ -31,6 +32,9 @@ public class UrlLocaleResolver implements LocaleResolver {
             locale = Locale.ENGLISH;
         }
         else if (uri.startsWith(prefixRu)) {
+            locale = Locale.getDefault();
+        }
+        else if (uri.startsWith(prefixUk)) {
             locale = Locale.getDefault();
         }
         if (locale != null) {

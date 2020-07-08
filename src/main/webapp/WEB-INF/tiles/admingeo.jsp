@@ -50,7 +50,8 @@
 
 
                 <%--                        <a href="${patientlink}"><c:out value="${patientList.name}"/></a>--%>
-                ${countries.name}
+                ${countries.id}
+        ${countries.name}
                             <form>
                                 <button class="btn-patients" formaction="${countryLink}">Открыть</button>
                                     <%--        <button class="btn-patients" formaction="${patientlink}">Сообщение</button>--%>

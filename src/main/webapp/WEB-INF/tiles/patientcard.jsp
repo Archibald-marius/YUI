@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 
 <link rel="stylesheet" href="css/main.css" type="text/css" />
@@ -46,10 +48,11 @@
                 <c:if test="${message == null}">
                     <button class="btn-message" disabled formaction="${dialog}">
                         <img src="${img}/2.png" width="30" height="30"/>
-                        Сообщение
+<%--                        Сообщение--%>
                     </button>
                     <br>
-                    <span style="font-size: 12px">Пользователь по указаному<br> email не найден</span>
+                    <span style="font-size: 12px">*<spring:message code="label.mailNotFound" var="mailNotFound"></spring:message>
+                            ${mailNotFound}</span>
                 </c:if>
             </c:if>
             <c:if test="${patient.mail = null}">
@@ -60,7 +63,8 @@
         <table class="patients">
 
             <tr>
-                <th class="fir">Имя</th>
+                <th class="fir"><spring:message code="label.patientsName" var="patientsName"></spring:message>
+                    ${patientsName}</th>
                 <th class="sec">  <c:out value="${patient.name}"/>
                 </th>
 
@@ -69,24 +73,29 @@
                 </th>
             </tr>
             <tr>
-                <th class="fir">Адрес</th>
+                <th class="fir"><spring:message code="label.patientsAddress" var="patientsAddress"></spring:message>
+                    ${patientsAddress}</th>
                 <th class="sec">    <c:out value="${patient.address}"/>
                 </th>
             </tr>
             <tr>
-                <th class="fir">Место работы</th>
+                <th class="fir"><spring:message code="label.patientsWork" var="patientsWork"></spring:message>
+                    ${patientsWork}</th>
                 <th class="sec"> <c:out value="${patient.work}"/></th>
             </tr>
             <tr>
-                <th class="fir">Телефон</th>
+                <th class="fir"><spring:message code="label.patientsPhone" var="patientsPhone"></spring:message>
+                    ${patientsPhone}</th>
                 <th class="sec"> <c:out value="${patient.phone}"/></th>
             </tr>
             <tr>
-                <th class="fir">Дата рождения</th>
+                <th class="fir"><spring:message code="label.patientsBirth" var="patientsBirth"></spring:message>
+                    ${patientsBirth}</th>
                 <th class="sec"> <c:out value="${patient.date_b}"/></th>
             </tr>
             <tr>
-                <th class="fir">Диагноз</th>
+                <th class="fir"><spring:message code="label.patientsDiagnosis" var="patientsDiagnosis"></spring:message>
+                    ${patientsDiagnosis}</th>
                 <th class="sec">        <c:out value="${patient.diagnosis}"/>
                 </th>
             </tr>
@@ -94,12 +103,14 @@
 <c:if test="${gyn == true}">
 
             <tr>
-                <th class="fir">Беременность</th>
+                <th class="fir"><spring:message code="label.patientPregnancy" var="patientPregnancy"></spring:message>
+                        ${patientPregnancy}</th>
                 <th class="sec">         <c:out value="${patient.pregnancy}"/>
                 </th>
             </tr>
             <tr>
-                <th class="fir">Роды</th>
+                <th class="fir"><spring:message code="label.patientLabour" var="patientLabour"></spring:message>
+                        ${patientLabour}</th>
                 <th class="sec">         <c:out value="${patient.labour}"/>
                 </th>
             </tr>
@@ -107,7 +118,8 @@
 </c:if>
 
             <tr>
-                <th class="fir">Заметки</th>
+                <th class="fir"><spring:message code="label.patientsNotes" var="patientsNotes"></spring:message>
+                    ${patientsNotes}</th>
                 <th class="sec">  <c:out value="${patient.notes}"/>
                 </th>
             </tr>
@@ -120,18 +132,23 @@
             <br>
             <br>
             <div class="container">
-                <button class="btn-pat" formaction="${editLink}">Записать новую явку</button>
-                <button class="btn-pat" formaction="${editPatientCard}">Изменить данные</button>
-                <button class="btn-pat" formaction="${visits}">Список консультаций</button>
+                <button class="btn-pat" formaction="${editLink}"><spring:message code="label.patientYavkaButton" var="patientYavkaButton"></spring:message>
+                    ${patientYavkaButton}</button>
+                <button class="btn-pat" formaction="${editPatientCard}"><spring:message code="label.patientEdit" var="patientEdit"></spring:message>
+                    ${patientEdit}</button>
+                <button class="btn-pat" formaction="${visits}"><spring:message code="label.patientConsultations" var="patientConsultations"></spring:message>
+                    ${patientConsultations}</button>
                 <c:if test="${patient.mail != null}">
                     <c:if test="${pos != null}">
-                        <button class="btn-pat" formaction="${homemes}">Домашние показатели</button>
+                        <button class="btn-pat" formaction="${homemes}"><spring:message code="label.patientHome" var="patientHome"></spring:message>
+                                ${patientHome}</button>
 
                     </c:if>
 
                     <c:if test="${pos == null}">
                         <button disabled class="btn-pat" formaction="${homemes}">Домашние показатели</button>
-                        <span style="color: steelblue">*контроль домашних показателей у пользователя по указаному емейлу не найден</span>
+                        <span style="color: steelblue">*<spring:message code="label.homeNotFound" var="homeNotFound"></spring:message>
+                                ${homeNotFound}</span>
                     </c:if>
                 </c:if>
                 <c:if test="${patient.mail = null}">

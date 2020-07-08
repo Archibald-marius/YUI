@@ -9,6 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <c:url var="forgotpassword" value="/reset" />
 
@@ -21,7 +23,8 @@
     <input type="text" class="form-control" name="email" placeholder="Email">
     <br>
     <button id="search-button" class="btn btn-primary" style="width: 300px; background-color: cadetblue; font-size: 14px;" type="submit">
-        Восстановить пароль
+        <spring:message code="label.passwordRecovery" var="passwordRecovery"></spring:message>
+        ${passwordRecovery}
     </button>
 
     </span>

@@ -3,6 +3,8 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -98,10 +100,12 @@
 
                 </li>
             <li class="nav-item">
-                <a class="dropdown-item" href="${contextRoot}/login">Войти</a>
+                <a class="dropdown-item" href="${contextRoot}/login"><spring:message code="label.tabLogin" var="tabLogin"></spring:message>
+                        ${tabLogin}</a>
             </li>
             <li class="nav-item">
-                <a class="dropdown-item" href="${contextRoot}/choose" style="">Регистрация</a>
+                <a class="dropdown-item" href="${contextRoot}/choose" style=""><spring:message code="label.tabRegister" var="tabRegister"></spring:message>
+                        ${tabRegister}</a>
             </li>
 
 
@@ -117,23 +121,28 @@
 
             </li>
     <li class="nav-inline">
-        <a class="dropdown-item" href="${contextRoot}/patients">Мои пациенты</a>
+        <a class="dropdown-item" href="${contextRoot}/patients"><spring:message code="label.tabMyPatients" var="tabMyPatients"></spring:message>
+                ${tabMyPatients}</a>
 
     </li>
     <li class="nav-item">
-        <a class="dropdown-item" href="${contextRoot}/addpatient">Добавить пациента</a>
+        <a class="dropdown-item" href="${contextRoot}/addpatient"><spring:message code="label.tabAddPatient" var="tabAddPatient"></spring:message>
+                ${tabAddPatient}</a>
     </li>
     <li class="nav-item">
-                <a class="dropdown-item" href="${contextRoot}/profile">Мой профиль</a>
+                <a class="dropdown-item" href="${contextRoot}/profile"><spring:message code="label.tabProfile" var="tabProfile"></spring:message>
+                        ${tabProfile}</a>
             </li>
     <li class="nav-item">
-        <a class="dropdown-item" href="${contextRoot}/dialogs">Почта</a>
+        <a class="dropdown-item" href="${contextRoot}/dialogs"><spring:message code="label.tabMail" var="tabMail"></spring:message>
+                ${tabMail}</a>
     </li>
 <%--    <li class="nav-item">--%>
 <%--        <a class="dropdown-item" href="${contextRoot}/addpatient">Scheduler</a>--%>
 <%--    </li>--%>
             <li class="nav-item">
-                <a class="dropdown-item" href="javascript:$('#logoutForm').submit();">Выйти</a>
+                <a class="dropdown-item" href="javascript:$('#logoutForm').submit();"><spring:message code="label.tabExit" var="tabExit"></spring:message>
+                        ${tabExit}</a>
             </li>
 <%--            <form class="form-inline" style="float: right">--%>
 <%--                <input class="form-control mr-sm-2" style="float: right" type="search" placeholder="Поиск пациентов" aria-label="Поиск пациентов">--%>
@@ -169,15 +178,18 @@
             <a class="dropdown-item" href="${contextRoot}/">InMedical</a>
         </li>
         <li class="nav-inline">
-            <a class="dropdown-item" href="${contextRoot}/profile">Мой профиль</a>
+            <a class="dropdown-item" href="${contextRoot}/profile"><spring:message code="label.tabProfile" var="tabProfile"></spring:message>
+                    ${tabProfile}</a>
 
         </li>
         <li class="nav-inline">
-            <a class="dropdown-item" href="${contextRoot}/control">Контроль состояния</a>
+            <a class="dropdown-item" href="${contextRoot}/control"><spring:message code="label.tabStateControl" var="tabStateControl"></spring:message>
+                    ${tabStateControl}</a>
 
         </li>
         <li class="nav-inline">
-            <a class="dropdown-item" href="${contextRoot}/dialogs">Почта</a>
+            <a class="dropdown-item" href="${contextRoot}/dialogs"><spring:message code="label.tabMail" var="tabMail"></spring:message>
+                    ${tabMail}</a>
 
         </li>
 <%--        <li class="nav-inline">--%>
@@ -189,7 +201,8 @@
 
 <%--        </li>--%>
         <li class="nav-item">
-            <a class="dropdown-item" href="javascript:$('#logoutForm').submit();">Выйти</a>
+            <a class="dropdown-item" href="javascript:$('#logoutForm').submit();"><spring:message code="label.tabExit" var="tabExit"></spring:message>
+                    ${tabExit}</a>
         </li>
 
     </sec:authorize>

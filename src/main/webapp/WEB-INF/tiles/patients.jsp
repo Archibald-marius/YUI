@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <c:url var="img" value="/img" />
 
 
@@ -8,14 +10,16 @@
 
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <c:if test="${empty patientList}">
-            <span style="font-size: 22px; color: #495057;">Список пациентов пока пуст</span>
+            <span style="font-size: 22px; color: #495057;"><spring:message code="label.noPatients" var="noPatients"></spring:message>
+                    ${noPatients}</span>
         </c:if>
 <c:if test="${!empty patientList}">
 
 
         <div class="homepage-status">
 
-            <span style="color: #495057">Список пациентов:</span>
+            <span style="color: #495057"><spring:message code="label.patientsList" var="patientsList"></spring:message>
+                    ${patientsList}</span>
             <br>
 
 
@@ -32,7 +36,8 @@
                             <%--                        <a href="${patientlink}"><c:out value="${patientList.name}"/></a>--%>
                             ${patientList.name}
                         <form>
-                            <button class="btn-patients" formaction="${patientlink}">Открыть карточку</button>
+                            <button class="btn-patients" formaction="${patientlink}"><spring:message code="label.openPatientsCard" var="openPatientsCard"></spring:message>
+                                    ${openPatientsCard}</button>
                                 <%--        <button class="btn-patients" formaction="${patientlink}">Сообщение</button>--%>
                         </form>
                         <br>

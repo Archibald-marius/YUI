@@ -2,6 +2,8 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <c:url var="search" value="/search"/>
 <c:url var="img" value="/img" />
@@ -118,17 +120,20 @@
             <br>
             <br>
             <br>
-    <span style="font-size: 34px; color: #6c757d;">Поиск пациента</span>
+    <span style="font-size: 34px; color: #6c757d;"><spring:message code="label.searchPatient" var="searchPatient"></spring:message>
+            ${searchPatient}</span>
             <br>
             <br>
             <form action="${search}" method="POST">
                 <input type="hidden" name="${_csrf.parameterName}"
                        value="${_csrf.token}" />
 
-                    <input type="text" class="form-control" name="s" placeholder="Фамилия/Имя пациента">
+                    <input type="text" class="form-control" name="s" placeholder="<spring:message code="label.searchPatientPlaceholder" var="searchPatientPlaceholder"></spring:message>
+            ${searchPatientPlaceholder}">
                 <br>
                         <button id="search-button" class="btn btn-primary" style="width: 150px; background-color: cadetblue; font-size: 20px;" type="submit">
-                            Поиск
+                            <spring:message code="label.searchPatientButton" var="searchPatientButton"></spring:message>
+                                ${searchPatientButton}
                         </button>
 
                     </span>
@@ -141,9 +146,14 @@
 
     <c:if test="${ticket == 2}">
         <c:if test="${ask_param == true}">
-                <span style="font-size: 24px; color: #343a40; font-family: STSong">Здесь будет отображатся динамика Ваших показателей.<br>
-                Для записи параметров перейдите на вкладку <a href="/control">Контроль состояния</a>.<br>
-                    Изменить выбраные показатели можно во вкладке <a href="/profile">Мой профиль</a>.<br>
+                <span style="font-size: 24px; color: #343a40; font-family: STSong"><spring:message code="label.homePatient1" var="homePatient1"></spring:message>
+                        ${homePatient1}<br>
+                <spring:message code="label.homePatient2" var="homePatient2"></spring:message>
+                ${homePatient2} <a href="/control"><spring:message code="label.homePatient3" var="homePatient3"></spring:message>
+                            ${homePatient3}</a>.<br>
+                    <spring:message code="label.homePatient4" var="homePatient4"></spring:message>
+                ${homePatient4} <a href="/profile"><spring:message code="label.homePatient5" var="homePatient5"></spring:message>
+                            ${homePatient5}</a>.<br>
                 </span>
         </c:if>
         <c:if test="${showPress == true}">

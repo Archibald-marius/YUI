@@ -26,11 +26,16 @@
                 <div class="login-error" style="color: #dc3545; font-size: 14px;">Неправильный email или пароль!</div>
             </c:if>
 
-                    <span style="font-size: 14px">Войдите или <a href="${registerUrl}">создайте аккаунт бесплатно!</a></span>
+                    <span style="font-size: 14px"><spring:message code="label.invitation1" var="invitation1"></spring:message>
+                        ${invitation1} <a href="${registerUrl}">
+<spring:message code="label.invitation2" var="invitation2"></spring:message>
+                ${invitation2}
+                        </a></span>
             <br>
             <br>
 
-            <span style="font-size: 34px; color: #6c757d">Вход</span>
+            <span style="font-size: 34px; color: #6c757d"><spring:message code="label.tabLogin" var="tabLogin"></spring:message>
+                ${tabLogin}</span>
 <br>
             <br>
 
@@ -40,10 +45,12 @@
                     <input type="hidden" name="${_csrf.parameterName}"
                            value="${_csrf.token}" />
 
-                        <input type="text" name="username" placeholder="Электронная почта"
+                        <input type="text" name="username" placeholder="<spring:message code="label.formLoginMail" var="formLoginMail"></spring:message>
+                ${formLoginMail}"
                                class="form-control" />
                             <br>
-                        <input type="password" name="password" placeholder="Пароль"
+                        <input type="password" name="password" placeholder="<spring:message code="label.formLoginPassword" var="formLoginPassword"></spring:message>
+                ${formLoginPassword}"
                                class="form-control" />
 <br>
                         <button type="submit" style="background-color: #b0e6df; width: 110px; font-size: 18px">
@@ -54,7 +61,8 @@
                 </form>
             <br>
 
-            <span style="font-size: 14px"><a href="${forgotpassword}">Восстановить пароль</a>
+            <span style="font-size: 14px"><a href="${forgotpassword}"> <spring:message code="label.passwordRecovery" var="passwordRecovery"></spring:message>
+                ${passwordRecovery}</a>
 </span>
 
 <%--            </div>--%>
