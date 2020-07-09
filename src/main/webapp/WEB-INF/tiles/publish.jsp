@@ -9,6 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <c:choose>
     <c:when test="${publish==false}">
@@ -16,7 +18,8 @@
         <span style="font-size: 24px; color: #495057">
             <br>
             <br>
-            Ваш профиль снят с публикации в поиске!<br>
+            <spring:message code="label.unpublishSuccess" var="unpublishSuccess"></spring:message>
+                ${unpublishSuccess}<br>
         </span>
         </div>
     </c:when>
@@ -25,8 +28,10 @@
         <span style="font-size: 24px; color: #495057">
             <br>
             <br>
-            Ваш профиль опубликовано в поиске!<br>
-            Все сообщения от пациентов будут отображены во вкладке "Почта".
+            <spring:message code="label.publishSuccess1" var="publishSuccess1"></spring:message>
+                ${publishSuccess1}<br>
+            <spring:message code="label.publishSuccess2" var="publishSuccess2"></spring:message>
+                ${publishSuccess2}
         </span>
         </div>    </c:otherwise>
 </c:choose>

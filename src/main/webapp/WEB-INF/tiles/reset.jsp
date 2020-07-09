@@ -6,8 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <div class="container" style="font-size: 24px; color: #6c757d;">
     <br>
-    Готово!<br>
-    На Вашу почту отправлена ссылка для смены пароля.
+    <spring:message code="label.resetPass1" var="resetPass1"></spring:message>
+    ${resetPass1}<br>
+    <spring:message code="label.resetPass2" var="resetPass2"></spring:message>
+    ${resetPass2}
 </div>

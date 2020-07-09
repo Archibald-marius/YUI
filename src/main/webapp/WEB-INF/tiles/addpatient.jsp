@@ -33,6 +33,7 @@
 
         <span style="font-size: 16px; color: #343a40">
 
+
         <spring:message code="label.patientsName" var="patientsName"></spring:message>
         ${patientsName}
         <form:input type="text" path="name" placeholder=""

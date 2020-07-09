@@ -7,13 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <div class="row">
 
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="homepage-status" style="color: #6c757d;">
 
-            Список посещений врача:
+            <spring:message code="label.patientConsultations" var="patientConsultations"></spring:message>
+            ${patientConsultations}
             <div class="container">
                 <c:forEach items="${yavka}" var="yavka">
 <%--                    <c:url var="patientlink" value="/patientcard/${patientList.id}"/>--%>

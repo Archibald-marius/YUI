@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<html lang="en">
+<span style="font-size: 22px;">
+<p>Дякуємо за реєстрацію!</p>
+<p>Пройдіть по <a th:href="@{${url} + '/confirmregister?t=' + ${token}}">посиланню</a> для підтвердження Вашої електроної скриньки. </p>
+<p>По всіх питанням можете звертатися за адресою inmedicalt@gmail.com.</p>
+<p>Хорошого дня, команда <span style="color: darkslategray">InMedical</span>.</p>
+</span>
+</html>

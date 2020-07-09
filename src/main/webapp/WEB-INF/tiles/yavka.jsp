@@ -50,6 +50,7 @@
         <div class="input-group" style="display: flex; flex-direction: row; width: 270px">
             <span style="color: #495057"><spring:message code="label.press" var="press"></spring:message>
                     ${press}</span>
+            <br>
             <form:input name="SAT" path="SAT" placeholder=""
                         class="form-control"/>
             <span style="font-size: 26px; color: #495057;"> / </span>
@@ -63,12 +64,13 @@
                 <tr>
                     <td>
                         <span style="color: #495057"><spring:message code="label.temperat" var="temperat"></spring:message>
-                                ${temperat}<br><span style="font-size: 14px">*в формате 36.6</span></span>
+                                ${temperat}<br><span style="font-size: 14px">*<spring:message code="label.tempFormat" var="tempFormat"></spring:message>
+                                    ${tempFormat}</span></span>
 
                     </td>
                     <td>
-                        <span style="color: #495057"><spring:message code="label.invitation2" var="invitation2"></spring:message>
-                                ${invitation2}</span>
+                        <span style="color: #495057"><spring:message code="label.pls" var="pls"></spring:message>
+                                ${pls}</span>
 
                     </td>
                 </tr>
@@ -87,22 +89,26 @@
         </div>
 
         <div class="input-group">
-            <span style="color: #495057; float: left;">Результаты анализов</span>
+            <span style="color: #495057; float: left;"><spring:message code="label.analysisResult" var="analysisResult"></spring:message>
+                    ${analysisResult}</span>
             <form:textarea name="Analysis" path="Analysis" placeholder="" cssStyle="height: 100px; width: 300px"
                            class="form-control" />
         </div>
         <div class="input-group">
-            <span style="color: #495057; float: left;">Инструментальное обследование</span>
+            <span style="color: #495057; float: left;"><spring:message code="label.instrumentalResult" var="instrumentalResult"></spring:message>
+                    ${instrumentalResult}</span>
             <form:textarea name="instrument" path="instrument" placeholder="" cssStyle="height: 100px; width: 300px"
                            class="form-control" />
         </div>
         <div class="input-group">
-            <span style="color: #495057; float: left;">Диагноз</span>
+            <span style="color: #495057; float: left;"><spring:message code="label.patientsDiagnosis" var="patientsDiagnosis"></spring:message>
+                    ${patientsDiagnosis}</span>
             <form:textarea name="diagnosis" path="diagnosis" placeholder="" cssStyle="height: 100px; width: 300px"
                            class="form-control" />
         </div>
         <div class="input-group">
-            <span style="color: #495057; float: left;">Назначения</span>
+            <span style="color: #495057; float: left;"><spring:message code="label.prescribtion" var="prescribtion"></spring:message>
+                    ${prescribtion}</span>
             <form:textarea name="presriptions" path="prescriptions" placeholder="" cssStyle="height: 100px; width: 300px"
                            class="form-control" />
         </div>
@@ -135,18 +141,21 @@
             <br>
             <br>
 
-            <span style="color: navy; float: right; font-size: 14px">*акушерская панель</span>
+            <span style="color: navy; float: right; font-size: 14px">*<spring:message code="label.abPanel" var="abPanel"></spring:message>
+                    ${abPanel}</span>
             <br>
             <div class="input-group" style="display: flex; flex-direction: row; width: 300px">
 
                 <table>
                     <tr>
                         <td>
-                            <span style="color: #495057">ЧСС плода</span>
+                            <span style="color: #495057"><spring:message code="label.babyBeat" var="babyBeat"></spring:message>
+                                    ${babyBeat}</span>
 
                         </td>
                         <td>
-                            <span style="color: #495057">Вес беременной<br><span style="font-size: 14px">*в формате 65.5</span></span>
+                            <span style="color: #495057"><spring:message code="label.pregMass" var="pregMass"></spring:message>
+                                    ${pregMass}<br><span style="font-size: 14px">*в формате 65.5</span></span>
 
                         </td>
                     </tr>
@@ -170,11 +179,14 @@
                 <table>
                     <tr>
                         <td>
-                            <span style="color: #495057">Окружность<br> живота</span>
+                            <span style="color: #495057"><spring:message code="label.pregCirc1" var="pregCirc1"></spring:message>
+                                    ${pregCirc1}<br> <spring:message code="label.pregCirc2" var="pregCirc2"></spring:message>
+                                    ${pregCirc2}</span>
 
                         </td>
                         <td>
-                            <span style="color: #495057">ВСДМ</span>
+                            <span style="color: #495057"><spring:message code="label.abHigh" var="abHigh"></spring:message>
+                                    ${abHigh}</span>
 
                         </td>
                     </tr>
@@ -200,7 +212,9 @@
 
         <span style="color: darkslategrey; float: right; font-size: 12px;">*dd/mm/yyyy</span>
         <br>
-        <form:input path="next" cssStyle="float: right; width: 210px" class="form-control" type="text" id="datepicker" placeholder="Следующая явка" data-date-format="dd/mm/yyyy"/>
+        <span style="color: #495057"><spring:message code="label.nextVisit" var="nextVisit"></spring:message>
+                ${nextVisit}</span>
+        <form:input path="next" cssStyle="float: right; width: 210px" class="form-control" type="text" id="datepicker" placeholder="" data-date-format="dd/mm/yyyy"/>
         <br>
 
         <br>
@@ -214,7 +228,8 @@
     color: black;
     height: 50px;
     border-radius: 12px;
-    background-color: #b0e6df;">Записать</button>
+    background-color: #b0e6df;"><spring:message code="label.tabRegister" var="tabRegister"></spring:message>
+                    ${tabRegister}</button>
         </div>
         <br>
         <br>

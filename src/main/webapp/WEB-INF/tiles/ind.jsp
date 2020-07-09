@@ -6,4 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-Контроль показателя установлен. Можете вносить данные в вкладке контроль состояния.
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
+<spring:message code="label.controlIsEstablishe" var="controlIsEstablishe"></spring:message>
+${controlIsEstablishe}

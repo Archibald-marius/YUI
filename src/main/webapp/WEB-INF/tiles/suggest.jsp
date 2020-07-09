@@ -7,16 +7,20 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <c:url var="editProfileAbout" value="/edit-profile-about" />
 
 <div class="container">
 
     <form>
-        <span style="font-size: 24px; color: #343a40">Заполните профиль для публикации в поиске</span>
+        <span style="font-size: 24px; color: #343a40"><spring:message code="label.notEnoughInfoForDoc" var="notEnoughInfoForDoc"></spring:message>
+            ${notEnoughInfoForDoc}</span>
         <br>
 <br>
-        <button class="btn-pat" style="width: 200px;" formaction="${editProfileAbout}">Заполнить личные данные</button>
+        <button class="btn-pat" style="width: 200px;" formaction="${editProfileAbout}"><spring:message code="label.profileEdit" var="profileEdit"></spring:message>
+            ${profileEdit}</button>
     </form>
 
 </div>

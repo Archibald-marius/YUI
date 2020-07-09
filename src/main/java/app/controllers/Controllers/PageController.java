@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.naming.ldap.HasControls;
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -36,8 +37,10 @@ public class PageController {
     ProfileService profileService;
 
     @RequestMapping("/")
-    ModelAndView home(ModelAndView modelAndView) {
+    ModelAndView home(ModelAndView modelAndView, HttpServletRequest request) {
 
+        System.out.println(request.getLocale());
+        System.out.println(request.getLocale().toString().equals("en_GB"));
 //        StatusUpdate statusUpdate = statusUpdateService.getLatest();
 int ticket = 0;
 Boolean showPress = false;

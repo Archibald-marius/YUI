@@ -154,15 +154,18 @@
                     <c:if test="${profile.published == false}">
 
                         <c:if test="${ex == true}">
-                        <button class="btn-pub" formaction="/publish">Опубликовать профиль</button>
+                        <button class="btn-pub" formaction="/publish"><spring:message code="label.publishProfile" var="publishProfile"></spring:message>
+                                ${publishProfile}</button>
                         </c:if>
                         <c:if test="${ex == false}">
-                            <button class="btn-pub" formaction="/suggest">Опубликовать профиль</button>
+                            <button class="btn-pub" formaction="/suggest"><spring:message code="label.publishProfile" var="publishProfile"></spring:message>
+                                    ${publishProfile}</button>
                         </c:if>
                 </c:if>
                 <c:if test="${profile.published == true}">
                     <c:if test="${ex == true}">
-                        <button class="btn-pub" formaction="/publish">Снять с публикации</button>
+                        <button class="btn-pub" formaction="/publish"><spring:message code="label.profileButtonNoPublic" var="profileButtonNoPublic"></spring:message>
+                                ${profileButtonNoPublic}</button>
                     </c:if>
                     <c:if test="${ex == false}">
                         <button class="btn-pub" formaction="/suggest"><spring:message code="label.profileButtonNoPublic" var="profileButtonNoPublic"></spring:message>

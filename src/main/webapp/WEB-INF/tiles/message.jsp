@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <div class="row">
 
@@ -15,8 +17,10 @@
 
         <div class="message">
                 <span style="font-size: 24px;">
-                    Регистрация подтверждена!<br>
-                    Теперь Вы можете войти в систему.
+                    <spring:message code="label.regSuccess1" var="regSuccess1"></spring:message>
+                    ${regSuccess1}<br>
+                    <spring:message code="label.regSuccess2" var="regSuccess2"></spring:message>
+                ${regSuccess2}
 <%--                                <c:out value="${message}" />--%>
                 </span>
         </div>
