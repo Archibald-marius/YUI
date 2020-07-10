@@ -26,8 +26,9 @@
                 <a href="${patientlink}" style="color: #343a40;"><c:out value="${result.name}"/></a>
             </span>
             <br>
+            <form>
             <button class="btn-patients" style="font-size: 14px; width: 100px; height: 30px;"  formaction="${patientlink}">Открыть карточку</button>
-
+            </form>
 <%--            <c:out value="${result.weeks}"/>--%>
         </div>
     </div>
