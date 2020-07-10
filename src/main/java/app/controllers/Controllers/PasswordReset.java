@@ -38,10 +38,15 @@ public class PasswordReset extends HttpServlet {
     }
 
     @RequestMapping(value="/reset", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView reset(ModelAndView modelAndView, @RequestParam("email") String text){
+    public ModelAndView reset(ModelAndView modelAndView, @RequestParam("email") String text, HttpServletRequest request){
         String token = userService.createEmailVerificationToken(userService.get(text));
 
-        emailService.sendVerificationEmail(userService.get(text).getEmail(), token, 2);
+        int local = 1;
+        if (request.getLocale().toString().equals("ru_RU"))
+            local = 2;
+        if (request.getLocale().toString().equals("uk_UA"))
+            local = 3;
+        emailService.sendVerificationEmail(userService.get(text).getEmail(), token, 2, local);
         modelAndView.setViewName("app.reset");
         return modelAndView;
     }
@@ -51,8 +56,6 @@ public class PasswordReset extends HttpServlet {
                                 @RequestParam("password") String text,
                                 @RequestParam("bigdata") String bigdata){
 
-        System.out.println("??????here???????");
-        System.out.println(text);
 
         VerificationToken token = userService.getVerificationToken(bigdata);
 

@@ -40,7 +40,7 @@ public class PageController {
     ModelAndView home(ModelAndView modelAndView, HttpServletRequest request) {
 
         System.out.println(request.getLocale());
-        System.out.println(request.getLocale().toString().equals("en_GB"));
+        System.out.println(request.getLocale().toString().equals("ru_RU"));
 //        StatusUpdate statusUpdate = statusUpdateService.getLatest();
 int ticket = 0;
 Boolean showPress = false;

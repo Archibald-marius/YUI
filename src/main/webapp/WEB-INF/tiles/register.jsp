@@ -28,29 +28,31 @@
 
                 <form:form method="post" modelAttribute="user" class="login-form">
 
-                    <spring:message code="label.patientsName" var="patientsName"></spring:message>
-                    ${patientsName}
+<%--                    <spring:message code="label.patientsName" var="patientsName"></spring:message>--%>
+<%--                    ${patientsName}--%>
                         <form:input type="hidden"  path="firstname" placeholder="Имя"
                                     class="form-control" />
                         <span class="input-group-btn" style="width:20px"></span>
                     <br>
-                    <spring:message code="label.profileSurname" var="profileSurname"></spring:message>
-                    ${profileSurname}
+<%--                    <spring:message code="label.profileSurname" var="profileSurname"></spring:message>--%>
+<%--                    ${profileSurname}--%>
                         <form:input type="hidden"  path="surname" placeholder="Фамилия"
                                     class="form-control" />
                     <br>
 <%--                    <form:input type="city" path="city" placeholder="Ваш город"--%>
 <%--                                class="form-control" />--%>
 <%--                    <br>--%>
-                    <spring:message code="label.tabMail" var="tabMail"></spring:message>
-                    ${tabMail}
-                    <form:input type="text" path="email" placeholder="Электронная почта"
+                <span style="font-size: 16px; color: #343a40">
+
+                    <spring:message code="label.formLoginMail" var="formLoginMail"></spring:message>
+                    ${formLoginMail}
+                    <form:input type="text" path="email" placeholder=""
                                     class="form-control" />
                     <br>
 
                     <spring:message code="label.formLoginPassword" var="formLoginPassword"></spring:message>
                     ${formLoginPassword}
-                    <form:input type="password" path="plainPassword" placeholder="Пароль"
+                    <form:input type="password" path="plainPassword" placeholder=""
                                     class="form-control" />
                     <br>
 
@@ -58,7 +60,7 @@
 
                     <spring:message code="label.repeatPassword" var="repeatPassword"></spring:message>
                     ${repeatPassword}
-                    <form:input type="password" path="repeatPassword" placeholder="Повторите пароль"
+                    <form:input type="password" path="repeatPassword" placeholder=""
                                class="form-control" />
 <%--                    <br>--%>
 <%--                    <span style="font-size: 16px; color: #343a40; float: left;">--%>
@@ -71,6 +73,7 @@
 <%--                        </c:forEach>--%>
 <%--                    </select>--%>
                     <br>
+                </span>
 
 
                     <%--                    <c:if test="${allowed == true}">--%>

@@ -51,7 +51,7 @@ public class EmailService {
     }
 
     @Async
-    public void sendVerificationEmail(String emailAddress, String token, int param){
+    public void sendVerificationEmail(String emailAddress, String token, int param, int local){
 
         Context context = new Context();
         context.setVariable("token", token);
@@ -59,9 +59,19 @@ public class EmailService {
         String emailContents;
 
         if (param == 1)
+            if (local == 2)
          emailContents = templateEngine.process("verifyemail", context);
-       else
+            else if (local == 3)
+            emailContents = templateEngine.process("verifyemail_ua", context);
+            else
+                emailContents = templateEngine.process("verifyemail_default", context);
+        else
+        if (local == 2)
             emailContents = templateEngine.process("restorepassword", context);
+        else if (local == 3)
+            emailContents = templateEngine.process("restorepassword_ua", context);
+        else
+            emailContents = templateEngine.process("restorepassword_default", context);
 
 
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
@@ -71,7 +81,7 @@ public class EmailService {
 
                 message.setTo(emailAddress);
                 message.setFrom(new InternetAddress("no-reply@gmail.com"));
-                message.setSubject("Верификация InMedical");
+                message.setSubject("InMedical");
                 message.setSentDate(new Date());
 
 

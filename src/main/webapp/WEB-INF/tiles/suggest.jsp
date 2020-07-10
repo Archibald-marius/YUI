@@ -26,8 +26,4 @@
 </div>
 
 
-<%--<div class="container">--%>
-<%--        <a href="${editProfileAbout}" style="float: left; font-size: 24px;">Заполнить профиль</a>--%>
-
-<%--    </div>--%>
 

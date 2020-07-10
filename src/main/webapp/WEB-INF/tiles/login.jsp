@@ -10,17 +10,6 @@
 <c:url var="registerUrl" value="/choose" />
 <c:url var="forgotpassword" value="/forgotpassword" />
 
-
-
-<%--<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">--%>
-<%--    <a href="${pageContext.request.contextPath}/login?lang=en">Login (English)</a>--%>
-<%--    <a href="${pageContext.request.contextPath}/login?lang=ru">Login (Russian)</a>--%>
-<%--</div>--%>
-
-
-
-
-
         <div class="login">
             <c:if test="${param.error != null}">
                 <div class="login-error" style="color: #dc3545; font-size: 14px;">Неправильный email или пароль!</div>
@@ -39,7 +28,6 @@
 <br>
             <br>
 
-        <%--            <div class="panel-body login">--%>
                 <form method="post" action="${loginUrl}" class="login-form">
 
                     <input type="hidden" name="${_csrf.parameterName}"
@@ -65,7 +53,6 @@
                 ${passwordRecovery}</a>
 </span>
 
-<%--            </div>--%>
         </div>
 
 

@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.Locale;
@@ -73,10 +74,10 @@ public class AuthController {
     }
 
     @RequestMapping(value="/register/doctor", method = RequestMethod.POST)
-    ModelAndView register(ModelAndView modelAndView, @ModelAttribute(value = "user") @Valid SiteUser user, BindingResult result){
+    ModelAndView register(ModelAndView modelAndView, @ModelAttribute(value = "user") @Valid SiteUser user, BindingResult result, HttpServletRequest request){
 
         modelAndView.setViewName("app.register");
-
+        int local = 1;
 
         if(!result.hasErrors()){
 //            user.setEnabled(true);
@@ -84,7 +85,11 @@ public class AuthController {
 
             String token = userService.createEmailVerificationToken(user);
 
-            emailService.sendVerificationEmail(user.getEmail(), token, 1);
+            if (request.getLocale().toString().equals("ru_RU"))
+                local = 2;
+            if (request.getLocale().toString().equals("uk_UA"))
+                local = 3;
+            emailService.sendVerificationEmail(user.getEmail(), token, 1, local);
             modelAndView.setViewName("redirect:/success");
 
 //            userService.save(user);
@@ -112,18 +117,21 @@ public class AuthController {
     }
 
     @RequestMapping(value="/register/patient", method = RequestMethod.POST)
-    ModelAndView registerPatient(ModelAndView modelAndView, @ModelAttribute(value = "user") @Valid SiteUser user, BindingResult result){
+    ModelAndView registerPatient(ModelAndView modelAndView, @ModelAttribute(value = "user") @Valid SiteUser user, BindingResult result, HttpServletRequest request){
 
         modelAndView.setViewName("app.register");
-
+        int local = 1;
 
         if(!result.hasErrors()){
 //            user.setEnabled(true);
             userService.register(user);
 
             String token = userService.createEmailVerificationToken(user);
-
-            emailService.sendVerificationEmail(user.getEmail(), token, 1);
+            if (request.getLocale().toString().equals("ru_RU"))
+                local = 2;
+            if (request.getLocale().toString().equals("uk_UA"))
+                local = 3;
+            emailService.sendVerificationEmail(user.getEmail(), token, 1, local);
             modelAndView.setViewName("redirect:/success");
 
 //            userService.save(user);
@@ -238,7 +246,7 @@ public class AuthController {
 
     //вопросик!!!!
     @RequestMapping(value="/city", method = RequestMethod.POST)
-    ModelAndView setCity(ModelAndView modelAndView, @ModelAttribute(value = "user") @Valid SiteUser user, BindingResult result){
+    ModelAndView setCity(ModelAndView modelAndView, @ModelAttribute(value = "user") @Valid SiteUser user, BindingResult result, HttpServletRequest request){
 
         modelAndView.setViewName("app.city");
 
@@ -247,8 +255,12 @@ public class AuthController {
             userService.register(user);
 
             String token = userService.createEmailVerificationToken(user);
-
-            emailService.sendVerificationEmail(user.getEmail(), token, 1);
+            int local = 1;
+            if (request.getLocale().toString().equals("ru_RU"))
+                local = 2;
+            if (request.getLocale().toString().equals("uk_UA"))
+                local = 3;
+            emailService.sendVerificationEmail(user.getEmail(), token, 1, local);
             modelAndView.setViewName("redirect:/success");
 
 //            userService.save(user);
