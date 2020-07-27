@@ -43,6 +43,7 @@
         <div class="input-group">
             <span style="color: #495057; float: left;"><spring:message code="label.complains" var="complains"></spring:message>
                     ${complains}</span>
+            <br>
             <form:textarea name="complains" path="complains" placeholder="" cssStyle="height: 100px; width: 300px"
                            class="form-control" />
         </div>
@@ -50,8 +51,10 @@
         <div class="input-group" style="display: flex; flex-direction: row; width: 270px">
             <span style="color: #495057"><spring:message code="label.press" var="press"></spring:message>
                     ${press}</span>
-            <br>
-            <form:input name="SAT" path="SAT" placeholder=""
+        </div>
+        <div class="input-group" style="display: flex; flex-direction: row; width: 270px">
+
+        <form:input name="SAT" path="SAT" placeholder=""
                         class="form-control"/>
             <span style="font-size: 26px; color: #495057;"> / </span>
             <form:input name="DAT" path="DAT" placeholder=""
@@ -209,14 +212,16 @@
 
         <br>
 
-
-        <span style="color: darkslategrey; float: right; font-size: 12px;">*dd/mm/yyyy</span>
+    <div class="input-group" style="display: flex; flex-direction: row; width: 300px">
+ <span style="color: #495057"><spring:message code="label.nextVisit" var="nextVisit"></spring:message>
+         ${nextVisit}</span>
+    </div>
+        <div class="input-group" style="display: flex; flex-direction: row; width: 300px">
+            <form:input path="next" cssStyle="float: left; width: 210px" class="form-control" type="text" id="datepicker" placeholder="" data-date-format="dd/mm/yyyy"/>
         <br>
-        <span style="color: #495057"><spring:message code="label.nextVisit" var="nextVisit"></spring:message>
-                ${nextVisit}</span>
-        <form:input path="next" cssStyle="float: right; width: 210px" class="form-control" type="text" id="datepicker" placeholder="" data-date-format="dd/mm/yyyy"/>
-        <br>
+            <span style="color: darkslategrey; float: right; font-size: 12px;">*dd/mm/yyyy</span>
 
+        </div>
         <br>
 
 

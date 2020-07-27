@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.naming.ldap.HasControls;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -39,8 +40,11 @@ public class PageController {
     @RequestMapping("/")
     ModelAndView home(ModelAndView modelAndView, HttpServletRequest request) {
 
-        System.out.println(request.getLocale());
-        System.out.println(request.getLocale().toString().equals("ru_RU"));
+        Date date = new Date(request.getSession().getCreationTime());
+        System.out.println(date.toInstant());
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        String formatted = formatDate.format(request.getSession().getCreationTime());
+        System.out.println(formatted);
 //        StatusUpdate statusUpdate = statusUpdateService.getLatest();
 int ticket = 0;
 Boolean showPress = false;

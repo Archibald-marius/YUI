@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Controller
@@ -30,7 +32,7 @@ public class ControlController {
     ProfileService profileService;
 
     @RequestMapping(value = "/control", method = RequestMethod.GET)
-    ModelAndView registerControl(ModelAndView modelAndView) {
+    ModelAndView registerControl(ModelAndView modelAndView, HttpServletRequest request) {
 
         SiteUser siteUser = util.getUser();
         Profile profile = profileService.getUserProfile(siteUser);
@@ -52,22 +54,21 @@ public class ControlController {
 //        webProfile.safeCopyFrom(profile);
 
         Control control = new Control();
+        if ((request.getLocale().toString().equals("ru_RU")) ||  (request.getLocale().toString().equals("uk_UA")))
+            System.out.println("nothing here");
+        else control.setNormal_date(control.getAdded().format(DateTimeFormatter.ofPattern("MM/dd")));
         Boolean ap = false;
         Boolean pls = false;
         Boolean tmp = false;
         Boolean glu = false;
-//        if (siteUser.getTherapy()) ap = true;
         if (profile.getTherapy()) ap = true;
 
-//        if (siteUser.getCardiology()) pls = true;
         if (profile.getCardiology()) pls = true;
 
 
-//        if(siteUser.getSurgery()) tmp = true;
         if(profile.getSurgery()) tmp = true;
 
 
-//        if(siteUser.getAlergology()) glu = true;
         if(profile.getAlergology()) glu = true;
 
         modelAndView.addObject("time" , new Date());
@@ -94,7 +95,6 @@ public class ControlController {
 
             modelAndView.setViewName("redirect:/");
 
-//            modelAndView.setViewName("/");
         }
 
         return modelAndView;

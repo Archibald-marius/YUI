@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,7 +45,7 @@ public class YavkaController {
 
 
     @RequestMapping(value = "/yavka/{id}", method = RequestMethod.GET)
-    ModelAndView registerYavka(ModelAndView modelAndView, @PathVariable("id") Long id) {
+    ModelAndView registerYavka(ModelAndView modelAndView, @PathVariable("id") Long id, HttpServletRequest request) {
 
         Yavka yavka = new Yavka();
 
@@ -54,7 +56,9 @@ public class YavkaController {
         if (profile == null)
             zax = util.getUser().getOb();
         else zax = profile.getOb();
-
+        if ((request.getLocale().toString().equals("uk_UA")) ||  (request.getLocale().toString().equals("uk_UA")))
+            System.out.println("nothing here");
+            else yavka.setNormal_date(yavka.getAdded().format(DateTimeFormatter.ofPattern("MM/dd")));
         modelAndView.addObject("zax", zax);
         modelAndView.addObject("patient", id);
         modelAndView.addObject("time", new Date().getTime());

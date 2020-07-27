@@ -128,8 +128,8 @@
                 <input type="hidden" name="${_csrf.parameterName}"
                        value="${_csrf.token}" />
 
-                    <input type="text" class="form-control" name="s" placeholder="<spring:message code="label.searchPatientPlaceholder" var="searchPatientPlaceholder"></spring:message>
-            ${searchPatientPlaceholder}">
+                <spring:message code="label.searchPatientPlaceholder" var="searchPatientPlaceholder"></spring:message>
+                <input type="text" class="form-control" name="s" placeholder="${searchPatientPlaceholder}">
                 <br>
                         <button id="search-button" class="btn btn-primary" style="width: 150px; background-color: cadetblue; font-size: 20px;" type="submit">
                             <spring:message code="label.searchPatientButton" var="searchPatientButton"></spring:message>

@@ -18,7 +18,7 @@
 
         <spring:message code="label.profileName" var="profileName"></spring:message>
         ${profileName}
-        <form:input type="text" path="firstname" placeholder=""
+        <form:input type="text" path="firstname" placeholder="${profile.firstname}"
                     class="form-control" />
         <span class="input-group-btn" style="width:20px"></span>
         <br>

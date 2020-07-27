@@ -41,6 +41,7 @@ public class Yavka extends TimeZones {
 //    private String normal_date=new SimpleDateFormat("dd/MM hh:mm").format(new Date());
 
     public String getNormal_date() {
+
         return normal_date;
     }
 

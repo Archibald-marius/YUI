@@ -72,13 +72,21 @@ if (profile.getRole().equals("ROLE_DOCTOR")) {
 //if (profile.getFirstname().trim().equals("") && profile.getSurname() != null && profile.getCity() != null)
 //    ex = true;
 }
-if (profile.getRole().equals("ROLE_PATIENT"))
+Boolean noParams = true;
+if (profile.getRole().equals("ROLE_PATIENT")) {
     bach = 2;
+//    if (profile.getTherapy() || profile.getSurgery() || profile.getAlergology() || profile.getCardiology())
+//        noParams = false;
+}
+//        System.out.println(noParams);
+
+
 
         modelAndView.getModel().put("bach", bach);
         modelAndView.getModel().put("ex", ex);
         modelAndView.getModel().put("userId", user.getId());
         modelAndView.getModel().put("profile", webProfile);
+        modelAndView.getModel().put("naParams", noParams);
         modelAndView.setViewName("app.profile");
 
         return modelAndView;

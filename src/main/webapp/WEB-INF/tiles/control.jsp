@@ -14,9 +14,11 @@
 
 
 <div class="reg">
+<c:if test="${ap == true || pls == true || tmp == true || glu == true}">
 
     <span style="font-size: 24px; color: #6c757d;"><spring:message code="label.params" var="params"></spring:message>
                 ${params} ${control.normal_date}</span><br>
+</c:if>
 <br>
     <form:form modelAttribute="control">
 
@@ -49,7 +51,8 @@
         <c:if test="${tmp == true}">
 
             <span style="color: #495057; float: left; font-size: 20px;"><spring:message code="label.temperat" var="temperat"></spring:message>
-                    ${temperat}<br><span style="font-size: 14px">*в формате 36.6</span></span>
+                    ${temperat}<br><span style="font-size: 14px">*<spring:message code="label.tempFormat" var="tempFormat"></spring:message>
+                        ${tempFormat}</span></span>
             <br>
 
             <div class="input-group" style="width: 150px">
@@ -77,10 +80,20 @@
         </c:if>
 
         <div class="input-group">
+            <c:if test="${ap == true || pls == true || tmp == true || glu == true}">
+
             <button type="submit" class="btn-control" style="color: white;"><spring:message code="label.paramsButton" var="paramsButton"></spring:message>
                     ${paramsButton}</button>
+            </c:if>
         </div>
 
     </form:form>
+<c:if test="${ap == false || pls == false || tmp == false || glu == false}">
+    <span style="color: #212529; font-size: 18px;"
+    <spring:message code="label.noChosenParam" var="noChosenParam"></spring:message>
+    ${noChosenParam}
+</span>
+</c:if>
+
 
 </div>

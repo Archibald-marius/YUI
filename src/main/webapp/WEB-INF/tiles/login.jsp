@@ -33,12 +33,12 @@
                     <input type="hidden" name="${_csrf.parameterName}"
                            value="${_csrf.token}" />
 
-                        <input type="text" name="username" placeholder="<spring:message code="label.formLoginMail" var="formLoginMail"></spring:message>
-                ${formLoginMail}"
+                    <spring:message code="label.formLoginMail" var="formLoginMail"></spring:message>
+                    <input type="text" name="username" placeholder="${formLoginMail}"
                                class="form-control" />
                             <br>
-                        <input type="password" name="password" placeholder="<spring:message code="label.formLoginPassword" var="formLoginPassword"></spring:message>
-                ${formLoginPassword}"
+                    <spring:message code="label.formLoginPassword" var="formLoginPassword"></spring:message>
+                    <input type="password" name="password" placeholder="${formLoginPassword}"
                                class="form-control" />
 <br>
                         <button type="submit" style="background-color: #b0e6df; width: 110px; font-size: 18px">

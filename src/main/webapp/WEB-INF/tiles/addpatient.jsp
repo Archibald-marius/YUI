@@ -35,55 +35,50 @@
 
 
         <spring:message code="label.patientsName" var="patientsName"></spring:message>
-        ${patientsName}
-        <form:input type="text" path="name" placeholder=""
+        <form:input type="text" path="name" placeholder="${patientsName}"
                     class="form-control" />
         <span class="input-group-btn" style="width:20px"></span>
         <br>
             <br>
 
         <spring:message code="label.patientsAddress" var="patientsAddress"></spring:message>
-        ${patientsAddress}
-        <form:textarea type="text" path="address" placeholder=""
+        <form:textarea type="text" path="address" placeholder="${patientsAddress}"
                     class="form-control" />
         <br>
         <spring:message code="label.patientsWork" var="patientsWork"></spring:message>
-        ${patientsWork}
-        <form:input type="work" path="work" placeholder=""
+        <form:input type="work" path="work" placeholder="${patientsWork}"
                     class="form-control" />
         <br>
         <spring:message code="label.patientsPhone" var="patientsPhone"></spring:message>
-        ${patientsPhone}
-        <form:input type="phone" path="phone" placeholder=""
+        <form:input type="phone" path="phone" placeholder="${patientsPhone}"
                     class="form-control" />
         <br>
         <spring:message code="label.patientsBirth" var="patientsBirth"></spring:message>
-        ${patientsBirth}
-        <br>
         <span style="color: darkslategrey; float: right; font-size: 12px;">*dd/mm/yyyy</span>
-                        <form:input path="date_b" class="form-control" type="text" id="datepicker" placeholder="" data-date-format="dd/mm/yyyy"/>
+                        <form:input path="date_b" class="form-control" type="text" id="datepicker" placeholder="${patientsBirth}
+" data-date-format="dd/mm/yyyy"/>
 <br>
 
         <spring:message code="label.patientsDiagnosis" var="patientsDiagnosis"></spring:message>
-        ${patientsDiagnosis}
-        <form:textarea type="text" path="diagnosis" placeholder=""
+        <form:textarea type="text" path="diagnosis" placeholder="${patientsDiagnosis}
+"
                     class="form-control" />
         <br>
 
         <spring:message code="label.patientMain" var="patientMain"></spring:message>
-        ${patientMain}
-        <form:input type="mail" path="mail" placeholder=""
+        <form:input type="mail" path="mail" placeholder="${patientMain}
+"
                     class="form-control" />
         <br>
                             <c:if test="${zax == true}">
                                 <spring:message code="label.patientPregnancy" var="patientPregnancy"></spring:message>
-                                ${patientPregnancy}
-                                                        <form:input name="pregnancy" path="pregnancy" placeholder=""
+                                                        <form:input name="pregnancy" path="pregnancy" placeholder="${patientPregnancy}
+"
                                                                     class="form-control" />
 <br>
                                 <spring:message code="label.patientLabour" var="patientLabour"></spring:message>
-                                ${patientLabour}
-                                                        <form:input name="labour" path="labour" placeholder=""
+                                                        <form:input name="labour" path="labour" placeholder="${patientLabour}
+"
                                                                     class="form-control" />
                                 <br>
                             </c:if>

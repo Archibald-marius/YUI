@@ -45,22 +45,22 @@
                 <span style="font-size: 16px; color: #343a40">
 
                     <spring:message code="label.formLoginMail" var="formLoginMail"></spring:message>
-                    ${formLoginMail}
-                    <form:input type="text" path="email" placeholder=""
+
+                    <form:input type="text" path="email" placeholder="${formLoginMail}"
                                     class="form-control" />
                     <br>
 
                     <spring:message code="label.formLoginPassword" var="formLoginPassword"></spring:message>
-                    ${formLoginPassword}
-                    <form:input type="password" path="plainPassword" placeholder=""
+
+                    <form:input type="password" path="plainPassword" placeholder="${formLoginPassword}"
                                     class="form-control" />
                     <br>
 
 
 
                     <spring:message code="label.repeatPassword" var="repeatPassword"></spring:message>
-                    ${repeatPassword}
-                    <form:input type="password" path="repeatPassword" placeholder=""
+
+                    <form:input type="password" path="repeatPassword" placeholder="${repeatPassword}"
                                class="form-control" />
 <%--                    <br>--%>
 <%--                    <span style="font-size: 16px; color: #343a40; float: left;">--%>

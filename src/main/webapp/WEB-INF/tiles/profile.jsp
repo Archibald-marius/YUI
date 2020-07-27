@@ -143,6 +143,9 @@
                     <c:if test="${profile.cardiology == true}">
                         <spring:message code="label.pls" var="pls"></spring:message>
                         ${pls};                    </c:if>
+                    <c:if test="${profile.therapy == false && profile.surgery == false && profile.alergology == false && profile.cardiology == false}">
+                        <spring:message code="label.noData" var="noData"></spring:message>
+                        ${noData};                   </c:if>
                 </c:if>
 
 <br>
