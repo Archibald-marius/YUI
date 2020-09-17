@@ -6,4 +6,5 @@ Technologies:
 - Spring-boot;
 - a little bit of js;
 - mySQL, hibernate;
-- maven.
+- maven;
+- AWS.
